@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - lts/*
+script:
+  - |
+    bash -c "
+      set -eo pipefail
+      yarn
+      yarn test --coverage
+      cat ./coverage/lcov.info | yarn coveralls
+    "

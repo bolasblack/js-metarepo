@@ -1,0 +1,38 @@
+{
+  "name": "@c4605/js-metarepo",
+  "repository": "https://github.com/bolasblack/js-metarepo",
+  "author": "c4605 <bolasblack@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "postinstall": "patch-package",
+    "release": "lerna version --sign-git-tag --conventional-commits --create-release github"
+  },
+  "prettier": "@c4605/toolconfs/prettierrc",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@c4605/toolconfs": "^5.1.0",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "git-hook-pure": "^3.0.1",
+    "lint-staged": "^10.0.1",
+    "patch-package": "^6.2.0",
+    "postinstall-postinstall": "^2.0.0",
+    "prettier": "^2.0.5",
+    "typescript": "^3.8.0",
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/parser": "^2.17.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "lerna": "^3.20.2"
+  }
+}
