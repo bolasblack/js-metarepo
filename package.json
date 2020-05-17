@@ -20,12 +20,6 @@
     "@c4605/toolconfs": "^5.1.0",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
-    "git-hook-pure": "^3.0.1",
-    "lint-staged": "^10.0.1",
-    "patch-package": "^6.2.0",
-    "postinstall-postinstall": "^2.0.0",
-    "prettier": "^2.0.5",
-    "typescript": "^3.8.0",
     "@typescript-eslint/eslint-plugin": "^2.17.0",
     "@typescript-eslint/parser": "^2.17.0",
     "eslint": "^6.8.0",
@@ -33,6 +27,12 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-react-hooks": "^3.0.0",
-    "lerna": "^3.20.2"
+    "git-hook-pure": "^3.0.1",
+    "lerna": "^3.20.2",
+    "lint-staged": "^10.0.1",
+    "patch-package": "^6.2.0",
+    "postinstall-postinstall": "^2.0.0",
+    "prettier": "^2.0.5",
+    "typescript": "^3.8.0"
   }
 }
