@@ -1,3 +1,4 @@
+import { StartPlugin, StartFilesProps } from '@start/plugin'
 import sequence from '@start/plugin-sequence'
 import find from '@start/plugin-find'
 import remove from '@start/plugin-remove'
@@ -10,7 +11,6 @@ import * as ts from 'typescript'
 import parallel from './parallel'
 import dtsGenerate from './dtsGenerate'
 import tsGenerate from './tsGenerate'
-import { StartPlugin, StartFilesProps } from '@start/plugin'
 
 type Task = StartPlugin<StartFilesProps, any>
 

@@ -9,6 +9,7 @@
     "packages/*"
   ],
   "scripts": {
+    "test": "lerna run test",
     "postinstall": "patch-package"
   },
   "prettier": "@c4605/toolconfs/prettierrc",
