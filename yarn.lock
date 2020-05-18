@@ -1850,14 +1850,14 @@
     "@start/plugin" "^1.0.0"
     "@types/babel__core" "^7.1.1"
 
-"@start/plugin-read@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@start/plugin-read/-/plugin-read-0.3.1.tgz#ff414601e999d52db0d6076b84558e467ce02bdd"
-  integrity sha512-nw0okBHSkE8IwH+0G1pVFzrvIjgAs0gUcwKzscTdX17bGelshM7iSRaVTC+hocD8QU3q4YKK+URDF9h9Oo2tvA==
+"@start/plugin-read@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@start/plugin-read/-/plugin-read-1.0.0.tgz#a1385c2c21339be4960837eb35d814aa47639e82"
+  integrity sha512-0LF2sm5FkRoy3C14YE+KTw4TXJt5HXX7pU7LiUNWvKYpr1oZkiRZGOJIBSHtziug5adsAdRp7Fp3BiqE4lkzLg==
   dependencies:
     "@babel/runtime" "^7.4.2"
-    "@start/plugin" "^0.3.1"
-    graceful-fs "^4.1.15"
+    "@start/plugin" "^1.0.0"
+    pifs "^1.0.0"
 
 "@start/plugin-remove@^1.0.0":
   version "1.0.0"
