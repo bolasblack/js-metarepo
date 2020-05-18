@@ -15,7 +15,7 @@
     "@start/plugin-lib-babel": "^1.0.0",
     "@start/plugin-read": "^0.3.1",
     "@start/plugin-remove": "^1.0.0",
-    "@start/plugin-rename": "^0.3.1",
+    "@start/plugin-rename": "^1.0.0",
     "@start/plugin-sequence": "^1.0.0",
     "@start/plugin-watch": "^1.0.0",
     "@start/plugin-write": "^0.3.2",
