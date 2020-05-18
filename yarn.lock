@@ -1876,13 +1876,13 @@
     "@babel/runtime" "^7.4.2"
     "@start/plugin" "^0.3.1"
 
-"@start/plugin-sequence@^0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@start/plugin-sequence/-/plugin-sequence-0.3.3.tgz#4d0219ecc54b2babc8fa6cfb33d6bb3529a0b014"
-  integrity sha512-Kwra6gcyLFe4wwRhDAE/kt0M5x03Z8blvUxbUzh7f5IKlvgl52PITWx6z9UlAztqAhvq5cLW623xrHUTt5OCAQ==
+"@start/plugin-sequence@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@start/plugin-sequence/-/plugin-sequence-1.0.0.tgz#7414cd10c7effbdcfe38b6df7e44cdbfd5feac2c"
+  integrity sha512-7HyIHbJfjw3BXlOsLi0dgbgy+uYMst16yYbKg8qGvJM5mN6+H5PTEM754dXAVrcYfdDgq70fWWTV6jBxgXQE5g==
   dependencies:
     "@babel/runtime" "^7.4.2"
-    "@start/plugin" "^0.3.1"
+    "@start/plugin" "^1.0.0"
 
 "@start/plugin-watch@^1.0.0":
   version "1.0.0"
