@@ -1859,14 +1859,14 @@
     "@start/plugin" "^0.3.1"
     graceful-fs "^4.1.15"
 
-"@start/plugin-remove@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@start/plugin-remove/-/plugin-remove-0.3.1.tgz#6ee738b542ed58167056a3521a6f499459bb9fcf"
-  integrity sha512-v3wIRdk45nVhwTH4QUuy11lCjAieU4s0KWWgh3mC+GKLjiY0ZNLrYuG+LUN5Iljw96aXpTaRL2qYAIKRmhn80w==
+"@start/plugin-remove@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@start/plugin-remove/-/plugin-remove-1.0.0.tgz#38c60e608caa3107cae2e009c70582e7b70eac4f"
+  integrity sha512-/i9I0zLurQlE01tK2diwfPhDe/3ZNVyj3fkSxS8Bt6ZRQ0+BrB6wclbVGYqRmFhcuS9/xHYlsNCP5+Ufw3TnAw==
   dependencies:
     "@babel/runtime" "^7.4.2"
-    "@start/plugin" "^0.3.1"
-    dleet "^0.3.0"
+    "@start/plugin" "^1.0.0"
+    dleet "^1.0.0"
 
 "@start/plugin-rename@^0.3.1":
   version "0.3.2"
@@ -3248,12 +3248,12 @@ dir-glob@^2.2.2:
   dependencies:
     path-type "^3.0.0"
 
-dleet@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/dleet/-/dleet-0.3.0.tgz#c78d331245a180cae212e9408d27dd772637b3a1"
-  integrity sha512-b+W/ybs4mqIuuqZVJdGMSHfil/e7MCzQ+7CLx+AU83dEX2vkH/6fJ7aoxWSDrRZaieBBW5SjOVCXYSG8Z9dYQA==
+dleet@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/dleet/-/dleet-1.0.0.tgz#bc7e3ef17f615afc1cfc21b76dca29ef04d98468"
+  integrity sha512-N2mXini/efTWfFqa8XJHeGSlW/9khbl2uqMNivAB2stc3TpsrBOcy7etqM129zKFYcKuT+A6r+1hsGNk1D+oZw==
   dependencies:
-    "@babel/runtime" "^7.4.2"
+    pifs "^1.0.0"
 
 doctrine@^2.1.0:
   version "2.1.0"
@@ -6009,6 +6009,13 @@ picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
   integrity sha512-q0M/9eZHzmr0AulXyPwNfZjtwZ/RBZlbN3K3CErVrk50T2ASYI7Bye0EvekFY3IP1Nt2DHu0re+V2ZHIpMkuWg==
+
+pifs@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/pifs/-/pifs-1.0.2.tgz#d585046eb76d4566d66f95b3c936ad93343c1968"
+  integrity sha512-vl1gvRASjDGBhUnvDTV4HujpL2e0I8FweKagHBxTe+XJoEahZyJ8HO3xX1cj++oLgpdBuMTn3vuCcH/E0FyVGg==
+  dependencies:
+    graceful-fs "^4.2.0"
 
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
