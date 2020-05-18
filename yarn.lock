@@ -1889,13 +1889,13 @@
     "@start/plugin" "^1.0.0"
     dleet "^1.0.0"
 
-"@start/plugin-rename@^0.3.1":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@start/plugin-rename/-/plugin-rename-0.3.2.tgz#74e41c37107d17d1aa55ef58310bd7791b3fcf6d"
-  integrity sha512-FtSi4ogpbobs9kS4aGCeS/EDeVwJqDyxsyj3bTlWYsQIycYsPKm3a79N3Y5+/exkvgKf/2HSNvqGaIFPoF+BJw==
+"@start/plugin-rename@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@start/plugin-rename/-/plugin-rename-1.0.0.tgz#4132d3ca0fafedb488e3e88d09c20dbba9284dfd"
+  integrity sha512-5nyHXRxuNaWGFwmyLWew5KWglTIudv2gA1iyw+9rpp/6o2+po8SXRr8vjrVDhRU6j37O7SG68SF9On1yxmDcCw==
   dependencies:
     "@babel/runtime" "^7.4.2"
-    "@start/plugin" "^0.3.1"
+    "@start/plugin" "^1.0.0"
 
 "@start/plugin-sequence@^1.0.0":
   version "1.0.0"
