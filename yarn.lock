@@ -1935,14 +1935,14 @@
   resolved "https://registry.yarnpkg.com/@start/plugin/-/plugin-1.0.0.tgz#4cdc1ff3e752a8cf5c131f2f7e711ea7ecbf7006"
   integrity sha512-rMjYHmdJHoiIUE3p0Nb4acg2SnLQEjYwr1No2t8BEHFjCpBT7oXG2bFWqrirImY3yeRW5TbCpYRjbo20SoMYiQ==
 
-"@start/reporter-verbose@^0.2.1":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@start/reporter-verbose/-/reporter-verbose-0.2.2.tgz#81c790e58991b630c3b7325f70813bc8d9887d97"
-  integrity sha512-n/X+JPovtJVF10YXSutqk3fK5X/QnHNsRQUGwhagtzsH0CEp0Ni97e5OwQ4wC2vM37tSHm9+vMdh9Jke0/1z/A==
+"@start/reporter-verbose@^1.0.0":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@start/reporter-verbose/-/reporter-verbose-1.0.2.tgz#2b2eecfaf233b93c3a51d346b56036d49c18f34f"
+  integrity sha512-i/UCt52OX5UV8xARgrxR+WY6GJIanugcP2szCS4jbLDyRIVdfcK5lmBLNLENpOnsVna1vb49wt2tOImVpcOtJw==
   dependencies:
     "@babel/runtime" "^7.4.2"
-    chalk "^3.0.0"
-    stack-utils "^1.0.2"
+    chalk "^4.0.0"
+    stack-utils "^2.0.1"
 
 "@types/babel__core@^7.1.1":
   version "7.1.7"
@@ -3444,6 +3444,11 @@ escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
+
+escape-string-regexp@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
+  integrity sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==
 
 eslint-config-prettier@^6.9.0:
   version "6.11.0"
@@ -6989,10 +6994,12 @@ ssri@^6.0.0, ssri@^6.0.1:
   dependencies:
     figgy-pudding "^3.5.1"
 
-stack-utils@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/stack-utils/-/stack-utils-1.0.2.tgz#33eba3897788558bebfc2db059dc158ec36cebb8"
-  integrity sha512-MTX+MeG5U994cazkjd/9KNAapsHnibjMLnfXodlkXw76JEea0UiNzrqidzo1emMwk7w5Qhc9jd4Bn9TBb1MFwA==
+stack-utils@^2.0.1:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/stack-utils/-/stack-utils-2.0.2.tgz#5cf48b4557becb4638d0bc4f21d23f5d19586593"
+  integrity sha512-0H7QK2ECz3fyZMzQ8rH0j2ykpfbnd20BFtfg/SqVC2+sCTtcw0aDTGB7dk+de4U4uUeuz6nOtJcrkFFLG1B0Rg==
+  dependencies:
+    escape-string-regexp "^2.0.0"
 
 static-extend@^0.1.1:
   version "0.1.2"
