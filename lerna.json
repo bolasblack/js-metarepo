@@ -1,11 +1,9 @@
 {
-  "packages": [
-    "packages/*"
-  ],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "version": "independent",
   "ignoreChanges": [
+    "packages/start/common-deps/**/*",
     "**/*.test.ts",
     "**/*.test.tsx",
     "**/*.spec.ts",
