@@ -758,7 +758,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.4.2", "@babel/runtime@^7.4.3", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.4.2", "@babel/runtime@^7.8.4":
   version "7.9.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
   integrity sha512-64AF1xY3OAkFHqOb9s4jpgk1Mm5vDZ4L3acHvAml+53nO1XbXLuDodsVpO4OIUsmemlUHMxNdYMNJmsvOwLrvQ==
@@ -1914,21 +1914,16 @@
     "@start/plugin" "^1.0.0"
     chokidar "^3.0.2"
 
-"@start/plugin-write@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@start/plugin-write/-/plugin-write-0.3.2.tgz#e5e3ae59b81bceeda9013231507852dd62091091"
-  integrity sha512-/1u4ci9aGij4oeKqHtVrMxX/YW1pxnNIyLJZjVU1asKQtZCwzkcASdN1/nFm+feDlqQdASAAhY99kuljzwI92A==
+"@start/plugin-write@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@start/plugin-write/-/plugin-write-1.0.0.tgz#2a3c718b3a88369b5d0d655961bd8bbe559cb5e7"
+  integrity sha512-NyZrpXYXk0Vl7j+Xo833OFFPO+UvFtcONjN+gVblNrkAc8mac89bKE86Hc7KSBufd11zs2XooClHEwsnmiYWxg==
   dependencies:
     "@babel/runtime" "^7.4.2"
-    "@start/plugin" "^0.3.1"
-    graceful-fs "^4.1.15"
+    "@start/plugin" "^1.0.0"
     make-dir "^3.0.0"
-    move-path "^0.2.0"
-
-"@start/plugin@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@start/plugin/-/plugin-0.3.1.tgz#85b8df52baee0f7cdf79ff85d64b55567331cded"
-  integrity sha512-fZex8rHCOo2awwqsv7edDsQPdGjUcz6s0G24Hn0axkBaI5krwkP6l9ThaPgaMtLu2geFzfzy5Zlht9koIIr/8g==
+    move-path "^1.0.0"
+    pifs "^1.0.0"
 
 "@start/plugin@^1.0.0":
   version "1.0.0"
@@ -5432,12 +5427,12 @@ move-concurrently@^1.0.1:
     rimraf "^2.5.4"
     run-queue "^1.0.3"
 
-move-path@^0.2.0:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/move-path/-/move-path-0.2.1.tgz#2a7dbc5c1fe9b13267144838bd012fdbb011fcf9"
-  integrity sha512-c+Dy3neZMh7xhZI+1qzgO8IAkBhf57FxZJEnzxuyLWZBcilVSM2bZ++w9NYEPC8rvVPuFw3zZfl/Ry5LnIWEcg==
+move-path@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/move-path/-/move-path-1.0.0.tgz#1170a003f7edff8a6addb86acefd092fc8fb4ee8"
+  integrity sha512-sWPyZQV5N1wLjxQFDQhtAavZ3LXB9OdtnUu3PRF3rbSq1e3ZhU6kGv5Metz4PGtBgYyfqvT0k6cR9y0Kg8y8Yw==
   dependencies:
-    "@babel/runtime" "^7.4.3"
+    "@babel/runtime" "^7.4.2"
 
 ms@2.0.0:
   version "2.0.0"
