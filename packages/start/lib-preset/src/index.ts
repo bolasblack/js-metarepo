@@ -8,25 +8,36 @@ import write from '@start/plugin-write'
 import _watch from '@start/plugin-watch'
 import babel from '@start/plugin-lib-babel'
 import * as ts from 'typescript'
+import when from './when'
 import parallel from './parallel'
 import dtsGenerate from './dtsGenerate'
 import tsGenerate from './tsGenerate'
 
 type Task = StartPlugin<StartFilesProps, any>
 
-const srcPath = 'src'
-const outPath = 'lib'
-const src = `${srcPath}/**/*.ts`
+const tsconfig = getTsConfig()
 
-const dts = (): Task => sequence(find(src), dtsGenerate(outPath))
+if (!tsconfig) {
+  console.error('tsconfig.json in current working directory is required')
+  process.exit(1)
+}
+
+const srcPath = 'src'
+const outPath = tsconfig.outDir || 'lib'
+const src = `${srcPath}/**/*.{ts,tsx,js,jsx}`
+
+const dts = (): Task => sequence(find(src), dtsGenerate(outPath, tsconfig))
 
 const buildCjs = (): Task =>
   sequence(
     find(src),
     read,
-    tsGenerate({ module: ts.ModuleKind.CommonJS }),
+    when(
+      (f) => f.path.endsWith('ts') || f.path.endsWith('tsx'),
+      tsGenerate({ ...tsconfig, module: ts.ModuleKind.CommonJS }),
+    ),
     babel({}),
-    rename((file) => file.replace(/\.ts$/, '.js')),
+    rename((file) => file.replace(/\.tsx?$/, '.js')),
     write(outPath),
   )
 
@@ -34,9 +45,12 @@ const buildEsm = (): Task =>
   sequence(
     find(src),
     read,
-    tsGenerate({ module: ts.ModuleKind.ESNext }),
+    when(
+      (f) => f.path.endsWith('ts') || f.path.endsWith('tsx'),
+      tsGenerate({ ...tsconfig, module: ts.ModuleKind.ESNext }),
+    ),
     babel({}),
-    rename((file) => file.replace(/\.ts$/, '.mjs')),
+    rename((file) => file.replace(/\.tsx?$/, '.mjs')),
     write(outPath),
   )
 
@@ -46,3 +60,33 @@ export const build = (): Task =>
   sequence(clean(), parallel(dts(), buildCjs(), buildEsm()))
 
 export const watch = (): Task => _watch(src)(build())
+
+function getTsConfig(): ts.CompilerOptions | undefined {
+  const parseConfigHost: ts.ParseConfigHost = {
+    fileExists: ts.sys.fileExists,
+    readFile: ts.sys.readFile,
+    readDirectory: ts.sys.readDirectory,
+    useCaseSensitiveFileNames: true,
+  }
+
+  const configFileName = ts.findConfigFile(
+    process.cwd(),
+    ts.sys.fileExists,
+    'tsconfig.json',
+  )
+
+  if (!configFileName) return
+
+  const configFile = ts.readConfigFile(configFileName, ts.sys.readFile)
+
+  if (configFile.error) {
+    console.error(configFile.error)
+    return
+  }
+
+  return ts.parseJsonConfigFileContent(
+    configFile.config,
+    parseConfigHost,
+    process.cwd(),
+  ).options
+}
