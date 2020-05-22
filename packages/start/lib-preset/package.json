@@ -1,23 +1,24 @@
 {
   "name": "@c4/lib-start-preset",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "bin": {
     "start": "lib/cli.js"
   },
   "scripts": {
+    "test": "exit 0",
     "prepublishOnly": "start build",
     "start": "node src/require.js"
   },
   "dependencies": {
     "@start/plugin": "^1.0.0",
-    "@start/plugin-find": "^0.3.1",
-    "@start/plugin-lib-babel": "^0.3.1",
-    "@start/plugin-read": "^0.3.1",
-    "@start/plugin-remove": "^0.3.1",
-    "@start/plugin-rename": "^0.3.1",
-    "@start/plugin-sequence": "^0.3.3",
+    "@start/plugin-find": "^1.0.0",
+    "@start/plugin-lib-babel": "^1.0.0",
+    "@start/plugin-read": "^1.0.0",
+    "@start/plugin-remove": "^1.0.0",
+    "@start/plugin-rename": "^1.0.0",
+    "@start/plugin-sequence": "^1.0.0",
     "@start/plugin-watch": "^1.0.0",
-    "@start/plugin-write": "^0.3.2",
-    "@start/reporter-verbose": "^0.2.1"
+    "@start/plugin-write": "^1.0.0",
+    "@start/reporter-verbose": "^1.0.0"
   }
 }

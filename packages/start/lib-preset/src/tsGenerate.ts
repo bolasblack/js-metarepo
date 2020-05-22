@@ -1,4 +1,4 @@
-import { CompilerOptions } from 'typescript'
+import * as ts from 'typescript'
 import plugin, {
   StartFile,
   StartPlugin,
@@ -8,7 +8,7 @@ import plugin, {
 
 // https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
 export default function tsGenerate(
-  compilerOptions?: CompilerOptions,
+  compilerOptions?: Partial<ts.CompilerOptions>,
 ): StartPlugin<StartDataFilesProps, StartDataFilesProps> {
   return plugin(
     'tsGenerate',
@@ -23,6 +23,7 @@ export default function tsGenerate(
             logPath(file.path)
 
             const data = file.data || fs.readFileSync(file.path).toString()
+
             const newContent = transpileModule(data, {
               compilerOptions: options,
             }).outputText
