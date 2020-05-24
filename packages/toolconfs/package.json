@@ -1,6 +1,6 @@
 {
   "name": "@c4605/toolconfs",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "Some configuration files for my favorite tools",
   "main": null,
   "repository": "https://github.com/bolasblack/js-metarepo/blob/master/packages/toolconfs",
@@ -55,6 +55,5 @@
     "lint-staged": "^10.0.0",
     "prettier": "^2.0.5",
     "typescript": "^3.9.3"
-  },
-  "dependencies": {}
+  }
 }

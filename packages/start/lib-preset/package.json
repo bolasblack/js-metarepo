@@ -1,6 +1,6 @@
 {
   "name": "@c4/lib-start-preset",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "lib/index.js",
   "repository": "https://github.com/bolasblack/js-metarepo/blob/master/packages/start/lib-preset",
   "author": "c4605 <bolasblack@gmail.com>",
