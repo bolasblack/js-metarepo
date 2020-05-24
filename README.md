@@ -4,5 +4,6 @@ The metarepo is a single repository that consists of many packages and various m
 
 Inspired from [nextools/metarepo](https://github.com/nextools/metarepo)
 
-- [`packages/toolconfs`](packages/toolconfs): Some configuration files for usual tools.
-- [`packages/start`](packages/start): Some [start](https://github.com/nextools/metarepo/tree/master/packages/start) presets/plugins.
+- [`toolconfs`](packages/toolconfs): Some configuration files for usual tools.
+- [`ts-types`](packages/ts-types): Some useful TypeScript type helpers.
+- [`start`](packages/start): Some [start](https://github.com/nextools/metarepo/tree/master/packages/start) presets/plugins.

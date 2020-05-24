@@ -1,0 +1,26 @@
+{
+  "name": "@c4605/ts-types",
+  "version": "0.2.2",
+  "description": "TypeScript type helpers",
+  "main": "src/index.d.ts",
+  "repository": "https://github.com/bolasblack/js-metarepo/blob/master/packages/ts-types",
+  "author": "c4605 <bolasblack@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn test && nodemon -w src/**/*.ts -w dtslint/**/*.ts --exec 'yarn test'",
+    "test": "dtslint --onlyTestTsNext dtslint"
+  },
+  "peerDependencies": {
+    "typescript": "^3.4.2"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "dtslint": "^3.6.4",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {}
+}

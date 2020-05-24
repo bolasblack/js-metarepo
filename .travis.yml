@@ -6,6 +6,5 @@ script:
     bash -c "
       set -eo pipefail
       yarn
-      yarn test --coverage
-      cat ./coverage/lcov.info | yarn coveralls
+      yarn test
     "
