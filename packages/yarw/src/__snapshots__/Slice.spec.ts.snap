@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slice unregister should console error when calling \`getState\` after unregistered 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    ],
+    Array [
+      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Slice unregister should console error when calling \`listen\` after unregistered 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    ],
+    Array [
+      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Slice unregister should console error when calling \`reducer\` after unregistered 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    ],
+    Array [
+      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    ],
+    Array [
+      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    ],
+    Array [
+      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Slice unregister should console error when calling \`setState\` after unregistered 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Slice unregister should console error when calling \`subscribe\` after unregistered 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Slice unregister should console error when calling action dispatcher after unregistered 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;

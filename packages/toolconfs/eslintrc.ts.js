@@ -16,6 +16,7 @@ module.exports = {
     '@typescript-eslint/no-parameter-properties': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/consistent-type-assertions': 'off',
     // error
     '@typescript-eslint/no-floating-promises': 'error',
     '@typescript-eslint/no-unused-vars-experimental': [
@@ -25,13 +26,6 @@ module.exports = {
     '@typescript-eslint/explicit-member-accessibility': [
       'error',
       { accessibility: 'no-public' },
-    ],
-    '@typescript-eslint/consistent-type-assertions': [
-      'error',
-      {
-        assertionStyle: 'as',
-        objectLiteralTypeAssertions: 'allow-as-parameter',
-      },
     ],
     '@typescript-eslint/no-floating-promises': ['error', { ignoreVoid: true }],
     '@typescript-eslint/explicit-function-return-type': [
