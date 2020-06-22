@@ -6,7 +6,7 @@ export default function when<
 >(
   condition: (file: StartFile) => boolean | Promise<boolean>,
   target: StartPlugin<I, O>,
-): StartPlugin<I, I | O> {
+): StartPlugin<I, O> {
   return plugin('when', (utils) => async ({ files }) => {
     const runner = (await target)(utils.reporter)
     const outFiles = await Promise.all(

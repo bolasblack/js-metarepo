@@ -9,6 +9,7 @@ import _watch from '@start/plugin-watch'
 import babel from '@start/plugin-lib-babel'
 import * as ts from 'typescript'
 import when from './when'
+import whenProps from './whenProps'
 import parallel from './parallel'
 import dtsGenerate from './dtsGenerate'
 import tsGenerate from './tsGenerate'
@@ -30,8 +31,8 @@ const dts = (): Task => sequence(find(src), dtsGenerate(outPath, tsconfig))
 
 const buildCjs = (): Task =>
   sequence(
-    find(src),
-    read,
+    whenProps((props) => !props.files.length, find(src)),
+    when((f) => !f.data, read),
     when(
       (f) => f.path.endsWith('ts') || f.path.endsWith('tsx'),
       tsGenerate({ ...tsconfig, module: ts.ModuleKind.CommonJS }),
@@ -43,8 +44,8 @@ const buildCjs = (): Task =>
 
 const buildEsm = (): Task =>
   sequence(
-    find(src),
-    read,
+    whenProps((props) => !props.files.length, find(src)),
+    when((f) => !f.data, read),
     when(
       (f) => f.path.endsWith('ts') || f.path.endsWith('tsx'),
       tsGenerate({ ...tsconfig, module: ts.ModuleKind.ESNext }),
@@ -54,12 +55,13 @@ const buildEsm = (): Task =>
     write(outPath),
   )
 
+const incrementalBuild = (): Task => parallel(dts(), buildCjs(), buildEsm())
+
 export const clean = (): Task => sequence(find(outPath), remove)
 
-export const build = (): Task =>
-  sequence(clean(), parallel(dts(), buildCjs(), buildEsm()))
+export const build = (): Task => sequence(clean(), incrementalBuild())
 
-export const watch = (): Task => _watch(src)(build())
+export const watch = (): Task => _watch(src)(incrementalBuild())
 
 function getTsConfig(): ts.CompilerOptions | undefined {
   const parseConfigHost: ts.ParseConfigHost = {
