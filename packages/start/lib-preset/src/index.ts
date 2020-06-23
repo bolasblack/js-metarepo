@@ -10,6 +10,7 @@ import babel from '@start/plugin-lib-babel'
 import * as ts from 'typescript'
 import when from './when'
 import whenProps from './whenProps'
+import mapProps from './mapProps'
 import parallel from './parallel'
 import dtsGenerate from './dtsGenerate'
 import tsGenerate from './tsGenerate'
@@ -57,7 +58,12 @@ const buildEsm = (): Task =>
 
 const incrementalBuild = (): Task => parallel(dts(), buildCjs(), buildEsm())
 
-export const clean = (): Task => sequence(find(outPath), remove)
+export const clean = (): Task =>
+  sequence(
+    find(outPath),
+    remove,
+    mapProps(() => ({ files: [] })),
+  )
 
 export const build = (): Task => sequence(clean(), incrementalBuild())
 
