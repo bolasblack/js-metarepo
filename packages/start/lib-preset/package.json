@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "exit 0",
-    "prepublishOnly": "start build",
+    "prepublishOnly": "node src/require.js build",
     "start": "node src/require.js"
   },
   "dependencies": {
