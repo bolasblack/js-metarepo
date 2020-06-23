@@ -18,7 +18,10 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     // error
     '@typescript-eslint/no-floating-promises': 'error',
-    '@typescript-eslint/no-unused-vars-experimental': 'error',
+    '@typescript-eslint/no-unused-vars-experimental': [
+      'error',
+      { ignoreArgsIfArgsAfterAreUsed: true },
+    ],
     '@typescript-eslint/explicit-member-accessibility': [
       'error',
       { accessibility: 'no-public' },

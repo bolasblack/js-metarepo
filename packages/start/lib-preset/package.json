@@ -1,6 +1,6 @@
 {
   "name": "@c4/lib-start-preset",
-  "version": "0.2.1",
+  "version": "0.3.2",
   "main": "lib/index.js",
   "repository": "https://github.com/bolasblack/js-metarepo/blob/master/packages/start/lib-preset",
   "author": "c4605 <bolasblack@gmail.com>",
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "exit 0",
-    "prepublishOnly": "start build",
+    "prepublishOnly": "node src/require.js build",
     "start": "node src/require.js"
   },
   "dependencies": {
