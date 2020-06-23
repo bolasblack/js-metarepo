@@ -7,32 +7,26 @@ export default function when<
   condition: (file: StartFile) => boolean | Promise<boolean>,
   target: StartPlugin<I, O>,
 ): StartPlugin<I, O> {
-  return plugin('when', (utils) => async ({ files }) => {
-    const runner = (await target)(utils.reporter)
-    const outFiles = await Promise.all(
-      files.map(
-        async (file: StartFile): Promise<StartFile[]> => {
+  return plugin('when', (utils) => async ({ files: inputFiles }) => {
+    const filesRes = await Promise.all(
+      inputFiles.map(
+        async (file: StartFile): Promise<boolean> => {
           utils.logPath(file.path)
-
-          if (await condition(file)) {
-            const res = await runner({ files: [file] } as any)
-            return res.files
-          }
-
-          return [file]
+          return await condition(file)
         },
       ),
     )
 
+    const processedFiles = (
+      await (await target)(utils.reporter)({
+        files: inputFiles.filter((f, idx) => filesRes[idx]),
+      } as any)
+    ).files.slice()
+
     return {
-      files: flat(outFiles),
+      files: inputFiles.map((f, idx) =>
+        filesRes[idx] ? processedFiles.shift() : f,
+      ),
     } as any
   })
-}
-
-function flat<T>(items: T[][]): T[] {
-  return items.reduce((res, items) => {
-    res.push(...items)
-    return res
-  }, [])
 }
