@@ -7,7 +7,8 @@
   "author": "c4605 <bolasblack@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "eslint ./**/*.js"
+    "lint": "eslint ./**/*.js",
+    "test": "exit 0"
   },
   "peerDependencies": {
     "@commitlint/config-conventional": "^8.3.4",

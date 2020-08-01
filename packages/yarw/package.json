@@ -6,9 +6,8 @@
   "author": "c4605 <bolasblack@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "yarn test:lint && yarn test:jest",
-    "test:lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
-    "test:jest": "NODE_ENV=test jest --no-cache src",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "test": "NODE_ENV=test jest --no-cache src",
     "prepublishOnly": "start build",
     "build": "start build"
   },
