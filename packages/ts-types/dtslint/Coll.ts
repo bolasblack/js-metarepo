@@ -35,7 +35,7 @@ type TailT3 = Tail<number[]>
 
 // $ExpectType [string, number, boolean]
 type PrependT1 = Prepend<string, [number, boolean]>
-// $ExpectType [string, ...boolean[]]
+// $ExpectType [fst: string, ...args: boolean[]]
 type PrependT2 = Prepend<string, boolean[]>
 
 // $ExpectType never

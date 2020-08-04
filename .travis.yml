@@ -6,5 +6,6 @@ script:
     bash -c "
       set -eo pipefail
       yarn
+      yarn lint
       yarn test
     "
