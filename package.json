@@ -6,19 +6,28 @@
   "private": true,
   "workspaces": [
     "packages/start/*",
+    "packages/lab/*",
     "packages/*"
   ],
   "scripts": {
+    "lint": "lerna run lint",
     "test": "lerna run test",
     "postinstall": "patch-package"
   },
-  "prettier": "@c4605/toolconfs/prettierrc",
   "dependencies": {},
   "devDependencies": {
     "@c4605/toolconfs": "^5.1.0",
+    "@types/jest": "^25.2.2",
     "@types/node": "^14.0.5",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.0.1",
+    "jest-cli": "^26.0.1",
     "lerna": "^3.20.2",
     "patch-package": "^6.2.0",
-    "postinstall-postinstall": "^2.0.0"
-  }
+    "postinstall-postinstall": "^2.0.0",
+    "ts-jest": "^26.0.0",
+    "typedoc": "^0.17.0-3",
+    "typescript": "^3.9.0"
+  },
+  "prettier": "@c4605/toolconfs/prettierrc"
 }

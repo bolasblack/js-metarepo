@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn test && nodemon -w src/**/*.ts -w dtslint/**/*.ts --exec 'yarn test'",
+    "lint": "exit 0",
     "test": "dtslint --onlyTestTsNext dtslint"
   },
   "peerDependencies": {
