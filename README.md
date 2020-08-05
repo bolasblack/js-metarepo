@@ -7,3 +7,4 @@ Inspired from [nextools/metarepo](https://github.com/nextools/metarepo)
 - [`toolconfs`](packages/toolconfs): Some configuration files for usual tools.
 - [`ts-types`](packages/ts-types): Some useful TypeScript type helpers.
 - [`start`](packages/start): Some [start](https://github.com/nextools/metarepo/tree/master/packages/start) presets/plugins.
+- [`yarw`](packages/yarw): A typesafe, effective redux wrapper.
