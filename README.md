@@ -8,3 +8,4 @@ Inspired from [nextools/metarepo](https://github.com/nextools/metarepo)
 - [`ts-types`](packages/ts-types): Some useful TypeScript type helpers.
 - [`start`](packages/start): Some [start](https://github.com/nextools/metarepo/tree/master/packages/start) presets/plugins.
 - [`yarw`](packages/yarw): A typesafe, effective redux wrapper.
+- [`E`](packages/E): A try to build an error handling solution.
