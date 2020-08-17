@@ -1,6 +1,6 @@
 {
   "name": "@c4605/ts-types",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "TypeScript type helpers",
   "main": "src/index.d.ts",
   "repository": "https://github.com/bolasblack/js-metarepo/blob/master/packages/ts-types",

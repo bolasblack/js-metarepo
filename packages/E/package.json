@@ -1,6 +1,6 @@
 {
   "name": "@c4/e",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "lib/",
   "nshq:main": "src/",
   "types": "src/",
@@ -13,6 +13,5 @@
   },
   "devDependencies": {
     "typedoc-plugin-markdown": "^2.4.0"
-  },
-  "dependencies": {}
+  }
 }

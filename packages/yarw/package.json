@@ -1,6 +1,6 @@
 {
   "name": "yarw",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "lib/index.js",
   "repository": "https://github.com/bolasblack/js-metarepo/blob/master/packages/yarw",
   "author": "c4605 <bolasblack@gmail.com>",
