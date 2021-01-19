@@ -8,6 +8,8 @@ A typesafe, effective redux wrapper. Inspired by many ideas:
 - https://redux-toolkit.js.org/
 - https://recoiljs.org/
 
+**Needs [TypeScript 4.1](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html#template-literal-types)**
+
 ## Features
 
 - Type safety

@@ -3,23 +3,26 @@ import { Root, RootState } from './Root'
 /**
  * A normal [action](https://redux.js.org/basics/actions)
  */
-export interface Action<T = any, P = undefined> {
+export interface Action<T = unknown, P = undefined> {
   type: T
   payload: P
 }
 export namespace Action {
-  export type Payload<P> = Action<any, P>
-  export type Empty = Action<any>
-  export type Any = Action<any, any>
+  export type Payload<P, T = unknown> = Action<T, P>
+  export type Empty<T = unknown> = Action<T>
+  export type Any<T = unknown> = Action<T, any>
 }
-export type ActionFromCaseReducer<R> = R extends CaseReducer<any, infer A>
-  ? A
-  : never
+export type ActionFromCaseReducer<
+  R,
+  ActionType extends string
+> = R extends CaseReducer<any, infer A> ? A & { type: ActionType } : never
 export type ActionMap = {
   [type: string]: Action.Any
 }
-export type ActionMapFromCaseReducerMap<Rs> = {
-  [type in keyof Rs]: ActionFromCaseReducer<Rs[type]>
+export type ActionMapFromCaseReducerMap<Rs, ActionTypePrefix extends string> = {
+  [type in keyof Rs]: type extends string
+    ? ActionFromCaseReducer<Rs[type], `${ActionTypePrefix}/${type}`>
+    : never
 }
 
 export type TypeFromAction<A> = A extends Action<infer T> ? T : never
@@ -120,12 +123,12 @@ export namespace ActionDispatcher {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars-experimental
   export interface ForEmptyAction<S, A extends Action.Any> extends Base<A> {
-    (): A
+    (): void
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars-experimental
   export interface ForPayloadAction<S, A extends Action.Any> extends Base<A> {
-    (payload: PayloadFromAction<A>): A
+    (payload: PayloadFromAction<A>): void
   }
 
   export type Any<S = any, A extends Action.Any = Action.Any> =

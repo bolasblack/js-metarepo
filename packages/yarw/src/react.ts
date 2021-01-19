@@ -23,9 +23,9 @@ export function useSlice<
   spec: SliceSpec<S, Reducers>,
   extra?: (
     builder: ReducerBuilder,
-    slice: Slice<S, ActionMapFromCaseReducerMap<Reducers>>,
+    slice: Slice<S, ActionMapFromCaseReducerMap<Reducers, N>>,
   ) => void,
-): useSlice.Return<Slice<S, ActionMapFromCaseReducerMap<Reducers>>>
+): useSlice.Return<Slice<S, ActionMapFromCaseReducerMap<Reducers, N>>>
 export function useSlice(...args: any[]): useSlice.Return<any> {
   const [slice, unregisterSlice] = useMemo<
     [Slice<any, any>, (() => void) | undefined]

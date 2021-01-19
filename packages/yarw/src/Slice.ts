@@ -74,15 +74,15 @@ export function registerSlice<
   spec: SliceSpec<S, Reducers>,
   extra?: (
     builder: ReducerBuilder,
-    slice: Slice<S, ActionMapFromCaseReducerMap<Reducers>>,
+    slice: Slice<S, ActionMapFromCaseReducerMap<Reducers, N>>,
   ) => void,
-): Slice<S, ActionMapFromCaseReducerMap<Reducers>> {
+): Slice<S, ActionMapFromCaseReducerMap<Reducers, N>> {
   const unregisteredCtrl = new AbortController()
 
   // eslint-disable-next-line prefer-const
   let unregisterReducer: undefined | (() => void)
 
-  type AM = ActionMapFromCaseReducerMap<Reducers>
+  type AM = ActionMapFromCaseReducerMap<Reducers, N>
   const actions: ActionDispatcherMap<S, AM> = createActionDispatchers(
     name,
     spec.reducers,
@@ -134,7 +134,7 @@ export function registerSlice<
     }
   }
 
-  const slice: Slice<S, ActionMapFromCaseReducerMap<Reducers>> = {
+  const slice: Slice<S, ActionMapFromCaseReducerMap<Reducers, N>> = {
     listen,
     actions,
     reducer,
@@ -207,7 +207,7 @@ function createSliceReducer<S>(
   spec: SliceSpec<S, CaseReducerMap<S>>,
   actionDispatchers: ActionDispatcherMap<
     S,
-    ActionMapFromCaseReducerMap<CaseReducerMap<S>>
+    ActionMapFromCaseReducerMap<CaseReducerMap<S>, typeof sliceName>
   >,
   unregisterSignal: AbortSignal,
 ): {
@@ -260,7 +260,7 @@ function createReducerFromSpec<S>(
   spec: SliceSpec<S, CaseReducerMap<S>>,
   actionDispatchers: ActionDispatcherMap<
     S,
-    ActionMapFromCaseReducerMap<CaseReducerMap<S>>
+    ActionMapFromCaseReducerMap<CaseReducerMap<S>, typeof sliceName>
   >,
   unregisterSignal: AbortSignal,
 ): NaiveReducer<RootState, Action.Any> {
@@ -324,18 +324,21 @@ function createSliceListener<As extends ActionDispatcherMap<any, any>>(
   }
 }
 
-function createActionDispatchers<Reducers extends CaseReducerMap<any>>(
-  sliceName: string,
+function createActionDispatchers<
+  N extends string,
+  Reducers extends CaseReducerMap<any>
+>(
+  sliceName: N,
   reducers: Reducers,
   parent: Root,
   unregisterSignal: AbortSignal,
 ): ActionDispatcherMap<
   StateFromCaseReducerMap<Reducers>,
-  ActionMapFromCaseReducerMap<Reducers>
+  ActionMapFromCaseReducerMap<Reducers, N>
 > {
   type Ret = ActionDispatcherMap<
     StateFromCaseReducerMap<Reducers>,
-    ActionMapFromCaseReducerMap<Reducers>
+    ActionMapFromCaseReducerMap<Reducers, N>
   >
 
   const actionTypes: (keyof Reducers)[] = Object.keys(reducers)

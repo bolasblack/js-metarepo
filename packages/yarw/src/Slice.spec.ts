@@ -153,6 +153,25 @@ describe('Slice', () => {
   })
 
   describe('actions', () => {
+    it('can generate right type', () => {
+      const root = createRoot()
+
+      const slice = registerSlice(root, sliceName, {
+        initialState,
+        reducers: {
+          set(s, a: Action.Payload<symbol>) {
+            return a.payload
+          },
+        },
+      })
+
+      expectType<(payload: symbol) => void>(slice.actions.set)
+      expectType<void>(slice.actions.set(updatedState))
+      expectType<{ type: 'test/set'; payload: symbol }>(
+        slice.actions.set.create(updatedState),
+      )
+    })
+
     it('can dispatch self action', () => {
       root.dispatch = jest.fn(root.dispatch)
 
