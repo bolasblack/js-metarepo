@@ -1,10 +1,17 @@
 {
-  "extends": "@c4605/toolconfs/tsconfig",
   "compilerOptions": {
     "module": "commonjs",
+    "target": "esnext",
     "lib": ["es6"],
     "strict": true,
     "noUnusedLocals": false,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
       "@c4605/ts-types": ["../src"]
