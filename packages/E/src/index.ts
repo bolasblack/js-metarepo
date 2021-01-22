@@ -1,5 +1,6 @@
 export * from './onError'
-export * from './BaseError'
+export * from './cloneError'
 export * from './assert'
+export * from './BaseError'
 export * from './AlertError'
 export * from './listenUnhandledError'
