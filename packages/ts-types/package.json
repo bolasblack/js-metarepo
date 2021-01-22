@@ -9,15 +9,7 @@
   "scripts": {
     "start": "yarn test && nodemon -w src/**/*.ts -w dtslint/**/*.ts --exec 'yarn test'",
     "lint": "exit 0",
-    "test": "dtslint --onlyTestTsNext dtslint"
-  },
-  "peerDependencies": {
-    "typescript": "^3.4.2"
-  },
-  "peerDependenciesMeta": {
-    "typescript": {
-      "optional": true
-    }
+    "test": "dtslint dtslint"
   },
   "devDependencies": {
     "dtslint": "^3.6.4",

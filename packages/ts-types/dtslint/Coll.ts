@@ -1,4 +1,7 @@
 import {
+  Equals,
+  Compact,
+  Exact,
   Head,
   Tail,
   Prepend,
@@ -16,6 +19,19 @@ import {
   DeepPick,
   PickNullable,
 } from '@c4605/ts-types'
+
+// $ExpectType "T"
+type CompactT1 = Equals<Compact<{ a: 1 } & { b: 2 }>, { a: 1; b: 2 }>
+
+declare function exactf1<T extends Exact<{ a: string }, T>>(a: T): void
+declare const exact1: { a: string }
+declare const exact2: { a: string; b: number }
+declare const exact3: { a: string; b: any }
+exactf1(exact1)
+// $ExpectError
+exactf1(exact2)
+// $ExpectError
+exactf1(exact3)
 
 // $ExpectType never
 type HeadT1 = Head<[]>
@@ -67,12 +83,14 @@ type DeepNonNullableT1 = { a?: number | null; b?: { c?: string | null } | null }
 type DeepNonNullableT2 = DeepNonNullable<DeepRequired<DeepNonNullableT1>>
 
 type OptionalPropNamesT1 = { a?: 1 | null; b?: 2; c: 3 | null; d: 4 }
-// $ExpectType "a" | "b"
 type OptionalPropNamesT2 = OptionalPropNames<OptionalPropNamesT1>
+// $ExpectType "T"
+type OptionalPropNamesAssert1 = Equals<OptionalPropNamesT2, 'a' | 'b'>
 
 type RequiredPropNamesT1 = { a?: 1 | null; b?: 2; c: 3 | null; d: 4 }
-// $ExpectType "c" | "d"
 type RequiredPropNamesT2 = RequiredPropNames<RequiredPropNamesT1>
+// $ExpectType "T"
+type RequiredPropNamesAssert1 = Equals<RequiredPropNamesT2, 'c' | 'd'>
 
 type ExcludeKeyT1 = { a?: 1 | null; b?: 2; c: 3 | null; d: 4 }
 type ExcludeKeyT2 = ExcludeKey<ExcludeKeyT1, 'a' | 'd'>
@@ -191,8 +209,9 @@ type PickNullableT1 = PickNullable<number>
 type PickNullableT2 = PickNullable<number | null>
 // $ExpectType undefined
 type PickNullableT3 = PickNullable<number | undefined>
-// $ExpectType null | undefined
 type PickNullableT4 = PickNullable<number | null | undefined>
+// $ExpectType "T"
+type PickNullableAsset4 = Equals<PickNullableT4, null | undefined>
 
 const DeepPickV1 = { a: true, c: { e: true, f: { g: true } } }
 type DeepPickT1 = {

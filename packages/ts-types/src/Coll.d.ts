@@ -1,4 +1,23 @@
-import { AnyFunction } from './Base'
+import { AnyFunction, AnyObject } from './Base'
+
+/**
+ * From https://github.com/gcanti/typelevel-ts/
+ */
+export type Compact<A> = { [K in keyof A]: A[K] }
+
+/**
+ * From https://github.com/gcanti/typelevel-ts/
+ *
+ * @example
+ * function f<T extends Exact<{ a: string }, T>>(a: T): void {}
+ * f({ a: 'a' })
+ * // $ExpectError
+ * // f({ a: 'a', b: 1 })
+ *
+ * @since 0.3.0
+ */
+export type Exact<A extends AnyObject, B extends A> = A &
+  Record<Exclude<keyof B, keyof A>, never>
 
 // prettier-ignore
 export type Head<T extends any[]> = T extends [infer R, ...any[]] ? R : T extends (infer R)[] ? R : never
@@ -67,17 +86,17 @@ type WithoutObject = null | undefined | NonNullableWithoutObject
 
 // prettier-ignore
 export type DeepOptional<T> =
-  T extends Record<string, unknown> ? { [K in keyof T]?: DeepOptional<T[K]> } :
+  T extends AnyObject ? { [K in keyof T]?: DeepOptional<T[K]> } :
   T
 
 // prettier-ignore
 export type DeepRequired<T> =
-  T extends Record<string, unknown> ? { [K in keyof T]-?: DeepRequired<T[K]> } :
+  T extends AnyObject ? { [K in keyof T]-?: DeepRequired<T[K]> } :
   T
 
 // prettier-ignore
 export type DeepNonNullable<T> =
-  NonNullable<T> extends Record<string, unknown> ? { [K in keyof NonNullable<T>]: DeepNonNullable<NonNullable<T>[K]> } :
+  NonNullable<T> extends AnyObject ? { [K in keyof NonNullable<T>]: DeepNonNullable<NonNullable<T>[K]> } :
   NonNullable<T>
 
 // prettier-ignore
@@ -87,25 +106,28 @@ export type OptionalPropNames<T> = NonNullable<{ [P in keyof T]: undefined exten
 export type RequiredPropNames<T> = NonNullable<{ [P in keyof T]: undefined extends T[P] ? never : P }[keyof T]>
 
 // prettier-ignore
-export type ExcludeKey<T, EK extends keyof T> =
+export type ExcludeKey<T, EK extends keyof T> = Compact<
   { [K in Exclude<OptionalPropNames<T>, EK>]?: T[K] } &
   { [K in Exclude<keyof T, EK | OptionalPropNames<T>>]: T[K] }
+>
 
 // prettier-ignore
-export type RequiredKey<T, Key extends keyof T> =
+export type RequiredKey<T, Key extends keyof T> = Compact<
   { [K in keyof T]: T[K] } &
   { [K in Key]-?: NonNullable<T[K]> }
+>
 
 // prettier-ignore
-export type OptionalKey<T, Key extends keyof T> =
+export type OptionalKey<T, Key extends keyof T> = Compact<
   { [K in Exclude<keyof T, Key | OptionalPropNames<T>>]: T[K] } &
   { [K in Key | OptionalPropNames<T>]?: T[K] }
+>
 
 // prettier-ignore
 export type DeepType<T, Type> =
   T extends null | undefined ? T :
   T extends WithoutObject ? Type :
-  T extends Record<string, unknown> ? { [K in keyof T]: DeepType<T[K], Type> } :
+  T extends AnyObject ? { [K in keyof T]: DeepType<T[K], Type> } :
   T
 
 // prettier-ignore
@@ -119,6 +141,6 @@ export type PickNullable<T> =
 export type DeepPick<T, U> = {
   [K in keyof U]:
     K extends keyof T ?
-      U[K] extends Record<string, unknown> ? DeepPick<NonNullable<T[K]>, U[K]> | PickNullable<T[K]> : T[K]
+      U[K] extends AnyObject ? DeepPick<NonNullable<T[K]>, U[K]> | PickNullable<T[K]> : T[K]
     : never
 }
