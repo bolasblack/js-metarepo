@@ -34,6 +34,14 @@ export interface Slice<S, As extends ActionMap> {
   unregistered: boolean
 }
 export namespace Slice {
+  export type FromSpec<
+    Name extends string,
+    Spec extends SliceSpec<any, any>
+  > = Slice<
+    Spec['initialState'],
+    ActionMapFromCaseReducerMap<Spec['reducers'], Name>
+  >
+
   export type StateType<S extends Slice<any, any>> = S extends Slice<
     infer R,
     any
@@ -299,7 +307,7 @@ function createSliceListener<As extends ActionDispatcherMap<any, any>>(
   unregisterSignal: AbortSignal,
 ): ActionListener<StateFromActionDispatcherMap<As>> {
   const actionMatchers = Object.values(actions).map((ad) => ad.match)
-  const defaultMatcher = (a: Action.Any): boolean =>
+  const defaultMatcher = (a: Action.Any): a is Action.Any =>
     actionMatchers.some((m) => m(a))
 
   return function (

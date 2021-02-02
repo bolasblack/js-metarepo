@@ -76,7 +76,7 @@ function createListenManager(): {
       dispatcher,
       callback,
     )
-    const pair = { matcher: matcher || (() => true), handler }
+    const pair = { matcher: matcher || ((_a): _a is any => true), handler }
     registered.push(pair)
     return () => {
       registered = registered.filter((i) => i !== pair)

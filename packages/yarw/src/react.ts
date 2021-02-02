@@ -108,7 +108,7 @@ export function createUseEffect(slice: Slice<any, any>): useSlice.UseEffect {
     _callback?: any,
     _deps?: any,
   ) => {
-    let matcher: ((action: Action.Any) => boolean) | undefined
+    let matcher: ((action: Action.Any) => action is Action.Any) | undefined
     let callback: (action: Action.Any) => any
     let deps: DependencyList
 

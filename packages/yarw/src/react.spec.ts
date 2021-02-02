@@ -22,10 +22,11 @@ describe('useSlice', () => {
   })
 
   describe('Slice as argument', () => {
-    let slice: Slice<string, { set: Action.Payload<string> }>
+    const sliceName = 'test' as const
+    let slice: Slice.FromSpec<string, typeof spec>
 
     beforeEach(() => {
-      slice = registerSlice(root, 'test', spec)
+      slice = registerSlice(root, sliceName, spec)
     })
 
     it('works', () => {
@@ -93,24 +94,25 @@ describe('useSlice', () => {
 })
 
 describe('useSelector', () => {
-  let root: Root
-  let slice: Slice<symbol, { set: Action.Payload<symbol> }>
-  let useSelector: useSlice.UseSelector<symbol>
   const sliceName = 'test' as const
   const initialState = Symbol('initial')
   const updatedState = Symbol('updated')
+  const spec = sliceSpec({
+    initialState,
+    reducers: {
+      set(s, a: Action.Payload<symbol>) {
+        return a.payload
+      },
+    },
+  })
+  let root: Root
+  let slice: Slice.FromSpec<typeof sliceName, typeof spec>
+  let useSelector: useSlice.UseSelector<symbol>
 
   beforeEach(() => {
     root = createRoot()
 
-    slice = registerSlice(root, sliceName, {
-      initialState,
-      reducers: {
-        set(s, a: Action.Payload<symbol>) {
-          return a.payload
-        },
-      },
-    })
+    slice = registerSlice(root, sliceName, spec)
 
     useSelector = createUseSelector(slice)
   })
@@ -197,8 +199,17 @@ describe('useSelector', () => {
 })
 
 describe('useEffect', () => {
+  const spec = sliceSpec({
+    initialState: '0',
+    reducers: {
+      set(s, a: Action.Payload<string>) {
+        return a.payload
+      },
+    },
+  })
+  const sliceName = 'test' as const
   let root: Root
-  let slice: Slice<string, { set: Action.Payload<string> }>
+  let slice: Slice.FromSpec<typeof sliceName, typeof spec>
   let useEffect: useSlice.UseEffect
   let listener: (action: any) => void
   let matcher: (action: any) => boolean
@@ -206,14 +217,7 @@ describe('useEffect', () => {
   beforeEach(() => {
     root = createRoot()
 
-    slice = registerSlice(root, 'test', {
-      initialState: '0',
-      reducers: {
-        set(s, a: Action.Payload<string>) {
-          return a.payload
-        },
-      },
-    })
+    slice = registerSlice(root, sliceName, spec)
 
     useEffect = createUseEffect(slice)
   })

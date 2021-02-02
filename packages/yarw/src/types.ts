@@ -16,13 +16,24 @@ export type ActionFromCaseReducer<
   R,
   ActionType extends string
 > = R extends CaseReducer<any, infer A> ? A & { type: ActionType } : never
+export type ActionAddPrefix<
+  A extends Action<string>,
+  ActionTypePrefix extends string
+> = Action<`${ActionTypePrefix}/${TypeFromAction<A>}`, PayloadFromAction<A>>
+
 export type ActionMap = {
-  [type: string]: Action.Any
+  [type: string]: Action.Any<string>
 }
 export type ActionMapFromCaseReducerMap<Rs, ActionTypePrefix extends string> = {
   [type in keyof Rs]: type extends string
     ? ActionFromCaseReducer<Rs[type], `${ActionTypePrefix}/${type}`>
     : never
+}
+export type ActionMapAddPrefix<
+  As extends ActionMap,
+  ActionTypePrefix extends string
+> = {
+  [K in keyof As]: ActionAddPrefix<As[K], ActionTypePrefix>
 }
 
 export type TypeFromAction<A> = A extends Action<infer T> ? T : never
@@ -184,24 +195,24 @@ export namespace ReducerBuilder {
 }
 
 export interface ActionListener<S = any> {
+  (listener: ActionListener.ListenHandler): () => void
   <A extends Action.Any = Action.Any>(
-    listener: ActionListener.ListenHandler,
-  ): () => void
-  <A extends Action.Any = Action.Any>(
-    actionFilter: ActionListener.ListenMatcher,
-    listener: ActionListener.ListenHandler,
+    actionFilter: ActionListener.ListenMatcher<A>,
+    listener: ActionListener.ListenHandler<A>,
   ): () => void
   <A extends Action.Any = Action.Any>(
     actionDispatcher: ActionDispatcher.Any<S, A>,
-    listener: ActionListener.ListenHandler,
+    listener: ActionListener.ListenHandler<A>,
   ): () => void
 }
 export namespace ActionListener {
   /* @hidden */
-  export type ListenMatcher = (action: Action.Any) => boolean
+  export type ListenMatcher<A extends Action = Action.Any> = (
+    action: Action.Any,
+  ) => action is A
 
   /* @hidden */
-  export type ListenHandler = (action: Action.Any) => any
+  export type ListenHandler<A extends Action = Action.Any> = (action: A) => any
 
   /* @hidden */
   export const dispatchArgs = (
@@ -221,7 +232,7 @@ export namespace ActionListener {
       matcher = null
       handler = dispatcher
     } else {
-      matcher = (a) => {
+      matcher = (a): a is any => {
         if (ActionDispatcher.isActionDispatcher(dispatcher)) {
           return dispatcher.match(a)
         } else {

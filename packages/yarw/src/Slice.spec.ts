@@ -133,23 +133,24 @@ describe('registerSlice', () => {
 })
 
 describe('Slice', () => {
-  let root: Root
-  let slice: Slice<symbol, { set: Action.Payload<symbol> }>
   const sliceName = 'test' as const
+  let root: Root
   const initialState = Symbol('initial')
   const updatedState = Symbol('updated')
+  const spec = sliceSpec({
+    initialState,
+    reducers: {
+      set(s, a: Action.Payload<symbol>) {
+        return a.payload
+      },
+    },
+  })
+  let slice: Slice.FromSpec<typeof sliceName, typeof spec>
 
   beforeEach(() => {
     root = createRoot()
 
-    slice = registerSlice(root, sliceName, {
-      initialState,
-      reducers: {
-        set(s, a: Action.Payload<symbol>) {
-          return a.payload
-        },
-      },
-    })
+    slice = registerSlice(root, sliceName, spec)
   })
 
   describe('actions', () => {
@@ -212,6 +213,21 @@ describe('Slice', () => {
       const listener = jest.fn()
       const helloAction = { type: 'hello' }
       slice.listen(listener)
+
+      slice.listen((action) => {
+        expectType<{ type: unknown; payload: unknown }>(action)
+      })
+      slice.listen(slice.actions.set, (action) => {
+        expectType<{ type: 'test/set'; payload: symbol }>(action)
+      })
+      slice.listen(
+        (a): a is Action<'a', string> | Action<'b', number> => Boolean(a),
+        (action) => {
+          expectType<
+            { type: 'a'; payload: string } | { type: 'b'; payload: number }
+          >(action)
+        },
+      )
 
       root.dispatch(helloAction)
       expect(listener).not.toBeCalledWith(helloAction)
