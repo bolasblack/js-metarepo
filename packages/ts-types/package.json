@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn test && nodemon -w src/**/*.ts -w dtslint/**/*.ts --exec 'yarn test'",
+    "build": "exit 0",
     "lint": "exit 0",
     "test": "dtslint dtslint"
   },
