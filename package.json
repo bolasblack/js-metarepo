@@ -26,7 +26,7 @@
     "patch-package": "^6.2.0",
     "postinstall-postinstall": "^2.0.0",
     "ts-jest": "^26.0.0",
-    "typedoc": "^0.17.0-3",
+    "typedoc": "^0.22.0",
     "typescript": "^4.1.0"
   },
   "prettier": "@c4605/toolconfs/prettierrc"
