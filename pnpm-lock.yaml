@@ -36,8 +36,14 @@ importers:
 
   packages/E:
     specifiers:
+      '@c4/lib-start-preset': workspace:^0.3.2
+      '@start/cli': ^2.0.1
+      '@start/reporter-verbose': ^1.0.0
       typedoc-plugin-markdown: ^2.4.0
     devDependencies:
+      '@c4/lib-start-preset': link:../start/lib-preset
+      '@start/cli': 2.0.1
+      '@start/reporter-verbose': 1.0.2
       typedoc-plugin-markdown: 2.4.2
 
   packages/start:
