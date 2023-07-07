@@ -1,6 +1,6 @@
 {
   "name": "@c4605/ts-types",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "TypeScript type helpers",
   "main": "src/index.d.ts",
   "repository": "https://github.com/bolasblack/js-metarepo/blob/master/packages/ts-types",
@@ -12,7 +12,7 @@
     "test": "dtslint dtslint"
   },
   "devDependencies": {
-    "@c4605/toolconfs": "^5.2.2",
+    "@c4605/toolconfs": "^5.3.0",
     "dtslint": "^3.6.4",
     "nodemon": "^2.0.4"
   }
