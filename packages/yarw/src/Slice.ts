@@ -36,7 +36,7 @@ export interface Slice<S, As extends ActionMap> {
 export namespace Slice {
   export type FromSpec<
     Name extends string,
-    Spec extends SliceSpec<any, any>
+    Spec extends SliceSpec<any, any>,
   > = Slice<
     Spec['initialState'],
     ActionMapFromCaseReducerMap<Spec['reducers'], Name>
@@ -75,7 +75,7 @@ export function sliceSpec<S, Reducers extends CaseReducerMap<S>>(
 export function registerSlice<
   N extends string,
   S,
-  Reducers extends CaseReducerMap<S>
+  Reducers extends CaseReducerMap<S>,
 >(
   parent: Root,
   name: N,
@@ -125,7 +125,7 @@ export function registerSlice<
     parentState?: RootState,
   ): ((parentState: RootState) => RootState) | RootState => {
     if (!parentState) {
-      return (parentState) => {
+      return parentState => {
         return wrappedSetState(newState, parentState) as RootState
       }
     }
@@ -275,7 +275,7 @@ function createReducerFromSpec<S>(
   const matchers: {
     name: string
     match: (a: Action.Any) => boolean
-  }[] = Object.keys(actionDispatchers).map((name) => ({
+  }[] = Object.keys(actionDispatchers).map(name => ({
     name,
     match: actionDispatchers[name].match,
   }))
@@ -288,8 +288,8 @@ function createReducerFromSpec<S>(
     }
 
     const caseReducers = matchers
-      .filter((m) => m.match(a))
-      .map((m) => spec.reducers[m.name])
+      .filter(m => m.match(a))
+      .map(m => spec.reducers[m.name])
 
     if (!caseReducers.length) return s
 
@@ -306,9 +306,9 @@ function createSliceListener<As extends ActionDispatcherMap<any, any>>(
   parent: Root,
   unregisterSignal: AbortSignal,
 ): ActionListener<StateFromActionDispatcherMap<As>> {
-  const actionMatchers = Object.values(actions).map((ad) => ad.match)
+  const actionMatchers = Object.values(actions).map(ad => ad.match)
   const defaultMatcher = (a: Action.Any): a is Action.Any =>
-    actionMatchers.some((m) => m(a))
+    actionMatchers.some(m => m(a))
 
   return function (
     dispatcher:
@@ -334,7 +334,7 @@ function createSliceListener<As extends ActionDispatcherMap<any, any>>(
 
 function createActionDispatchers<
   N extends string,
-  Reducers extends CaseReducerMap<any>
+  Reducers extends CaseReducerMap<any>,
 >(
   sliceName: N,
   reducers: Reducers,
@@ -349,7 +349,7 @@ function createActionDispatchers<
     ActionMapFromCaseReducerMap<Reducers, N>
   >
 
-  const actionTypes: (keyof Reducers)[] = Object.keys(reducers)
+  const actionTypes = Object.keys(reducers) as StringOnly<keyof Reducers>[]
 
   return actionTypes.reduce((actions, actionType) => {
     const dispatcher: any = ActionDispatcher.create(
@@ -371,3 +371,5 @@ function createActionDispatchers<
     return actions
   }, {} as Ret)
 }
+
+type StringOnly<T> = T extends string ? T : never

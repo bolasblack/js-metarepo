@@ -12,22 +12,24 @@
   "scripts": {
     "lint": "lerna run lint",
     "test": "lerna run test",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "release": "lerna version --sign-git-tag --conventional-commits"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@c4605/toolconfs": "^5.1.0",
-    "@types/jest": "^25.2.2",
-    "@types/node": "^14.0.5",
+    "@c4605/toolconfs": "^5.2.2",
+    "@types/jest": "^29.5.2",
+    "@types/node": "^20.4.0",
+    "commitlint": "^17.6.6",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.0.1",
-    "jest-cli": "^26.0.1",
-    "lerna": "^3.20.2",
-    "patch-package": "^6.2.0",
-    "postinstall-postinstall": "^2.0.0",
-    "ts-jest": "^26.0.0",
-    "typedoc": "^0.17.0-3",
-    "typescript": "^4.9.5"
+    "jest": "^29.6.1",
+    "jest-cli": "^29.6.1",
+    "lerna": "^7.1.1",
+    "lint-staged": "^13.2.3",
+    "patch-package": "^7.0.0",
+    "postinstall-postinstall": "^2.1.0",
+    "ts-jest": "^29.1.1",
+    "typedoc": "^0.24.8",
+    "typescript": "^5.1.6"
   },
   "prettier": "@c4605/toolconfs/prettierrc"
 }

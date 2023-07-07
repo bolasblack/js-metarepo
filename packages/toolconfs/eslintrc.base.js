@@ -7,9 +7,13 @@ module.exports = {
     'no-unused-vars': [
       'error',
       {
-        args: 'none',
+        vars: 'all',
+        args: 'after-used',
         caughtErrors: 'none',
+        varsIgnorePattern: '^_',
         argsIgnorePattern: '^_',
+        destructuredArrayIgnorePattern: '^_',
+        ignoreRestSiblings: true,
       },
     ],
     curly: ['error', 'multi-line'],

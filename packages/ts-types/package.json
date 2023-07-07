@@ -12,6 +12,7 @@
     "test": "dtslint dtslint"
   },
   "devDependencies": {
+    "@c4605/toolconfs": "^5.2.2",
     "dtslint": "^3.6.4",
     "nodemon": "^2.0.4"
   }

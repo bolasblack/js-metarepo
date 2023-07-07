@@ -1,6 +1,8 @@
 {
-  "npmClient": "yarn",
-  "useWorkspaces": true,
+  "packages": [
+    "packages/*"
+  ],
+  "npmClient": "pnpm",
   "version": "independent",
   "ignoreChanges": [
     "packages/start/common-deps/**/*",
@@ -15,5 +17,6 @@
     "version": {
       "message": "chore(release): bump version"
     }
-  }
+  },
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }

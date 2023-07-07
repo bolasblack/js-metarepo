@@ -36,7 +36,7 @@ const defaultInitialState = Object.preventExtensions(
 
 export function createRoot(enhancer?: StoreEnhancer): Root {
   const { enhancer: listenEnhancer, listen } = createListenManager()
-  const defaultReducer: Reducer<RootState> = (s) => s || defaultInitialState
+  const defaultReducer: Reducer<RootState> = s => s || defaultInitialState
 
   const store = createStore(
     defaultReducer,
@@ -51,8 +51,8 @@ export function createRoot(enhancer?: StoreEnhancer): Root {
     dispatch: store.dispatch as any,
     subscribe: store.subscribe,
     getState: store.getState,
-    [Symbol.observable]: store[$$observable],
-    [$$observable]: store[$$observable],
+    [Symbol.observable]: (store as any)[$$observable],
+    [$$observable as any]: (store as any)[$$observable],
   }
 }
 
@@ -79,13 +79,13 @@ function createListenManager(): {
     const pair = { matcher: matcher || ((_a): _a is any => true), handler }
     registered.push(pair)
     return () => {
-      registered = registered.filter((i) => i !== pair)
+      registered = registered.filter(i => i !== pair)
     }
   }
 
-  const middleware: Middleware = () => (nextDispatch) => (action) => {
+  const middleware: Middleware = () => nextDispatch => action => {
     const result = nextDispatch(action)
-    registered.forEach((i) => {
+    registered.forEach(i => {
       if (i.matcher(action)) {
         try {
           i.handler(action)
@@ -103,14 +103,12 @@ function createListenManager(): {
   }
 }
 
-function createReducerManager(
-  store: Store<RootState>,
-): {
+function createReducerManager(store: Store<RootState>): {
   registerReducer: RegisterReducer
 } {
   let registeredReducers: NaiveReducer<RootState, Action.Any>[] = []
 
-  const registerReducer: RegisterReducer = (r) => {
+  const registerReducer: RegisterReducer = r => {
     if (registeredReducers.includes(r)) {
       // TODO
       throw new Error()
@@ -119,7 +117,7 @@ function createReducerManager(
     updateReducers(registeredReducers.concat(r))
 
     return () => {
-      updateReducers(registeredReducers.filter((_r) => _r !== r))
+      updateReducers(registeredReducers.filter(_r => _r !== r))
     }
   }
 

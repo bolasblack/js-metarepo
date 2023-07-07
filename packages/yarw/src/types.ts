@@ -14,11 +14,11 @@ export namespace Action {
 }
 export type ActionFromCaseReducer<
   R,
-  ActionType extends string
+  ActionType extends string,
 > = R extends CaseReducer<any, infer A> ? A & { type: ActionType } : never
 export type ActionAddPrefix<
   A extends Action<string>,
-  ActionTypePrefix extends string
+  ActionTypePrefix extends string,
 > = Action<`${ActionTypePrefix}/${TypeFromAction<A>}`, PayloadFromAction<A>>
 
 export type ActionMap = {
@@ -31,7 +31,7 @@ export type ActionMapFromCaseReducerMap<Rs, ActionTypePrefix extends string> = {
 }
 export type ActionMapAddPrefix<
   As extends ActionMap,
-  ActionTypePrefix extends string
+  ActionTypePrefix extends string,
 > = {
   [K in keyof As]: ActionAddPrefix<As[K], ActionTypePrefix>
 }
@@ -90,7 +90,7 @@ export namespace ActionDispatcher {
       return { type, payload: args[0] }
     }
 
-    const dispatcher = (...args: any): void => {
+    const dispatcher: any = (...args: any): void => {
       parent.dispatch((actionCreator as any)(...args))
     }
 
@@ -111,7 +111,7 @@ export namespace ActionDispatcher {
   export function isActionDispatcher<S, A extends Action.Any>(
     fn: (...args: any) => any,
   ): fn is ActionDispatcher<S, A> {
-    return fn[isActionDispatcherSym]
+    return (fn as any)[isActionDispatcherSym]
   }
 
   /** @hidden */
@@ -132,12 +132,12 @@ export namespace ActionDispatcher {
     toString(): string
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars-experimental
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   export interface ForEmptyAction<S, A extends Action.Any> extends Base<A> {
     (): void
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars-experimental
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   export interface ForPayloadAction<S, A extends Action.Any> extends Base<A> {
     (payload: PayloadFromAction<A>): void
   }
@@ -163,7 +163,7 @@ export interface NaiveReducer<S, A extends Action.Any> {
  */
 export type CaseReducer<S, A extends Action.Any> = NaiveReducer<S, A>
 export namespace CaseReducer {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars-experimental
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   export const id = <S>(s: S, action: Action.Empty): S => s
 }
 export type CaseReducerMap<S> = {

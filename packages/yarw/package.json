@@ -5,20 +5,30 @@
   "repository": "https://github.com/bolasblack/js-metarepo/blob/master/packages/yarw",
   "author": "c4605 <bolasblack@gmail.com>",
   "license": "MIT",
+  "start": {
+    "reporter": "@start/reporter-verbose"
+  },
   "scripts": {
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "test": "NODE_ENV=test jest --no-cache src",
     "prepublishOnly": "start build",
     "build": "start build"
   },
-  "dependencies": {
+  "peerDependencies": {
     "redux": "^4.0.5"
   },
   "devDependencies": {
-    "@testing-library/react-hooks": "^3.3.0",
-    "@types/react": "^16.9.35",
-    "console-testing-library": "^0.3.1",
-    "react": "^16.9.0",
-    "react-test-renderer": "^16.13.1"
+    "@c4/lib-start-preset": "^0.3.2",
+    "@start/cli": "^2.0.1",
+    "@start/reporter-verbose": "^1.0.0",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@types/react": "^18.2.14",
+    "console-testing-library": "^0.6.1",
+    "react": "^18.2.0",
+    "react-test-renderer": "^18.2.0",
+    "redux": "^4.2.1"
+  },
+  "dependencies": {
+    "symbol-observable": "^4.0.0"
   }
 }

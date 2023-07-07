@@ -28,7 +28,7 @@ export type Tail<T extends any[]> = AnyFunction<T> extends ((h: any, ...rest: in
 
 // https://github.com/Microsoft/TypeScript/pull/24897#issuecomment-400989548
 // prettier-ignore
-export type Prepend<H, T extends any[]> = ((fst: H, ...args: T) => any) extends AnyFunction<infer R> ? R : []
+export type Prepend<H, T extends any[]> = ((first: H, ...args: T) => any) extends AnyFunction<infer R> ? R : []
 
 /* TODO
 // https://github.com/Microsoft/TypeScript/pull/24897#issuecomment-401401470

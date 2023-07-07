@@ -2,20 +2,20 @@
 
 exports[`Slice unregister should console error when calling \`getState\` after unregistered 1`] = `
 [MockFunction] {
-  "calls": Array [
-    Array [
-      "Calling unregistered slice \\"test\\"'s action dispatcher",
+  "calls": [
+    [
+      "Calling unregistered slice "test"'s action dispatcher",
     ],
-    Array [
-      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    [
+      "Calling unregistered slice "test"'s action dispatcher",
     ],
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "type": "return",
       "value": undefined,
     },
-    Object {
+    {
       "type": "return",
       "value": undefined,
     },
@@ -25,20 +25,20 @@ exports[`Slice unregister should console error when calling \`getState\` after u
 
 exports[`Slice unregister should console error when calling \`listen\` after unregistered 1`] = `
 [MockFunction] {
-  "calls": Array [
-    Array [
-      "Calling unregistered slice \\"test\\"'s action dispatcher",
+  "calls": [
+    [
+      "Calling unregistered slice "test"'s action dispatcher",
     ],
-    Array [
-      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    [
+      "Calling unregistered slice "test"'s action dispatcher",
     ],
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "type": "return",
       "value": undefined,
     },
-    Object {
+    {
       "type": "return",
       "value": undefined,
     },
@@ -48,34 +48,34 @@ exports[`Slice unregister should console error when calling \`listen\` after unr
 
 exports[`Slice unregister should console error when calling \`reducer\` after unregistered 1`] = `
 [MockFunction] {
-  "calls": Array [
-    Array [
-      "Calling unregistered slice \\"test\\"'s action dispatcher",
+  "calls": [
+    [
+      "Calling unregistered slice "test"'s action dispatcher",
     ],
-    Array [
-      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    [
+      "Calling unregistered slice "test"'s action dispatcher",
     ],
-    Array [
-      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    [
+      "Calling unregistered slice "test"'s action dispatcher",
     ],
-    Array [
-      "Calling unregistered slice \\"test\\"'s action dispatcher",
+    [
+      "Calling unregistered slice "test"'s action dispatcher",
     ],
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "type": "return",
       "value": undefined,
     },
-    Object {
+    {
       "type": "return",
       "value": undefined,
     },
-    Object {
+    {
       "type": "return",
       "value": undefined,
     },
-    Object {
+    {
       "type": "return",
       "value": undefined,
     },
@@ -85,13 +85,13 @@ exports[`Slice unregister should console error when calling \`reducer\` after un
 
 exports[`Slice unregister should console error when calling \`setState\` after unregistered 1`] = `
 [MockFunction] {
-  "calls": Array [
-    Array [
-      "Calling unregistered slice \\"test\\"'s action dispatcher",
+  "calls": [
+    [
+      "Calling unregistered slice "test"'s action dispatcher",
     ],
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "type": "return",
       "value": undefined,
     },
@@ -101,13 +101,13 @@ exports[`Slice unregister should console error when calling \`setState\` after u
 
 exports[`Slice unregister should console error when calling \`subscribe\` after unregistered 1`] = `
 [MockFunction] {
-  "calls": Array [
-    Array [
-      "Calling unregistered slice \\"test\\"'s action dispatcher",
+  "calls": [
+    [
+      "Calling unregistered slice "test"'s action dispatcher",
     ],
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "type": "return",
       "value": undefined,
     },
@@ -117,13 +117,13 @@ exports[`Slice unregister should console error when calling \`subscribe\` after 
 
 exports[`Slice unregister should console error when calling action dispatcher after unregistered 1`] = `
 [MockFunction] {
-  "calls": Array [
-    Array [
-      "Calling unregistered slice \\"test\\"'s action dispatcher",
+  "calls": [
+    [
+      "Calling unregistered slice "test"'s action dispatcher",
     ],
   ],
-  "results": Array [
-    Object {
+  "results": [
+    {
       "type": "return",
       "value": undefined,
     },
