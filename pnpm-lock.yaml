@@ -60,7 +60,7 @@ importers:
 
   packages/start/lib-preset:
     specifiers:
-      '@start/plugin': ^1.0.0
+      '@start/plugin': ^2.0.0
       '@start/plugin-find': ^1.0.0
       '@start/plugin-lib-babel': ^1.0.0
       '@start/plugin-read': ^1.0.0
@@ -71,7 +71,7 @@ importers:
       '@start/plugin-write': ^1.0.0
       '@start/reporter-verbose': ^1.0.0
     dependencies:
-      '@start/plugin': 1.0.0
+      '@start/plugin': 2.0.0
       '@start/plugin-find': 1.0.1
       '@start/plugin-lib-babel': 1.0.0
       '@start/plugin-read': 1.0.0
@@ -2510,6 +2510,11 @@ packages:
   /@start/plugin/1.0.0:
     resolution: {integrity: sha512-rMjYHmdJHoiIUE3p0Nb4acg2SnLQEjYwr1No2t8BEHFjCpBT7oXG2bFWqrirImY3yeRW5TbCpYRjbo20SoMYiQ==}
     engines: {node: '>=10.13.0'}
+    dev: false
+
+  /@start/plugin/2.0.0:
+    resolution: {integrity: sha512-3JOfbQhq6P8GDXO7kBOskJzKTbWFZkpxvnDXyT1IyMZbWfyNr3R1niTtjvhV/Tgp62lXfzZKMZQPlI8ONVAjkQ==}
+    engines: {node: '>=12.13.0'}
     dev: false
 
   /@start/reporter-verbose/1.0.2:
