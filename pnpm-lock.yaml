@@ -63,7 +63,7 @@ importers:
       '@start/plugin': ^2.0.0
       '@start/plugin-find': ^1.0.0
       '@start/plugin-lib-babel': ^1.0.0
-      '@start/plugin-read': ^1.0.0
+      '@start/plugin-read': ^2.0.0
       '@start/plugin-remove': ^1.0.0
       '@start/plugin-rename': ^1.0.0
       '@start/plugin-sequence': ^2.0.0
@@ -74,7 +74,7 @@ importers:
       '@start/plugin': 2.0.0
       '@start/plugin-find': 1.0.1
       '@start/plugin-lib-babel': 1.0.0
-      '@start/plugin-read': 1.0.0
+      '@start/plugin-read': 2.0.0
       '@start/plugin-remove': 1.0.0
       '@start/plugin-rename': 1.0.0
       '@start/plugin-sequence': 2.0.0
@@ -2453,13 +2453,13 @@ packages:
       - supports-color
     dev: false
 
-  /@start/plugin-read/1.0.0:
-    resolution: {integrity: sha512-0LF2sm5FkRoy3C14YE+KTw4TXJt5HXX7pU7LiUNWvKYpr1oZkiRZGOJIBSHtziug5adsAdRp7Fp3BiqE4lkzLg==}
-    engines: {node: '>=10.13.0'}
+  /@start/plugin-read/2.0.0:
+    resolution: {integrity: sha512-F0Mp4+rwjjbP3oeLYsEKeI5R71Xu5rDYjunkQTfHXnD4lu8DAiiblFbd+6TKhVvhFrD6v56XKZNvX+EjGfeFdw==}
+    engines: {node: '>=12.13.0'}
     dependencies:
       '@babel/runtime': 7.22.6
-      '@start/plugin': 1.0.0
-      pifs: 1.0.3
+      '@start/plugin': 2.0.0
+      pifs: 2.0.0
     dev: false
 
   /@start/plugin-remove/1.0.0:
