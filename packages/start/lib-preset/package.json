@@ -21,7 +21,7 @@
     "@start/plugin-read": "^1.0.0",
     "@start/plugin-remove": "^1.0.0",
     "@start/plugin-rename": "^1.0.0",
-    "@start/plugin-sequence": "^1.0.0",
+    "@start/plugin-sequence": "^2.0.0",
     "@start/plugin-watch": "^1.0.0",
     "@start/plugin-write": "^1.0.0",
     "@start/reporter-verbose": "^1.0.0"
