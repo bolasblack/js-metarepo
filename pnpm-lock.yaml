@@ -64,7 +64,7 @@ importers:
       '@start/plugin-find': ^1.0.0
       '@start/plugin-lib-babel': ^1.0.0
       '@start/plugin-read': ^2.0.0
-      '@start/plugin-remove': ^1.0.0
+      '@start/plugin-remove': ^2.0.0
       '@start/plugin-rename': ^1.0.0
       '@start/plugin-sequence': ^2.0.0
       '@start/plugin-watch': ^1.0.0
@@ -75,7 +75,7 @@ importers:
       '@start/plugin-find': 1.0.1
       '@start/plugin-lib-babel': 1.0.0
       '@start/plugin-read': 2.0.0
-      '@start/plugin-remove': 1.0.0
+      '@start/plugin-remove': 2.0.0
       '@start/plugin-rename': 1.0.0
       '@start/plugin-sequence': 2.0.0
       '@start/plugin-watch': 1.0.0
@@ -2462,13 +2462,13 @@ packages:
       pifs: 2.0.0
     dev: false
 
-  /@start/plugin-remove/1.0.0:
-    resolution: {integrity: sha512-/i9I0zLurQlE01tK2diwfPhDe/3ZNVyj3fkSxS8Bt6ZRQ0+BrB6wclbVGYqRmFhcuS9/xHYlsNCP5+Ufw3TnAw==}
-    engines: {node: '>=10.13.0'}
+  /@start/plugin-remove/2.0.0:
+    resolution: {integrity: sha512-q/7vho5Y45tPI8a5LGa0wi9YatVPGUmISD9p7SV3BzdOu0v25WUOJ2H73OY/KqIa6hTivQpJcjsS6GK7bkiNpw==}
+    engines: {node: '>=12.13.0'}
     dependencies:
       '@babel/runtime': 7.22.6
-      '@start/plugin': 1.0.0
-      dleet: 1.0.0
+      '@start/plugin': 2.0.0
+      dleet: 2.0.1
     dev: false
 
   /@start/plugin-rename/1.0.0:
@@ -4332,11 +4332,12 @@ packages:
       pifs: 2.0.0
     dev: false
 
-  /dleet/1.0.0:
-    resolution: {integrity: sha512-N2mXini/efTWfFqa8XJHeGSlW/9khbl2uqMNivAB2stc3TpsrBOcy7etqM129zKFYcKuT+A6r+1hsGNk1D+oZw==}
-    engines: {node: '>=10.13.0'}
+  /dleet/2.0.1:
+    resolution: {integrity: sha512-u3zsODGd/VqKRfd0A2ec8Q1W1gDSVb/EFR8NP87S+XRULAi1yy4lT214x+3H8Eb4X6iqPdHpFWhzUg+kvlFwGw==}
+    engines: {node: '>=12.13.0'}
     dependencies:
-      pifs: 1.0.3
+      pifs: 2.0.0
+      sleap: 0.1.0
     dev: false
 
   /doctrine/2.1.0:
@@ -5470,6 +5471,11 @@ packages:
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
+
+  /globl/0.1.0:
+    resolution: {integrity: sha512-5eI4V2J+ze69J8Lt9n3E8G1l3lcwZj3xX/TRZIEsUAV2XEcquE7Effjw71ySa7V1CoqZOtHW4iAbzblTq/CM8A==}
+    engines: {node: '>=12.13.0'}
+    dev: false
 
   /gopd/1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
@@ -8456,14 +8462,6 @@ packages:
     hasBin: true
     dev: true
 
-  /pifs/1.0.3:
-    resolution: {integrity: sha512-m+3kvjiuKwoyUaUt+BiDPpoTmyurUzUM3c6XI2UwH8Rd7jPCfs8rUoo00cdimw/Mxvp6hicssM7lJd2RLh7osg==}
-    engines: {node: '>=10.13.0'}
-    dependencies:
-      '@types/graceful-fs': 4.1.6
-      graceful-fs: 4.2.11
-    dev: false
-
   /pifs/2.0.0:
     resolution: {integrity: sha512-rIZo5Ex5KlKI++GWyKlTv7hiTROdnEXBFg9nP+M6fqsielYtWOk2wo3ybnKWBjq5p9P1q4OguLoRIm4BXxXItw==}
     engines: {node: '>=12.13.0'}
@@ -9232,6 +9230,13 @@ packages:
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
+
+  /sleap/0.1.0:
+    resolution: {integrity: sha512-LSJi5BmlPFaf0yY7ETlLDF1MmYPIC0PPl+Ctz16RRlD1nAYKsUMdBc/LfMBLef2bpq3Sm5oIXdaD49RgeK5kRw==}
+    engines: {node: '>=12.13.0'}
+    dependencies:
+      globl: 0.1.0
+    dev: false
 
   /slice-ansi/3.0.0:
     resolution: {integrity: sha512-pSyv7bSTC7ig9Dcgbw9AuRNUb5k5V6oDudjZoMBSr13qpLBG7tB+zgCkARjq7xIUgdz5P1Qe8u+rSGdouOOIyQ==}
