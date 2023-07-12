@@ -18,6 +18,6 @@
     "@c4/lib-start-preset": "workspace:^0.3.2",
     "@start/cli": "^2.0.1",
     "@start/reporter-verbose": "^1.0.0",
-    "typedoc-plugin-markdown": "^2.4.0"
+    "typedoc-plugin-markdown": "^3.0.0"
   }
 }
