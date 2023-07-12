@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build:docs": "typedoc --mode library --excludeNotExported --readme README.docs.md --includes . --exclude src/index.ts",
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "pnpm build",
     "build": "start build",
     "watch": "start watch"
   },

@@ -2,36 +2,26 @@ name: Tests
 
 on: [push, pull_request]
 
-env:
-  YARN_CACHE_FOLDER: ~/.yarn-cache
-
 jobs:
   test:
     name: Unit test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: '12'
+          node-version: '18'
 
-      - name: Cache Node.js modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.yarn-cache
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-node-${{ hashFiles('**/yarn.lock') }}
-            ${{ runner.OS }}-node-
-            ${{ runner.OS }}-
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Install dependencies
-        run: yarn
+        run: pnpm install
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
   
       - name: Test
-        run: yarn test
+        run: pnpm test

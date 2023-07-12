@@ -16,13 +16,12 @@ describe('sliceSpec', () => {
     const spec = sliceSpec({
       initialState: { test: 1 },
       reducers: {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars-experimental
-        a(s, a: Action.Empty) {
+        a(s, _a: Action.Empty) {
           expectType<State>(s)
           return s
         },
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars-experimental
-        b(s, a: Action.Payload<number>) {
+
+        b(s, _a: Action.Payload<number>) {
           expectType<State>(s)
           return s
         },
@@ -95,7 +94,7 @@ describe('registerSlice', () => {
         (builder, slice) => {
           extraArgSlice = slice
 
-          builder.when((rs) =>
+          builder.when(rs =>
             slice.setState(
               {
                 ...slice.getState(rs),
@@ -214,15 +213,15 @@ describe('Slice', () => {
       const helloAction = { type: 'hello' }
       slice.listen(listener)
 
-      slice.listen((action) => {
+      slice.listen(action => {
         expectType<{ type: unknown; payload: unknown }>(action)
       })
-      slice.listen(slice.actions.set, (action) => {
+      slice.listen(slice.actions.set, action => {
         expectType<{ type: 'test/set'; payload: symbol }>(action)
       })
       slice.listen(
         (a): a is Action<'a', string> | Action<'b', number> => Boolean(a),
-        (action) => {
+        action => {
           expectType<
             { type: 'a'; payload: string } | { type: 'b'; payload: number }
           >(action)

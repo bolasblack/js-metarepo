@@ -7,7 +7,7 @@
   "author": "c4605 <bolasblack@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "yarn test && nodemon -w src/**/*.ts -w dtslint/**/*.ts --exec 'yarn test'",
+    "start": "pnpm test && nodemon -w src/**/*.ts -w dtslint/**/*.ts --exec 'pnpm test'",
     "lint": "exit 0",
     "test": "dtslint dtslint"
   },

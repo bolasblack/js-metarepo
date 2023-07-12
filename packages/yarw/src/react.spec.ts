@@ -131,7 +131,7 @@ describe('useSelector', () => {
 
   describe('with arguments', () => {
     it('return selected result', () => {
-      const { result } = renderHook(() => useSelector((s) => String(s)))
+      const { result } = renderHook(() => useSelector(s => String(s)))
       expect(result.current).toBe('Symbol(initial)')
 
       void act(() => {
@@ -145,7 +145,7 @@ describe('useSelector', () => {
         const [prefix, updatePrefix] = useState('!')
         return {
           updatePrefix,
-          res: useSelector((s) => prefix + String(s), [prefix]),
+          res: useSelector(s => prefix + String(s), [prefix]),
         }
       })
       expect(result.current.res).toBe('!Symbol(initial)')
@@ -166,7 +166,7 @@ describe('useSelector', () => {
       const [prefix, updatePrefix] = useState('!')
       return {
         updatePrefix,
-        res: useSelector((s) => prefix + String(s), [prefix]),
+        res: useSelector(s => prefix + String(s), [prefix]),
       }
     })
     const { result: hookFn3Res } = renderHook(hookFn3)
@@ -223,6 +223,7 @@ describe('useEffect', () => {
   })
 
   beforeEach(() => {
+    // eslint-disable-next-line @typescript-eslint/no-extra-semi
     ;(React as any).useEffect = jest.fn(React.useEffect)
     listener = jest.fn()
     matcher = jest.fn(() => true)
@@ -230,6 +231,7 @@ describe('useEffect', () => {
   })
 
   afterEach(() => {
+    // eslint-disable-next-line @typescript-eslint/no-extra-semi
     ;(React as any).useEffect = (React.useEffect as any).getMockImplementation()
   })
 

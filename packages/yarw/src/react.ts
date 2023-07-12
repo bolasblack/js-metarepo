@@ -16,7 +16,7 @@ export function useSlice<S extends Slice<any, any>>(
 export function useSlice<
   N extends string,
   S,
-  Reducers extends CaseReducerMap<S>
+  Reducers extends CaseReducerMap<S>,
 >(
   parent: Root,
   name: N,
