@@ -61,7 +61,7 @@ importers:
   packages/start/lib-preset:
     specifiers:
       '@start/plugin': ^2.0.0
-      '@start/plugin-find': ^1.0.0
+      '@start/plugin-find': ^2.0.0
       '@start/plugin-lib-babel': ^1.0.0
       '@start/plugin-read': ^1.0.0
       '@start/plugin-remove': ^1.0.0
@@ -72,7 +72,7 @@ importers:
       '@start/reporter-verbose': ^1.0.0
     dependencies:
       '@start/plugin': 2.0.0
-      '@start/plugin-find': 1.0.1
+      '@start/plugin-find': 2.0.0
       '@start/plugin-lib-babel': 1.0.0
       '@start/plugin-read': 1.0.0
       '@start/plugin-remove': 1.0.0
@@ -2432,12 +2432,12 @@ packages:
       tsfn: 2.2.0
     dev: true
 
-  /@start/plugin-find/1.0.1:
-    resolution: {integrity: sha512-63KUoYzWA5UuxEioqXE/4gfAMgx3kHZrZmp2mCB1nj1yTgyGZ5w9qk1KCzdHAZnypoKUMsbxPJAG4HHpzraX3w==}
-    engines: {node: '>=10.13.0'}
+  /@start/plugin-find/2.0.0:
+    resolution: {integrity: sha512-Yerpz92IwkZbOEWxK3XVDv3RrTQOWgQ3mIAiMrDNNDe6sGU+PXQ/SJtKallhAxCNJ77q/FxDdMRYhMf1Jc167w==}
+    engines: {node: '>=12.13.0'}
     dependencies:
       '@babel/runtime': 7.22.6
-      '@start/plugin': 1.0.0
+      '@start/plugin': 2.0.0
       globby: 11.1.0
     dev: false
 
