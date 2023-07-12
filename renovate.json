@@ -1,4 +1,4 @@
 {
-  "extends": ["github>bolasblack/js-metarepo:packages/toolconfs/renovate"],
+  "extends": ["github>bolasblack/js-metarepo//packages/toolconfs/renovate"],
   "baseBranches": ["develop"]
 }
