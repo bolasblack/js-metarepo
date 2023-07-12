@@ -65,7 +65,7 @@ importers:
       '@start/plugin-lib-babel': ^3.0.0
       '@start/plugin-read': ^2.0.0
       '@start/plugin-remove': ^2.0.0
-      '@start/plugin-rename': ^1.0.0
+      '@start/plugin-rename': ^2.0.0
       '@start/plugin-sequence': ^2.0.0
       '@start/plugin-watch': ^2.0.0
       '@start/plugin-write': ^2.0.0
@@ -76,7 +76,7 @@ importers:
       '@start/plugin-lib-babel': 3.0.0
       '@start/plugin-read': 2.0.0
       '@start/plugin-remove': 2.0.0
-      '@start/plugin-rename': 1.0.0
+      '@start/plugin-rename': 2.0.0
       '@start/plugin-sequence': 2.0.0
       '@start/plugin-watch': 2.0.0
       '@start/plugin-write': 2.0.1
@@ -2471,12 +2471,12 @@ packages:
       dleet: 2.0.1
     dev: false
 
-  /@start/plugin-rename/1.0.0:
-    resolution: {integrity: sha512-5nyHXRxuNaWGFwmyLWew5KWglTIudv2gA1iyw+9rpp/6o2+po8SXRr8vjrVDhRU6j37O7SG68SF9On1yxmDcCw==}
-    engines: {node: '>=10.13.0'}
+  /@start/plugin-rename/2.0.0:
+    resolution: {integrity: sha512-yYIUbIgFEqCnkJ3qOmp3l1fHt0H2QIMHQOgEpoSnxYrTeW6XbD2/NYE/deil13X0cFLQtfGcjKSgK6Nmvkt7Fw==}
+    engines: {node: '>=12.13.0'}
     dependencies:
       '@babel/runtime': 7.22.6
-      '@start/plugin': 1.0.0
+      '@start/plugin': 2.0.0
     dev: false
 
   /@start/plugin-sequence/2.0.0:
