@@ -60,7 +60,7 @@ importers:
 
   packages/start/lib-preset:
     specifiers:
-      '@start/plugin': ^1.0.0
+      '@start/plugin': ^2.0.0
       '@start/plugin-find': ^1.0.0
       '@start/plugin-lib-babel': ^1.0.0
       '@start/plugin-read': ^1.0.0
@@ -71,7 +71,7 @@ importers:
       '@start/plugin-write': ^1.0.0
       '@start/reporter-verbose': ^1.0.0
     dependencies:
-      '@start/plugin': 1.0.0
+      '@start/plugin': 2.0.0
       '@start/plugin-find': 1.0.1
       '@start/plugin-lib-babel': 1.0.0
       '@start/plugin-read': 1.0.0
@@ -2512,6 +2512,11 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
+  /@start/plugin/2.0.0:
+    resolution: {integrity: sha512-3JOfbQhq6P8GDXO7kBOskJzKTbWFZkpxvnDXyT1IyMZbWfyNr3R1niTtjvhV/Tgp62lXfzZKMZQPlI8ONVAjkQ==}
+    engines: {node: '>=12.13.0'}
+    dev: false
+
   /@start/reporter-verbose/1.0.2:
     resolution: {integrity: sha512-i/UCt52OX5UV8xARgrxR+WY6GJIanugcP2szCS4jbLDyRIVdfcK5lmBLNLENpOnsVna1vb49wt2tOImVpcOtJw==}
     engines: {node: '>=10.13.0'}
@@ -3490,7 +3495,7 @@ packages:
       minipass-pipeline: 1.2.4
       p-map: 4.0.0
       ssri: 10.0.4
-      tar: 6.1.11
+      tar: 6.1.15
       unique-filename: 3.0.0
     dev: true
 
@@ -7640,7 +7645,7 @@ packages:
       npmlog: 6.0.2
       rimraf: 3.0.2
       semver: 7.5.3
-      tar: 6.1.11
+      tar: 6.1.15
       which: 2.0.2
     transitivePeerDependencies:
       - supports-color
@@ -8229,7 +8234,7 @@ packages:
       read-package-json-fast: 3.0.2
       sigstore: 1.7.0
       ssri: 10.0.4
-      tar: 6.1.11
+      tar: 6.1.15
     transitivePeerDependencies:
       - bluebird
       - supports-color
