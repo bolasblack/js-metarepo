@@ -67,7 +67,7 @@ importers:
       '@start/plugin-remove': ^2.0.0
       '@start/plugin-rename': ^1.0.0
       '@start/plugin-sequence': ^2.0.0
-      '@start/plugin-watch': ^1.0.0
+      '@start/plugin-watch': ^2.0.0
       '@start/plugin-write': ^2.0.0
       '@start/reporter-verbose': ^2.0.0
     dependencies:
@@ -78,7 +78,7 @@ importers:
       '@start/plugin-remove': 2.0.0
       '@start/plugin-rename': 1.0.0
       '@start/plugin-sequence': 2.0.0
-      '@start/plugin-watch': 1.0.0
+      '@start/plugin-watch': 2.0.0
       '@start/plugin-write': 2.0.1
       '@start/reporter-verbose': 2.0.1
 
@@ -2487,12 +2487,12 @@ packages:
       '@start/plugin': 2.0.0
     dev: false
 
-  /@start/plugin-watch/1.0.0:
-    resolution: {integrity: sha512-PJzbWwdR1M+MdPh+y0+F5cFH7NvLiPpqgcSWNIbA5Cna1G6lfJ8T9+zD/6ShjVs3iPxWhd2tIF5zz3nFqTQriQ==}
-    engines: {node: '>=10.13.0'}
+  /@start/plugin-watch/2.0.0:
+    resolution: {integrity: sha512-AFZWfAYqF+CgAP+BqSlIMFssLB0eZdKPw7rDZbpnydqgQ8EfbLl5pcH5Cx3n3hlCIFgO0j568cGWo4FFe6JWoQ==}
+    engines: {node: '>=12.13.0'}
     dependencies:
       '@babel/runtime': 7.22.6
-      '@start/plugin': 1.0.0
+      '@start/plugin': 2.0.0
       chokidar: 3.5.3
     dev: false
 

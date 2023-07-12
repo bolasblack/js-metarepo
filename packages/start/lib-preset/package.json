@@ -22,7 +22,7 @@
     "@start/plugin-remove": "^2.0.0",
     "@start/plugin-rename": "^1.0.0",
     "@start/plugin-sequence": "^2.0.0",
-    "@start/plugin-watch": "^1.0.0",
+    "@start/plugin-watch": "^2.0.0",
     "@start/plugin-write": "^2.0.0",
     "@start/reporter-verbose": "^2.0.0"
   }
