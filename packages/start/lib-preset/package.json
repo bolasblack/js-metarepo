@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@start/plugin": "^2.0.0",
-    "@start/plugin-find": "^1.0.0",
+    "@start/plugin-find": "^2.0.0",
     "@start/plugin-lib-babel": "^1.0.0",
     "@start/plugin-read": "^2.0.0",
     "@start/plugin-remove": "^1.0.0",
