@@ -24,6 +24,6 @@
     "@start/plugin-sequence": "^2.0.0",
     "@start/plugin-watch": "^1.0.0",
     "@start/plugin-write": "^2.0.0",
-    "@start/reporter-verbose": "^1.0.0"
+    "@start/reporter-verbose": "^2.0.0"
   }
 }
