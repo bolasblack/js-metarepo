@@ -20,7 +20,7 @@
   "devDependencies": {
     "@c4/lib-start-preset": "^0.3.2",
     "@start/cli": "^2.0.1",
-    "@start/reporter-verbose": "^1.0.0",
+    "@start/reporter-verbose": "^2.0.0",
     "@testing-library/react-hooks": "^8.0.1",
     "@types/react": "^18.2.14",
     "console-testing-library": "^0.6.1",
