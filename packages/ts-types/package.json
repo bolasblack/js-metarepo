@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@c4605/toolconfs": "^5.3.0",
-    "dtslint": "^3.6.4",
+    "dtslint": "^4.0.0",
     "nodemon": "^2.0.4"
   }
 }
