@@ -4,7 +4,7 @@
   "author": "c4605 <bolasblack@gmail.com>",
   "license": "MIT",
   "private": true,
-  "packageManager": "pnpm@7.14.2",
+  "packageManager": "pnpm@7.33.3",
   "workspaces": [
     "packages/start/*",
     "packages/lab/*",
