@@ -39,12 +39,12 @@ importers:
       '@c4/lib-start-preset': workspace:^0.3.2
       '@start/cli': ^2.0.1
       '@start/reporter-verbose': ^1.0.0
-      typedoc-plugin-markdown: ^2.4.0
+      typedoc-plugin-markdown: ^3.0.0
     devDependencies:
       '@c4/lib-start-preset': link:../start/lib-preset
       '@start/cli': 2.0.1
       '@start/reporter-verbose': 1.0.2
-      typedoc-plugin-markdown: 2.4.2
+      typedoc-plugin-markdown: 3.15.3
 
   packages/start:
     specifiers:
@@ -3490,7 +3490,7 @@ packages:
       minipass-pipeline: 1.2.4
       p-map: 4.0.0
       ssri: 10.0.4
-      tar: 6.1.11
+      tar: 6.1.15
       unique-filename: 3.0.0
     dev: true
 
@@ -7640,7 +7640,7 @@ packages:
       npmlog: 6.0.2
       rimraf: 3.0.2
       semver: 7.5.3
-      tar: 6.1.11
+      tar: 6.1.15
       which: 2.0.2
     transitivePeerDependencies:
       - supports-color
@@ -8229,7 +8229,7 @@ packages:
       read-package-json-fast: 3.0.2
       sigstore: 1.7.0
       ssri: 10.0.4
-      tar: 6.1.11
+      tar: 6.1.15
     transitivePeerDependencies:
       - bluebird
       - supports-color
@@ -9937,13 +9937,11 @@ packages:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
     dev: true
 
-  /typedoc-plugin-markdown/2.4.2:
-    resolution: {integrity: sha512-BBH+9/Uq5XbsqfzCDl8Jq4iaLXRMXRuAHZRFarAZX7df8+F3vUjDx/WHWoWqbZ/XUFzduLC2Iuy2qwsJX8SQ7A==}
-    engines: {node: '>= 8.0.0'}
+  /typedoc-plugin-markdown/3.15.3:
+    resolution: {integrity: sha512-idntFYu3vfaY3eaD+w9DeRd0PmNGqGuNLKihPU9poxFGnATJYGn9dPtEhn2QrTdishFMg7jPXAhos+2T6YCWRQ==}
     peerDependencies:
-      typedoc: '>=0.17.0'
+      typedoc: '>=0.24.0'
     dependencies:
-      fs-extra: 9.1.0
       handlebars: 4.7.7
     dev: true
 
