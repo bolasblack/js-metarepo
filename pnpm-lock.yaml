@@ -63,7 +63,7 @@ importers:
       '@start/plugin': ^1.0.0
       '@start/plugin-find': ^1.0.0
       '@start/plugin-lib-babel': ^1.0.0
-      '@start/plugin-read': ^1.0.0
+      '@start/plugin-read': ^2.0.0
       '@start/plugin-remove': ^1.0.0
       '@start/plugin-rename': ^1.0.0
       '@start/plugin-sequence': ^1.0.0
@@ -74,7 +74,7 @@ importers:
       '@start/plugin': 1.0.0
       '@start/plugin-find': 1.0.1
       '@start/plugin-lib-babel': 1.0.0
-      '@start/plugin-read': 1.0.0
+      '@start/plugin-read': 2.0.0
       '@start/plugin-remove': 1.0.0
       '@start/plugin-rename': 1.0.0
       '@start/plugin-sequence': 1.0.0
@@ -2453,13 +2453,13 @@ packages:
       - supports-color
     dev: false
 
-  /@start/plugin-read/1.0.0:
-    resolution: {integrity: sha512-0LF2sm5FkRoy3C14YE+KTw4TXJt5HXX7pU7LiUNWvKYpr1oZkiRZGOJIBSHtziug5adsAdRp7Fp3BiqE4lkzLg==}
-    engines: {node: '>=10.13.0'}
+  /@start/plugin-read/2.0.0:
+    resolution: {integrity: sha512-F0Mp4+rwjjbP3oeLYsEKeI5R71Xu5rDYjunkQTfHXnD4lu8DAiiblFbd+6TKhVvhFrD6v56XKZNvX+EjGfeFdw==}
+    engines: {node: '>=12.13.0'}
     dependencies:
       '@babel/runtime': 7.22.6
-      '@start/plugin': 1.0.0
-      pifs: 1.0.3
+      '@start/plugin': 2.0.0
+      pifs: 2.0.0
     dev: false
 
   /@start/plugin-remove/1.0.0:
@@ -2510,6 +2510,11 @@ packages:
   /@start/plugin/1.0.0:
     resolution: {integrity: sha512-rMjYHmdJHoiIUE3p0Nb4acg2SnLQEjYwr1No2t8BEHFjCpBT7oXG2bFWqrirImY3yeRW5TbCpYRjbo20SoMYiQ==}
     engines: {node: '>=10.13.0'}
+    dev: false
+
+  /@start/plugin/2.0.0:
+    resolution: {integrity: sha512-3JOfbQhq6P8GDXO7kBOskJzKTbWFZkpxvnDXyT1IyMZbWfyNr3R1niTtjvhV/Tgp62lXfzZKMZQPlI8ONVAjkQ==}
+    engines: {node: '>=12.13.0'}
     dev: false
 
   /@start/reporter-verbose/1.0.2:
@@ -3490,7 +3495,7 @@ packages:
       minipass-pipeline: 1.2.4
       p-map: 4.0.0
       ssri: 10.0.4
-      tar: 6.1.11
+      tar: 6.1.15
       unique-filename: 3.0.0
     dev: true
 
@@ -7640,7 +7645,7 @@ packages:
       npmlog: 6.0.2
       rimraf: 3.0.2
       semver: 7.5.3
-      tar: 6.1.11
+      tar: 6.1.15
       which: 2.0.2
     transitivePeerDependencies:
       - supports-color
@@ -8229,7 +8234,7 @@ packages:
       read-package-json-fast: 3.0.2
       sigstore: 1.7.0
       ssri: 10.0.4
-      tar: 6.1.11
+      tar: 6.1.15
     transitivePeerDependencies:
       - bluebird
       - supports-color
@@ -8375,6 +8380,14 @@ packages:
   /pifs/1.0.3:
     resolution: {integrity: sha512-m+3kvjiuKwoyUaUt+BiDPpoTmyurUzUM3c6XI2UwH8Rd7jPCfs8rUoo00cdimw/Mxvp6hicssM7lJd2RLh7osg==}
     engines: {node: '>=10.13.0'}
+    dependencies:
+      '@types/graceful-fs': 4.1.6
+      graceful-fs: 4.2.11
+    dev: false
+
+  /pifs/2.0.0:
+    resolution: {integrity: sha512-rIZo5Ex5KlKI++GWyKlTv7hiTROdnEXBFg9nP+M6fqsielYtWOk2wo3ybnKWBjq5p9P1q4OguLoRIm4BXxXItw==}
+    engines: {node: '>=12.13.0'}
     dependencies:
       '@types/graceful-fs': 4.1.6
       graceful-fs: 4.2.11
