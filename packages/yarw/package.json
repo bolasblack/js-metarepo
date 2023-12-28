@@ -10,7 +10,7 @@
   },
   "scripts": {
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
-    "test": "NODE_ENV=test jest --no-cache src",
+    "test": "NODE_ENV=test vitest src",
     "prepublishOnly": "start build",
     "build": "start build"
   },
@@ -23,7 +23,6 @@
     "@start/reporter-verbose": "^2.0.0",
     "@testing-library/react-hooks": "^8.0.1",
     "@types/react": "^18.2.14",
-    "console-testing-library": "^0.6.1",
     "react": "^18.2.0",
     "react-test-renderer": "^18.2.0",
     "redux": "^4.2.1"

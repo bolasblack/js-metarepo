@@ -1,5 +1,4 @@
 import { useEffect, useState, DependencyList, useMemo } from 'react'
-import * as React from 'react'
 import {
   Action,
   ActionDispatcher,
@@ -102,7 +101,10 @@ export function createUseSelector<S>(
   }
 }
 
-export function createUseEffect(slice: Slice<any, any>): useSlice.UseEffect {
+export function createUseEffect(
+  slice: Slice<any, any>,
+  useEffectPassedIn: typeof useEffect = useEffect,
+): useSlice.UseEffect {
   const useSliceEffect: useSlice.UseEffect = (
     _dispatcher?: any,
     _callback?: any,
@@ -132,8 +134,7 @@ export function createUseEffect(slice: Slice<any, any>): useSlice.UseEffect {
       matcher = _dispatcher
     }
 
-    // `React.useEffect` is for testing, don't change it
-    React.useEffect(() => {
+    useEffectPassedIn(() => {
       if (!matcher) {
         return slice.listen(callback)
       }

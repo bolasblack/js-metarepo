@@ -96,7 +96,7 @@ export type DeepRequired<T> =
 
 // prettier-ignore
 export type DeepNonNullable<T> =
-  NonNullable<T> extends AnyObject ? { [K in keyof NonNullable<T>]: DeepNonNullable<NonNullable<T>[K]> } :
+  NonNullable<T> extends AnyObject ? { [K in keyof NonNullable<T>]-?: DeepNonNullable<NonNullable<T>[K]> } :
   NonNullable<T>
 
 // prettier-ignore
@@ -106,10 +106,7 @@ export type OptionalPropNames<T> = NonNullable<{ [P in keyof T]: undefined exten
 export type RequiredPropNames<T> = NonNullable<{ [P in keyof T]: undefined extends T[P] ? never : P }[keyof T]>
 
 // prettier-ignore
-export type ExcludeKey<T, EK extends keyof T> = Compact<
-  { [K in Exclude<OptionalPropNames<T>, EK>]?: T[K] } &
-  { [K in Exclude<keyof T, EK | OptionalPropNames<T>>]: T[K] }
->
+export type ExcludeKey<T, EK extends keyof T> = Omit<T, EK>
 
 // prettier-ignore
 export type RequiredKey<T, Key extends keyof T> = Compact<

@@ -5,6 +5,7 @@ import { createRoot, Root } from './Root'
 import { Slice, registerSlice, sliceSpec } from './Slice'
 import { Action } from './types'
 import { useSlice, createUseSelector, createUseEffect } from './react'
+import { Mock } from 'vitest'
 
 describe('useSlice', () => {
   let root: Root
@@ -214,60 +215,57 @@ describe('useEffect', () => {
   let listener: (action: any) => void
   let matcher: (action: any) => boolean
 
-  beforeEach(() => {
-    root = createRoot()
-
-    slice = registerSlice(root, sliceName, spec)
-
-    useEffect = createUseEffect(slice)
-  })
+  let reactUseEffect: Mock<Parameters<typeof React.useEffect>, void>
 
   beforeEach(() => {
-    // eslint-disable-next-line @typescript-eslint/no-extra-semi
-    ;(React as any).useEffect = jest.fn(React.useEffect)
+    reactUseEffect = jest.fn(React.useEffect)
     listener = jest.fn()
     matcher = jest.fn(() => true)
+
+    root = createRoot()
+    slice = registerSlice(root, sliceName, spec)
+    useEffect = createUseEffect(slice, reactUseEffect)
+
     slice.listen = jest.fn(slice.listen) as any
   })
 
   afterEach(() => {
-    // eslint-disable-next-line @typescript-eslint/no-extra-semi
-    ;(React as any).useEffect = (React.useEffect as any).getMockImplementation()
+    jest.restoreAllMocks()
   })
 
   it('support arguments: listener', () => {
     renderHook(() => useEffect(listener))
     expect(slice.listen).toBeCalledWith(listener)
-    expect(React.useEffect).toBeCalledWith(expect.any(Function), undefined)
+    expect(reactUseEffect).toBeCalledWith(expect.any(Function), undefined)
   })
 
   it('support arguments: listener, deps', () => {
     renderHook(() => useEffect(listener, ['a']))
     expect(slice.listen).toBeCalledWith(listener)
-    expect(React.useEffect).toBeCalledWith(expect.any(Function), ['a'])
+    expect(reactUseEffect).toBeCalledWith(expect.any(Function), ['a'])
   })
 
   it('support arguments: dispatcher, listener', () => {
     renderHook(() => useEffect(slice.actions.set, listener))
     expect(slice.listen).toBeCalledWith(slice.actions.set.match, listener)
-    expect(React.useEffect).toBeCalledWith(expect.any(Function), undefined)
+    expect(reactUseEffect).toBeCalledWith(expect.any(Function), undefined)
   })
 
   it('support arguments: dispatcher, listener, deps', () => {
     renderHook(() => useEffect(slice.actions.set, listener, ['a']))
     expect(slice.listen).toBeCalledWith(slice.actions.set.match, listener)
-    expect(React.useEffect).toBeCalledWith(expect.any(Function), ['a'])
+    expect(reactUseEffect).toBeCalledWith(expect.any(Function), ['a'])
   })
 
   it('support arguments: matcher, listener', () => {
     renderHook(() => useEffect(matcher, listener))
     expect(slice.listen).toBeCalledWith(matcher, listener)
-    expect(React.useEffect).toBeCalledWith(expect.any(Function), undefined)
+    expect(reactUseEffect).toBeCalledWith(expect.any(Function), undefined)
   })
 
   it('support arguments: dispatcher, listener, deps', () => {
     renderHook(() => useEffect(matcher, listener, ['a']))
     expect(slice.listen).toBeCalledWith(matcher, listener)
-    expect(React.useEffect).toBeCalledWith(expect.any(Function), ['a'])
+    expect(reactUseEffect).toBeCalledWith(expect.any(Function), ['a'])
   })
 })

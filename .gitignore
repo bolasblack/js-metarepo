@@ -9,6 +9,7 @@ coverage
 .envrc
 .gh-pages-git
 .rpt2_cache
+tsconfig.vitest-temp.json
 *.tsbuildinfo
 *.log
 *.tgz

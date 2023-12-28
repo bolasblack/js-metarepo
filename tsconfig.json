@@ -1,6 +1,8 @@
 {
-  "extends": "@c4605/toolconfs/tsconfig",
-  "compilerOptions": {},
-  "include": ["config", "packages/**/src", "packages/**/dtslint"],
+  "extends": "./packages/toolconfs/tsconfig.json",
+  "compilerOptions": {
+    "types": ["vitest/globals"]
+  },
+  "include": ["config", "packages/**/src", "vitest.config.ts"],
   "exclude": ["node_modules"]
 }

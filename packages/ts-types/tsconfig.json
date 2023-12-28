@@ -1,6 +1,9 @@
 {
-  "extends": "@c4605/toolconfs/tsconfig.json",
-  "compilerOptions": {},
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "noUnusedLocals": false,
+  },
   "include": ["."],
   "exclude": ["node_modules"]
 }

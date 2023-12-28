@@ -1,8 +1,9 @@
-import 'console-testing-library'
+//import { createConsole, mockConsole } from 'console-testing-library/pure'
 import { sliceSpec, Slice, registerSlice } from './Slice'
 import { createRoot, Root, internalStateSym } from './Root'
 import { Action, CaseReducer } from './types'
 import { expectType } from './specUtils'
+import { Mock } from 'vitest'
 
 describe('sliceSpec', () => {
   it('return spec directly', () => {
@@ -132,6 +133,8 @@ describe('registerSlice', () => {
 })
 
 describe('Slice', () => {
+  let restoreConsole: () => void
+
   const sliceName = 'test' as const
   let root: Root
   const initialState = Symbol('initial')
@@ -147,9 +150,16 @@ describe('Slice', () => {
   let slice: Slice.FromSpec<typeof sliceName, typeof spec>
 
   beforeEach(() => {
-    root = createRoot()
+    // restoreConsole = mockConsole(createConsole())
+    jest.spyOn(console, 'log')
+    jest.spyOn(console, 'error')
 
+    root = createRoot()
     slice = registerSlice(root, sliceName, spec)
+  })
+
+  afterEach(() => {
+    restoreConsole?.()
   })
 
   describe('actions', () => {
@@ -308,32 +318,32 @@ describe('Slice', () => {
       slice.unregister()
       slice.getState()
       slice.getState({ [internalStateSym]: { [sliceName]: 1 } })
-      expect(console.error).toMatchSnapshot()
+      expect(getSnapshotableMocks(console.error)).toMatchSnapshot()
     })
 
     it('should console error when calling `setState` after unregistered', () => {
       slice.unregister()
       slice.setState(initialState, { [internalStateSym]: { [sliceName]: 1 } })
-      expect(console.error).toMatchSnapshot()
+      expect(getSnapshotableMocks(console.error)).toMatchSnapshot()
     })
 
     it('should console error when calling `subscribe` after unregistered', () => {
       slice.unregister()
       slice.subscribe(console.log)
-      expect(console.error).toMatchSnapshot()
+      expect(getSnapshotableMocks(console.error)).toMatchSnapshot()
     })
 
     it('should console error when calling `listen` after unregistered', () => {
       slice.unregister()
       slice.listen(console.log)
       slice.listen(slice.actions.set, console.log)
-      expect(console.error).toMatchSnapshot()
+      expect(getSnapshotableMocks(console.error)).toMatchSnapshot()
     })
 
     it('should console error when calling action dispatcher after unregistered', () => {
       slice.unregister()
       slice.actions.set(updatedState)
-      expect(console.error).toMatchSnapshot()
+      expect(getSnapshotableMocks(console.error)).toMatchSnapshot()
     })
 
     it('should console error when calling `reducer` after unregistered', () => {
@@ -343,7 +353,7 @@ describe('Slice', () => {
         slice.actions.set.create(initialState),
       )
       slice.actions.set(updatedState)
-      expect(console.error).toMatchSnapshot()
+      expect(getSnapshotableMocks(console.error)).toMatchSnapshot()
     })
 
     it('should unregister slice reducer in parent', () => {
@@ -361,3 +371,16 @@ describe('Slice', () => {
     })
   })
 })
+
+function getSnapshotableMocks(input: any):
+  | undefined
+  | {
+      calls: Mock['mock']['calls']
+      results: Mock['mock']['results']
+    } {
+  if (input == null || input.mock == null) return undefined
+  return {
+    calls: input.mock.calls,
+    results: input.mock.results,
+  }
+}
