@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.1](https://github.com/bolasblack/js-metarepo/blob/master/packages/toolconfs/compare/@c4605/toolconfs@5.3.0...@c4605/toolconfs@5.3.1) (2023-12-28)
+
+**Note:** Version bump only for package @c4605/toolconfs
+
 # [5.3.0](https://github.com/bolasblack/js-metarepo/blob/master/packages/toolconfs/compare/@c4605/toolconfs@5.2.2...@c4605/toolconfs@5.3.0) (2023-07-07)
 
 ### Features

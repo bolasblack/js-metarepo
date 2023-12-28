@@ -1,6 +1,6 @@
 {
   "name": "@c4605/ts-types",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "TypeScript type helpers",
   "main": "src/index.d.ts",
   "repository": "https://github.com/bolasblack/js-metarepo/blob/master/packages/ts-types",
@@ -12,7 +12,7 @@
     "test": "NODE_ENV=test vitest src"
   },
   "devDependencies": {
-    "@c4605/toolconfs": "^5.3.0",
+    "@c4605/toolconfs": "^5.3.1",
     "nodemon": "^3.0.0"
   }
 }

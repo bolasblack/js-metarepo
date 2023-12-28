@@ -1,6 +1,6 @@
 {
   "name": "@c4/start-common-deps",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.4.3",
