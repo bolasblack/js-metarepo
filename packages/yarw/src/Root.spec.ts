@@ -80,7 +80,7 @@ describe('Root', () => {
 
     it('listen all actions', () => {
       const listener = jest.fn()
-      const action = { type: Symbol('hello') }
+      const action = { type: 'hello' }
 
       root.listen(listener)
       root.dispatch(action)

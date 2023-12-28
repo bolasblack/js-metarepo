@@ -3,14 +3,14 @@ import { Root, RootState } from './Root'
 /**
  * A normal [action](https://redux.js.org/basics/actions)
  */
-export interface Action<T = unknown, P = undefined> {
+export interface Action<T extends string = string, P = undefined> {
   type: T
   payload: P
 }
 export namespace Action {
-  export type Payload<P, T = unknown> = Action<T, P>
-  export type Empty<T = unknown> = Action<T>
-  export type Any<T = unknown> = Action<T, any>
+  export type Payload<P, T extends string = string> = Action<T, P>
+  export type Empty<T extends string = string> = Action<T>
+  export type Any<T extends string = string> = Action<T, any>
 }
 export type ActionFromCaseReducer<
   R,
@@ -82,11 +82,11 @@ export namespace ActionDispatcher {
    * @param [[Action.type]]
    * @param
    */
-  export function create<S, A extends Action<any>>(
+  export function create<S, A extends Action<string>>(
     type: TypeFromAction<A>,
     parent: Root,
   ): ActionDispatcher.Any<S, A> {
-    const actionCreator = (...args: any[]): Action<A> => {
+    const actionCreator = (...args: any[]): Action<TypeFromAction<A>> => {
       return { type, payload: args[0] }
     }
 
