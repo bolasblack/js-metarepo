@@ -6,6 +6,7 @@ import {
   Observable,
   Middleware,
   applyMiddleware,
+  isAction,
 } from 'redux'
 import $$observable from 'symbol-observable'
 import { Action, NaiveReducer, ActionDispatcher, ActionListener } from './types'
@@ -86,9 +87,9 @@ function createListenManager(): {
   const middleware: Middleware = () => nextDispatch => action => {
     const result = nextDispatch(action)
     registered.forEach(i => {
-      if (i.matcher(action)) {
+      if (isAction(action) && i.matcher(action as any)) {
         try {
-          i.handler(action)
+          i.handler(action as any)
         } catch (err) {
           console.error(err)
         }
@@ -133,6 +134,6 @@ function createReducerManager(store: Store<RootState>): {
 
   function updateReducers(reducers: typeof registeredReducers): void {
     registeredReducers = reducers
-    store.replaceReducer(createRootReducer() as Reducer<RootState>)
+    store.replaceReducer(createRootReducer() as any)
   }
 }

@@ -15,7 +15,7 @@
     "build": "start build"
   },
   "peerDependencies": {
-    "redux": "^4.0.5"
+    "redux": "^4.0.5 || ^5.0.0"
   },
   "devDependencies": {
     "@c4/lib-start-preset": "^0.3.2",
@@ -25,7 +25,7 @@
     "@types/react": "^18.2.14",
     "react": "^18.2.0",
     "react-test-renderer": "^18.2.0",
-    "redux": "^4.2.1"
+    "redux": "^5.0.0"
   },
   "dependencies": {
     "symbol-observable": "^4.0.0"
