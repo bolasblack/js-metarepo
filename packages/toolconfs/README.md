@@ -39,6 +39,7 @@ Some configuration files for usual tools
 
   ```json
   {
+    "$schema": "https://json.schemastore.org/tsconfig.json",
     "extends": "@c4605/toolconfs/tsconfig",
     "extends": "@c4605/toolconfs/tsconfig-node",
     "extends": "@c4605/toolconfs/tsconfig-esModule"
@@ -64,12 +65,10 @@ Some configuration files for usual tools
   And install packages:
 
   ```bash
-  # ts
-  yarn add @typescript-eslint/eslint-plugin @typescript-eslint/parser -D
-  # prettier
-  yarn add eslint-config-prettier eslint-plugin-prettier -D
-  # react
-  yarn add eslint-plugin-react eslint-plugin-react-hooks -D
+  yarn add -D eslint \
+    @typescript-eslint/eslint-plugin @typescript-eslint/parser \
+    eslint-config-prettier eslint-plugin-prettier \
+    eslint-plugin-react eslint-plugin-react-hooks
   ```
 
 - [`.githooks`](https://github.com/bolasblack/git-hook-pure): git hook more freely and quickly
