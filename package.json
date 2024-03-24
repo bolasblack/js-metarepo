@@ -19,7 +19,7 @@
   "devDependencies": {
     "@c4605/toolconfs": "^5.2.2",
     "@types/node": "^20.4.0",
-    "commitlint": "^18.0.0",
+    "commitlint": "^19.0.0",
     "identity-obj-proxy": "^3.0.0",
     "lerna": "^8.0.0",
     "lint-staged": "^15.0.0",
