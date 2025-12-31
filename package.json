@@ -27,7 +27,7 @@
     "postinstall-postinstall": "^2.1.0",
     "typedoc": "^0.28.0",
     "typescript": "^5.3.3",
-    "vitest": "^1.1.0"
+    "vitest": "^4.0.0"
   },
   "prettier": "@c4605/toolconfs/prettierrc"
 }
