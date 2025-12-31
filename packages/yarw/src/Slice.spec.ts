@@ -1,4 +1,3 @@
-//import { createConsole, mockConsole } from 'console-testing-library/pure'
 import { sliceSpec, Slice, registerSlice } from './Slice'
 import { createRoot, Root, internalStateSym } from './Root'
 import { Action, CaseReducer } from './types'
@@ -133,8 +132,6 @@ describe('registerSlice', () => {
 })
 
 describe('Slice', () => {
-  let restoreConsole: () => void
-
   const sliceName = 'test' as const
   let root: Root
   const initialState = Symbol('initial')
@@ -150,7 +147,6 @@ describe('Slice', () => {
   let slice: Slice.FromSpec<typeof sliceName, typeof spec>
 
   beforeEach(() => {
-    // restoreConsole = mockConsole(createConsole())
     jest.spyOn(console, 'log')
     jest.spyOn(console, 'error')
 
@@ -159,7 +155,7 @@ describe('Slice', () => {
   })
 
   afterEach(() => {
-    restoreConsole?.()
+    jest.clearAllMocks()
   })
 
   describe('actions', () => {
@@ -183,7 +179,7 @@ describe('Slice', () => {
     })
 
     it('can dispatch self action', () => {
-      root.dispatch = jest.fn(root.dispatch)
+      root.dispatch = jest.fn(root.dispatch) as any
 
       slice.actions.set(updatedState)
 

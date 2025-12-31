@@ -99,11 +99,24 @@ export type DeepNonNullable<T> =
   NonNullable<T> extends AnyObject ? { [K in keyof NonNullable<T>]-?: DeepNonNullable<NonNullable<T>[K]> } :
   NonNullable<T>
 
+/**
+ * We use `Exclude<..., undefined>` instead of `NonNullable<...>` here.
+ *
+ * 1. `{ [P in keyof T]: ... }` is a homomorphic mapped type. If a property in `T` is optional (e.g., `a?: number`),
+ *    the corresponding property in the mapped type remains optional.
+ * 2. When we access the values using `[keyof T]`, TypeScript adds `| undefined` to the result because
+ *    the properties are optional.
+ * 3. `NonNullable<T>` is defined as `T & {}` (intersection) in modern TypeScript to filter null/undefined.
+ *    Intersections do not trigger **distribution** over unions for unresolved generics, so the `undefined` from step 2
+ *    might not be stripped away immediately.
+ * 4. `Exclude<T, U>` uses conditional types (`T extends U ? ...`), which triggers **Distributive Conditional Types**.
+ *    This forces the compiler to decompose the union and check each member individually against `undefined`,
+ *    guaranteeing that `undefined` is removed.
+ */
 // prettier-ignore
-export type OptionalPropNames<T> = NonNullable<{ [P in keyof T]: undefined extends T[P] ? P : never }[keyof T]>
-
+export type OptionalPropNames<T> = Exclude<{ [P in keyof T]: undefined extends T[P] ? P : never }[keyof T], undefined>
 // prettier-ignore
-export type RequiredPropNames<T> = NonNullable<{ [P in keyof T]: undefined extends T[P] ? never : P }[keyof T]>
+export type RequiredPropNames<T> = Exclude<{ [P in keyof T]: undefined extends T[P] ? never : P }[keyof T], undefined>
 
 // prettier-ignore
 export type ExcludeKey<T, EK extends keyof T> = Omit<T, EK>

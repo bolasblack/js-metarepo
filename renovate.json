@@ -1,4 +1,11 @@
 {
   "extends": ["github>bolasblack/js-metarepo//packages/toolconfs/renovate"],
-  "baseBranchPatterns": ["develop"]
+  "baseBranchPatterns": ["develop"],
+  "packageRules": [
+    {
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "7 days",
+      "internalChecksFilter": "strict"
+    }
+  ]
 }

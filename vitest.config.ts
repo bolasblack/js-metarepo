@@ -1,8 +1,8 @@
-import { defineProject } from 'vitest/config'
+import { defineConfig } from 'vitest/config'
 import * as fs from 'fs'
 import * as path from 'path'
 
-export default defineProject({
+export default defineConfig({
   test: {
     watch: process.env.LERNA_TEST ? false : true,
     globals: true,
