@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars-experimental, @typescript-eslint/no-empty-function */
-
 import * as React from 'react'
 import { createRoot, registerSlice, Action, CaseReducer, Slice } from '../src'
 import { useSlice } from '../src/react'
@@ -56,7 +54,7 @@ namespace appSlice {
 }
 
 // 可以在 Slice 里处理其他 Slice 的 action
-const ctxHistorySlice = registerSlice(
+registerSlice(
   root,
   'ctxHistory',
   {
@@ -66,15 +64,15 @@ const ctxHistorySlice = registerSlice(
     reducers: {},
   },
   (builder, slice) => {
-    builder.when(isAnyAppSliceAction, (rs) =>
-      slice.setState((s) => {
+    builder.when(isAnyAppSliceAction, rs =>
+      slice.setState(s => {
         const newHistories = s.appStateHistories.concat(appSlice.getState(rs))
         return { appStateHistories: newHistories }
       }, rs),
     )
 
     function isAnyAppSliceAction(a: Action.Any): boolean {
-      return Object.values(appSlice.actions).some((ad) => ad.match(a))
+      return Object.values(appSlice.actions).some(ad => ad.match(a))
     }
   },
 )
@@ -106,9 +104,9 @@ function useDashboardSlice(): {
 
   const appViewSlice = useSlice(appSlice)
 
-  const username = appViewSlice.useSelector((s) => s.username)
+  const username = appViewSlice.useSelector(s => s.username)
   const dashboardMessage = viewSlice.useSelector(
-    (s) =>
+    s =>
       s.loading && username
         ? 'Loading...'
         : `Hello ${username}, you has ${s.activityCount} activities`,

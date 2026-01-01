@@ -5,7 +5,7 @@ script:
   - |
     bash -c "
       set -eo pipefail
-      yarn
-      yarn lint
-      yarn test
+      pnpm install
+      pnpm lint
+      pnpm test
     "

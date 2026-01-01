@@ -46,7 +46,8 @@ export function isAlertableError(e: any): e is AlertableError {
  */
 export class AlertError<InnerError extends Error = Error>
   extends BaseError<InnerError>
-  implements AlertableError {
+  implements AlertableError
+{
   displayMessage: string
 
   static wrap<InnerError extends Error>(

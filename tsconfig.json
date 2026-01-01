@@ -1,8 +1,19 @@
 {
-  "extends": "./packages/toolconfs/tsconfig.json",
+  "$comment": "Merged from @c4605/toolconfs v5.3.1 (llms.md)",
   "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "strict": true,
+    "noEmit": true,
+    "moduleResolution": "bundler",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "types": ["vitest/globals"]
   },
-  "include": ["config", "packages/**/src", "vitest.config.ts"],
   "exclude": ["node_modules"]
 }

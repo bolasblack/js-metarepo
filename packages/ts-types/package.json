@@ -8,11 +8,10 @@
   "license": "MIT",
   "scripts": {
     "start": "pnpm test && nodemon -w src/**/*.ts -w dtslint/**/*.ts --exec 'pnpm test'",
-    "lint": "exit 0",
+    "lint": "eslint src",
     "test": "../../node_modules/.bin/tsc --noEmit && NODE_ENV=test vitest src"
   },
   "devDependencies": {
-    "@c4605/toolconfs": "^5.3.1",
     "nodemon": "^3.0.0"
   }
 }

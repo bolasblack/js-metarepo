@@ -6,11 +6,12 @@ types
 .docz
 gh-pages
 coverage
-.envrc
+.envrc.local
 .gh-pages-git
 .rpt2_cache
 tsconfig.vitest-temp.json
 *.tsbuildinfo
 *.log
 *.tgz
+zhistory
 .claude/settings.local.json

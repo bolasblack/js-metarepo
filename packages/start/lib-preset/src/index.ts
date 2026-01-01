@@ -32,27 +32,27 @@ const dts = (): Task => sequence(find(src), dtsGenerate(outPath, tsconfig))
 
 const buildCjs = (): Task =>
   sequence(
-    whenProps((props) => !props.files.length, find(src)),
-    when((f) => !f.data, read),
+    whenProps(props => !props.files.length, find(src)),
+    when(f => !f.data, read),
     when(
-      (f) => f.path.endsWith('ts') || f.path.endsWith('tsx'),
+      f => f.path.endsWith('ts') || f.path.endsWith('tsx'),
       tsGenerate({ ...tsconfig, module: ts.ModuleKind.CommonJS }),
     ),
     babel({}),
-    rename((file) => file.replace(/\.tsx?$/, '.js')),
+    rename(file => file.replace(/\.tsx?$/, '.js')),
     write(outPath),
   )
 
 const buildEsm = (): Task =>
   sequence(
-    whenProps((props) => !props.files.length, find(src)),
-    when((f) => !f.data, read),
+    whenProps(props => !props.files.length, find(src)),
+    when(f => !f.data, read),
     when(
-      (f) => f.path.endsWith('ts') || f.path.endsWith('tsx'),
+      f => f.path.endsWith('ts') || f.path.endsWith('tsx'),
       tsGenerate({ ...tsconfig, module: ts.ModuleKind.ESNext }),
     ),
     babel({}),
-    rename((file) => file.replace(/\.tsx?$/, '.mjs')),
+    rename(file => file.replace(/\.tsx?$/, '.mjs')),
     write(outPath),
   )
 

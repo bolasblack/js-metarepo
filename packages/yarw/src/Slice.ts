@@ -12,16 +12,11 @@ import {
 } from './types'
 import { composeNaiveReducers } from './utils'
 
-type StateFromCaseReducerMap<CRM> = CRM extends CaseReducerMap<infer S>
-  ? S
-  : never
+type StateFromCaseReducerMap<CRM> =
+  CRM extends CaseReducerMap<infer S> ? S : never
 
-type StateFromActionDispatcherMap<ADM> = ADM extends ActionDispatcherMap<
-  infer S,
-  any
->
-  ? S
-  : never
+type StateFromActionDispatcherMap<ADM> =
+  ADM extends ActionDispatcherMap<infer S, any> ? S : never
 
 export interface Slice<S, As extends ActionMap> {
   actions: ActionDispatcherMap<S, As>
@@ -42,12 +37,8 @@ export namespace Slice {
     ActionMapFromCaseReducerMap<Spec['reducers'], Name>
   >
 
-  export type StateType<S extends Slice<any, any>> = S extends Slice<
-    infer R,
-    any
-  >
-    ? R
-    : never
+  export type StateType<S extends Slice<any, any>> =
+    S extends Slice<infer R, any> ? R : never
 
   export interface GetState<S> {
     (rootState?: RootState): S
@@ -277,7 +268,7 @@ function createReducerFromSpec<S>(
     match: (a: Action.Any) => boolean
   }[] = Object.keys(actionDispatchers).map(name => ({
     name,
-    match: actionDispatchers[name].match,
+    match: actionDispatchers[name]!.match,
   }))
 
   return (s, a) => {
@@ -289,7 +280,7 @@ function createReducerFromSpec<S>(
 
     const caseReducers = matchers
       .filter(m => m.match(a))
-      .map(m => spec.reducers[m.name])
+      .map(m => spec.reducers[m.name]!)
 
     if (!caseReducers.length) return s
 

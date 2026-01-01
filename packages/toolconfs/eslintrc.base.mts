@@ -1,4 +1,6 @@
-module.exports = {
+import { defineConfig } from 'eslint/config'
+
+export default defineConfig({
   rules: {
     // off
     'max-classes-per-file': 'off',
@@ -18,4 +20,4 @@ module.exports = {
     ],
     curly: ['error', 'multi-line'],
   },
-}
+})

@@ -1,7 +1,16 @@
-module.exports = {
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
-  extends: ['plugin:@typescript-eslint/recommended'],
+import { defineConfig } from 'eslint/config'
+import tseslint from 'typescript-eslint'
+
+export default defineConfig({
+  files: ['**/*.ts', '**/*.tsx', '**/*.mts'],
+  extends: [tseslint.configs.recommended],
+  languageOptions: {
+    parserOptions: {
+      // https://typescript-eslint.io/blog/parser-options-project-true/#introducing-true
+      project: true,
+      tsconfigRootDir: __dirname,
+    },
+  },
   rules: {
     // off
     'no-unused-vars': 'off',
@@ -36,4 +45,4 @@ module.exports = {
       { allowExpressions: true },
     ],
   },
-}
+})

@@ -2,7 +2,7 @@ import { sliceSpec, Slice, registerSlice } from './Slice'
 import { createRoot, Root, internalStateSym } from './Root'
 import { Action, CaseReducer } from './types'
 import { expectType } from './specUtils'
-import { Mock } from 'vitest'
+import { Mock, vi } from 'vitest'
 
 describe('sliceSpec', () => {
   it('return spec directly', () => {
@@ -147,15 +147,15 @@ describe('Slice', () => {
   let slice: Slice.FromSpec<typeof sliceName, typeof spec>
 
   beforeEach(() => {
-    jest.spyOn(console, 'log')
-    jest.spyOn(console, 'error')
+    vi.spyOn(console, 'log')
+    vi.spyOn(console, 'error')
 
     root = createRoot()
     slice = registerSlice(root, sliceName, spec)
   })
 
   afterEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   describe('actions', () => {
@@ -179,7 +179,7 @@ describe('Slice', () => {
     })
 
     it('can dispatch self action', () => {
-      root.dispatch = jest.fn(root.dispatch) as any
+      root.dispatch = vi.fn(root.dispatch) as any
 
       slice.actions.set(updatedState)
 
@@ -215,7 +215,7 @@ describe('Slice', () => {
 
   describe('listen', () => {
     it('listen self actions by default', () => {
-      const listener = jest.fn()
+      const listener = vi.fn()
       const helloAction = { type: 'hello' }
       slice.listen(listener)
 
@@ -247,7 +247,7 @@ describe('Slice', () => {
 
   describe('subscribe', () => {
     it('callback when any action dispatched in parent', () => {
-      const listener = jest.fn()
+      const listener = vi.fn()
       const helloAction = { type: 'hello' }
       slice.subscribe(listener)
 

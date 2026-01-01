@@ -13,7 +13,7 @@
  * `innerError` 的思路来自 https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses
  */
 export abstract class BaseError<
-  InnerError extends Error = Error
+  InnerError extends Error = Error,
 > extends Error {
   innerError?: InnerError
 
@@ -72,7 +72,7 @@ export function wrapError<
   WrapperErrorConstructor extends new (
     ...args: WrapperErrorConstructorParameters
   ) => WrapperError = new (...args: any[]) => WrapperError,
-  WrapperErrorConstructorParameters extends any[] = any[]
+  WrapperErrorConstructorParameters extends any[] = any[],
 >(
   innerError: InnerError,
   wrapperErrorConstructor: WrapperErrorConstructor,

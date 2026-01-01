@@ -1,6 +1,8 @@
 {
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "packages": [
-    "packages/*"
+    "packages/*",
+    "packages/start/*"
   ],
   "npmClient": "pnpm",
   "version": "independent",
@@ -17,6 +19,5 @@
     "version": {
       "message": "chore(release): bump version"
     }
-  },
-  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
+  }
 }

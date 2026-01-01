@@ -12,14 +12,14 @@ export default function tsGenerate(
 ): StartPlugin<StartDataFilesProps, StartDataFilesProps> {
   return plugin(
     'tsGenerate',
-    ({ logPath }) => async ({ files }: StartDataFilesProps) => {
-      const { transpileModule } = await import('typescript')
-      const fs = await import('fs')
-      const options = { ...compilerOptions }
+    ({ logPath }) =>
+      async ({ files }: StartDataFilesProps) => {
+        const { transpileModule } = await import('typescript')
+        const fs = await import('fs')
+        const options = { ...compilerOptions }
 
-      return {
-        files: files.map(
-          (file: StartFile): StartDataFile => {
+        return {
+          files: files.map((file: StartFile): StartDataFile => {
             logPath(file.path)
 
             const data = file.data || fs.readFileSync(file.path).toString()
@@ -29,9 +29,8 @@ export default function tsGenerate(
             }).outputText
 
             return { ...file, data: newContent }
-          },
-        ),
-      }
-    },
+          }),
+        }
+      },
   )
 }
