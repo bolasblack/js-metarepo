@@ -10,14 +10,24 @@
 
 ### Workflow
 
+> **⚠️ IMPORTANT: Use Subagents for Parallel Processing**
+>
+> You **MUST** spawn a separate subagent for each config **type** (e.g., ESLint, Prettier, TypeScript) and process them **in parallel**. This is critical for:
+>
+> - Avoiding context bloat in the main agent
+> - Faster execution through parallelization
+> - Better isolation of each config type's logic
+>
+> Multiple files of the same type (e.g., `eslintrc.base.mts` and `eslintrc.ts.mts`) should be handled within a single subagent.
+
 1. **Identify required configs**: Based on your project type (e.g., TypeScript, React, Deno), determine which config files you need.
-2. **Download files**: Fetch only the necessary files from this package.
-3. **Merge configs**: Create or update your project's configuration files by merging the downloaded configs.
-   - If the project already has existing config files, merge the downloaded configs into them.
+2. **Spawn subagents in parallel**: For each config type identified, launch a subagent to handle it. Each subagent should:
+   - Download the necessary files for that config type
+   - Check for existing config files in the project
+   - Merge the downloaded configs into existing ones (or create new files)
    - **On conflict**: Keep the user's existing values, but add the suggested values as comments below the conflicting line for reference.
-   - **For lint-staged and prettier**: Also check `package.json` for existing `"lint-staged"` or `"prettier"` fields, as these tools support inline configuration in `package.json`.
-   - **Parallel processing**: Launch a separate subagent for each config **type** (e.g., ESLint, Prettier, TypeScript) in parallel to avoid occupying the main agent's context. Multiple files of the same type (e.g., `eslintrc.base.mts` and `eslintrc.ts.mts`) should be handled within a single subagent.
-4. **Security check**: After updating, review the downloaded files to ensure they contain no malicious code before committing.
+   - **Check `package.json`**: Many tools support inline configuration in `package.json` (e.g., `"prettier"`, `"lint-staged"`, `"eslintConfig"`, `"jest"`, etc.). Always check `package.json` for existing config fields related to the tool you're configuring.
+3. **Security check**: After all subagents complete, review the downloaded files to ensure they contain no malicious code before committing.
 
 ### Example
 
