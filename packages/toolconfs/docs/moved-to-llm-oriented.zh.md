@@ -1,8 +1,14 @@
-# Why Move to LLM-Oriented
+# 我把我的配置共享仓库转移到了 LLM-oriented 模式
 
-## 传统配置共享的困境
+> **TL;DR**: 用 npm 去分发共享配置的方案不够好用，"LLM-oriented 的配置共享方案" 让你保持配置完全所有权，同时享受智能辅助升级。
 
-传统的工具配置共享方式，无论是通过 `extends` 继承、preset 预设还是 npm 包分发，都面临一个根本性的矛盾：**便利性与灵活性的两难选择**。
+## 啥是 “LLM-oriented 的配置共享方案”
+
+简单来说，就是让配置共享项目提供 [llms.txt](https://llmstxt.org/) ，使用方依此让 LLM 去下载/更新项目的配置文件，以保持配置的更新。而不是通过 npm registry 来分发配置。
+
+## 那为不用 npm 了？
+
+传统的工具配置共享方式，无论是通过 `extends` 继承还是 preset 预设，都面临一个根本性的矛盾：**便利性与灵活性的两难选择**。
 
 ### 继承模式的优点
 
@@ -100,7 +106,14 @@ ESLint 其实已经还好了，Prettier 和 lint-staged 这种没有 extends/mer
 
 现在的版本：
 
-- [`lint-staged.config.js`](https://github.com/bolasblack/js-metarepo/blob/25d4495adcba67bda9daf65b04a204acc01cb795/packages/toolconfs/lint-staged.config.js)
+- [`lint-staged.config.js`](https://github.com/bolasblack/js-metarepo/blob/25d4495adcba67bda9daf65b04a204acc01cb795/packages/toolconfs/lint-staged.config.js)  
+  算了，这个实在是太简单了，我直接 inline 了得了：
+  ```javascript
+  module.exports = {
+    '*.{ts,tsx,js,jsx}': ['prettier --write', 'eslint'],
+    '*.{css,scss,sass,less,md,mdx}': ['prettier --write'],
+  }
+  ```
 - `lint-staged.helpers.js` 已经不存在了，因为没必要
 
 ## 你说了这么多，但这看起来不还是倒退吗？

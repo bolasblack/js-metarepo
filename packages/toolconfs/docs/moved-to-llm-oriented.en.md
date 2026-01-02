@@ -1,8 +1,14 @@
-# Why Move to LLM-Oriented
+# I Moved My Config Sharing Repo to LLM-oriented Mode
 
-## The Dilemma of Traditional Config Sharing
+> **TL;DR**: Using npm to distribute shared configs isn't great. "LLM-oriented config sharing" lets you keep full ownership of your configs while enjoying intelligent upgrade assistance.
 
-Traditional ways of sharing tool configurations—whether through `extends`, presets, or npm packages—all face a fundamental contradiction: **the trade-off between convenience and flexibility**.
+## What is "LLM-oriented Config Sharing"?
+
+Simply put, config sharing projects provide [llms.txt](https://llmstxt.org/), and consumers use it to let LLMs download/update project config files to keep them up to date—instead of distributing configs through npm registry.
+
+## So Why Not Use npm Anymore?
+
+Traditional ways of sharing tool configurations—whether through `extends` or presets—all face a fundamental contradiction: **the trade-off between convenience and flexibility**.
 
 ### The Pros of Inheritance Mode
 
@@ -101,6 +107,13 @@ Previous version:
 Current version:
 
 - [`lint-staged.config.js`](https://github.com/bolasblack/js-metarepo/blob/25d4495adcba67bda9daf65b04a204acc01cb795/packages/toolconfs/lint-staged.config.js)
+  Actually, this is so simple now, let me just inline it:
+  ```javascript
+  module.exports = {
+    '*.{ts,tsx,js,jsx}': ['prettier --write', 'eslint'],
+    '*.{css,scss,sass,less,md,mdx}': ['prettier --write'],
+  }
+  ```
 - `lint-staged.helpers.js` no longer exists—because it's no longer needed
 
 ## You've Said a Lot, But Doesn't This Still Look Like a Step Backward?

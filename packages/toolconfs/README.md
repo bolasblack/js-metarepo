@@ -18,7 +18,7 @@ This package provides a manifest file designed for LLMs to easily scaffold confi
 
 ## Why moved to LLM-oriented?
 
-Check out [Why move to LLM-oriented?](./docs/why-move-to-llm-oriented.en.md), [中文版](./docs/why-move-to-llm-oriented.zh.md)
+Check out [this](./docs/moved-to-llm-oriented.en.md), [中文版](./docs/moved-to-llm-oriented.zh.md)
 
 ## How to migrate from NPM Usage (Legacy way)
 
