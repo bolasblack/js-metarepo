@@ -2,13 +2,13 @@ packages:
   - packages/*
   - packages/start/*
 
-ignoredBuiltDependencies:
-  - esbuild
-  - git-hook-pure
-  - nx
+minimumReleaseAge: 10080
 
-onlyBuiltDependencies:
-  - postinstall-postinstall
+allowBuilds:
+  esbuild: false
+  git-hook-pure: false
+  nx: false
+  postinstall-postinstall: true
 
 catalogs:
   peerDeps:
