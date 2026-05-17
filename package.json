@@ -22,7 +22,7 @@
     "git-hook-pure": "^3.2.1",
     "lerna": "^9.0.3",
     "lint-staged": "^16.2.7",
-    "oxfmt": "0.45.0",
+    "oxfmt": "0.48.0",
     "oxlint": "1.62.0",
     "oxlint-tsgolint": "0.22.1",
     "patch-package": "^8.0.1",
