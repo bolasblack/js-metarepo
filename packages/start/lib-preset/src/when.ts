@@ -1,9 +1,6 @@
 import plugin, { StartFile, StartPlugin, StartFilesProps } from '@start/plugin'
 
-export default function when<
-  I extends StartFilesProps,
-  O extends StartFilesProps,
->(
+export default function when<I extends StartFilesProps, O extends StartFilesProps>(
   condition: (file: StartFile) => boolean | Promise<boolean>,
   target: StartPlugin<I, O>,
 ): StartPlugin<I, O> {
@@ -24,9 +21,7 @@ export default function when<
     ).files.slice()
 
     return {
-      files: inputFiles.map((f, idx) =>
-        filesRes[idx] ? processedFiles.shift() : f,
-      ),
+      files: inputFiles.map((f, idx) => (filesRes[idx] ? processedFiles.shift() : f)),
     } as any
   })
 }

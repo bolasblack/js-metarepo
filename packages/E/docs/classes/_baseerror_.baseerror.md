@@ -17,7 +17,7 @@ innerError 属性
 
 ## Type parameters
 
-▪ **InnerError**: _[Error](_baseerror_.baseerror.md#static-error)_
+▪ **InnerError**: _[Error](\_baseerror_.baseerror.md#static-error)\_
 
 ## Hierarchy
 
@@ -47,7 +47,7 @@ innerError 属性
 
 ### constructor
 
-\+ **new BaseError**(`message?`: undefined | string): _[BaseError](_baseerror_.baseerror.md)_
+\+ **new BaseError**(`message?`: undefined | string): _[BaseError](\_baseerror_.baseerror.md)\_
 
 _Defined in [packages/E/src/BaseError.ts:18](https://github.com/bolasblack/js-metarepo/blob/aad8249/packages/E/src/BaseError.ts#L18)_
 
@@ -57,7 +57,7 @@ _Defined in [packages/E/src/BaseError.ts:18](https://github.com/bolasblack/js-me
 | ---------- | ----------------------- |
 | `message?` | undefined &#124; string |
 
-**Returns:** _[BaseError](_baseerror_.baseerror.md)_
+**Returns:** _[BaseError](\_baseerror_.baseerror.md)\_
 
 ## Properties
 
@@ -73,7 +73,7 @@ _Defined in [packages/E/src/BaseError.ts:18](https://github.com/bolasblack/js-me
 
 • **message**: _string_
 
-_Inherited from [AlertError](_alerterror_.alerterror.md).[message](_alerterror_.alerterror.md#message)_
+_Inherited from [AlertError](\_alerterror_.alerterror.md).[message](_alerterror_.alerterror.md#message)\_
 
 Defined in node_modules/typescript/lib/lib.es5.d.ts:974
 
@@ -83,7 +83,7 @@ Defined in node_modules/typescript/lib/lib.es5.d.ts:974
 
 • **name**: _string_
 
-_Inherited from [AlertError](_alerterror_.alerterror.md).[name](_alerterror_.alerterror.md#name)_
+_Inherited from [AlertError](\_alerterror_.alerterror.md).[name](_alerterror_.alerterror.md#name)\_
 
 Defined in node_modules/typescript/lib/lib.es5.d.ts:973
 
@@ -93,7 +93,7 @@ Defined in node_modules/typescript/lib/lib.es5.d.ts:973
 
 • **stack**? : _undefined | string_
 
-_Inherited from [AlertError](_alerterror_.alerterror.md).[stack](_alerterror_.alerterror.md#optional-stack)_
+_Inherited from [AlertError](\_alerterror_.alerterror.md).[stack](_alerterror_.alerterror.md#optional-stack)\_
 
 Defined in node_modules/typescript/lib/lib.es5.d.ts:975
 

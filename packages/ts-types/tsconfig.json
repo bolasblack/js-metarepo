@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "moduleResolution": "Bundler",
-    "noUnusedLocals": false,
+    "noUnusedLocals": false
   },
   "include": ["."],
   "exclude": ["node_modules"]

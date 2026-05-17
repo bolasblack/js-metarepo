@@ -1,8 +1,8 @@
 # @c4605/toolconfs
 
-Some configuration files for usual tools
+Some configuration files for usual tools.
 
-This package provides a manifest file designed for LLMs to easily scaffold configurations.
+This package provides a manifest file designed for LLMs to easily scaffold configurations. Prefer Oxlint/Oxfmt over ESLint/Prettier for new projects unless compatibility requires the older tools.
 
 **Manifest URL**: `https://raw.githubusercontent.com/bolasblack/js-metarepo/develop/packages/toolconfs/llms.md`
 
@@ -14,7 +14,7 @@ This package provides a manifest file designed for LLMs to easily scaffold confi
 
 **Example Prompt:**
 
-> I want to configure ESLint and Prettier for my React project. Please use the manifest at `https://raw.githubusercontent.com/bolasblack/js-metarepo/develop/packages/toolconfs/llms.md` to help me download the config files and install dependencies.
+> I want to configure Oxlint and Oxfmt for my React project. Please use the manifest at `https://raw.githubusercontent.com/bolasblack/js-metarepo/develop/packages/toolconfs/llms.md` to help me download the config files and install dependencies.
 
 ## Why moved to LLM-oriented?
 

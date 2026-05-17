@@ -16,23 +16,22 @@ export type Compact<A> = { [K in keyof A]: A[K] }
  *
  * @since 0.3.0
  */
-export type Exact<A extends AnyObject, B extends A> = A &
-  Record<Exclude<keyof B, keyof A>, never>
+export type Exact<A extends AnyObject, B extends A> = A & Record<Exclude<keyof B, keyof A>, never>
 
-// prettier-ignore
+// oxfmt-ignore
 export type Head<T extends any[]> = T extends [infer R, ...any[]] ? R : T extends (infer R)[] ? R : never
 
 // https://github.com/Microsoft/TypeScript/pull/24897#issuecomment-400989548
-// prettier-ignore
+// oxfmt-ignore
 export type Tail<T extends any[]> = AnyFunction<T> extends ((h: any, ...rest: infer R) => void) ? R : never
 
 // https://github.com/Microsoft/TypeScript/pull/24897#issuecomment-400989548
-// prettier-ignore
+// oxfmt-ignore
 export type Prepend<H, T extends any[]> = ((first: H, ...args: T) => any) extends AnyFunction<infer R> ? R : []
 
 /* TODO
 // https://github.com/Microsoft/TypeScript/pull/24897#issuecomment-401401470
-// prettier-ignore
+// oxfmt-ignore
 export type Reverse<Tuple extends any[]> = Reverse_<Tuple, []>
 type Reverse_<Tuple extends any[], Result extends any[]> = {
   1: Result,
@@ -84,17 +83,17 @@ type NonNullableWithoutObject = string | boolean | number | any[] | AnyFunction
 
 type WithoutObject = null | undefined | NonNullableWithoutObject
 
-// prettier-ignore
+// oxfmt-ignore
 export type DeepOptional<T> =
   T extends AnyObject ? { [K in keyof T]?: DeepOptional<T[K]> } :
   T
 
-// prettier-ignore
+// oxfmt-ignore
 export type DeepRequired<T> =
   T extends AnyObject ? { [K in keyof T]-?: DeepRequired<T[K]> } :
   T
 
-// prettier-ignore
+// oxfmt-ignore
 export type DeepNonNullable<T> =
   NonNullable<T> extends AnyObject ? { [K in keyof NonNullable<T>]-?: DeepNonNullable<NonNullable<T>[K]> } :
   NonNullable<T>
@@ -113,41 +112,41 @@ export type DeepNonNullable<T> =
  *    This forces the compiler to decompose the union and check each member individually against `undefined`,
  *    guaranteeing that `undefined` is removed.
  */
-// prettier-ignore
+// oxfmt-ignore
 export type OptionalPropNames<T> = Exclude<{ [P in keyof T]: undefined extends T[P] ? P : never }[keyof T], undefined>
-// prettier-ignore
+// oxfmt-ignore
 export type RequiredPropNames<T> = Exclude<{ [P in keyof T]: undefined extends T[P] ? never : P }[keyof T], undefined>
 
-// prettier-ignore
+// oxfmt-ignore
 export type ExcludeKey<T, EK extends keyof T> = Omit<T, EK>
 
-// prettier-ignore
+// oxfmt-ignore
 export type RequiredKey<T, Key extends keyof T> = Compact<
   { [K in keyof T]: T[K] } &
   { [K in Key]-?: NonNullable<T[K]> }
 >
 
-// prettier-ignore
+// oxfmt-ignore
 export type OptionalKey<T, Key extends keyof T> = Compact<
   { [K in Exclude<keyof T, Key | OptionalPropNames<T>>]: T[K] } &
   { [K in Key | OptionalPropNames<T>]?: T[K] }
 >
 
-// prettier-ignore
+// oxfmt-ignore
 export type DeepType<T, Type> =
   T extends null | undefined ? T :
   T extends WithoutObject ? Type :
   T extends AnyObject ? { [K in keyof T]: DeepType<T[K], Type> } :
   T
 
-// prettier-ignore
+// oxfmt-ignore
 export type PickNullable<T> =
   T extends null ? null :
   T extends undefined ? undefined :
   T extends null | undefined ? null | undefined :
   never
 
-// prettier-ignore
+// oxfmt-ignore
 export type DeepPick<T, U> = {
   [K in keyof U]:
     K extends keyof T ?

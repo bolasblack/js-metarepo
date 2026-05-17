@@ -1,13 +1,13 @@
 {
   "name": "@c4/lib-start-preset",
   "version": "0.3.3",
-  "main": "lib/index.js",
-  "repository": "https://github.com/bolasblack/js-metarepo/blob/master/packages/start/lib-preset",
-  "author": "c4605 <bolasblack@gmail.com>",
   "license": "MIT",
+  "author": "c4605 <bolasblack@gmail.com>",
+  "repository": "https://github.com/bolasblack/js-metarepo/blob/master/packages/start/lib-preset",
   "bin": {
     "start": "lib/cli.js"
   },
+  "main": "lib/index.js",
   "scripts": {
     "lint": "oxlint --type-aware src",
     "test": "exit 0",

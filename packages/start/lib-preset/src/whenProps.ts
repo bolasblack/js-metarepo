@@ -1,9 +1,6 @@
 import plugin, { StartPlugin, StartFilesProps } from '@start/plugin'
 
-export default function whenProps<
-  I extends StartFilesProps,
-  O extends StartFilesProps,
->(
+export default function whenProps<I extends StartFilesProps, O extends StartFilesProps>(
   condition: (props: StartFilesProps) => boolean | Promise<boolean>,
   target: StartPlugin<I, O>,
 ): StartPlugin<I, O> {

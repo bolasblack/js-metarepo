@@ -50,10 +50,7 @@ export function onError<T1, T2>(
   predicate: ErrPredicate<T1>,
   handler: Handler<T1, T2>,
 ): VoidToUndefined<T2>
-export function onError<T1, T2>(
-  predicate: ErrPredicate<T1>,
-  handler?: Handler<T1, T2>,
-): any {
+export function onError<T1, T2>(predicate: ErrPredicate<T1>, handler?: Handler<T1, T2>): any {
   if (!handler) {
     return (handler: Handler<T1, T2>): any => onError(predicate, handler)
   }

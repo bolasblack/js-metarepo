@@ -11,10 +11,7 @@ export class AssertionError extends BaseError {}
  *
  * `assertion` 支持函数
  */
-export function assert(
-  assertion: boolean | (() => boolean),
-  msg?: string,
-): asserts assertion {
+export function assert(assertion: boolean | (() => boolean), msg?: string): asserts assertion {
   if (typeof assertion === 'function') {
     if (!assertion()) {
       throw new AssertionError(msg)

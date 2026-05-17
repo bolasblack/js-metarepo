@@ -6,12 +6,10 @@ describe('Fn', () => {
     it('should return the arguments type of a function', () => {
       expectTypeOf<ArgsType<() => void>>().toEqualTypeOf<[]>()
       expectTypeOf<ArgsType<(a: 1) => void>>().toEqualTypeOf<[a: 1]>()
-      expectTypeOf<ArgsType<(a: 1, c: 2) => void>>().toEqualTypeOf<
-        [a: 1, c: 2]
+      expectTypeOf<ArgsType<(a: 1, c: 2) => void>>().toEqualTypeOf<[a: 1, c: 2]>()
+      expectTypeOf<ArgsType<(a: 1, c: 2, ...args: boolean[]) => void>>().toEqualTypeOf<
+        [a: 1, c: 2, ...args: boolean[]]
       >()
-      expectTypeOf<
-        ArgsType<(a: 1, c: 2, ...args: boolean[]) => void>
-      >().toEqualTypeOf<[a: 1, c: 2, ...args: boolean[]]>()
     })
   })
 
@@ -20,9 +18,7 @@ describe('Fn', () => {
       expectTypeOf<FstArgType<() => void>>().toEqualTypeOf<never>()
       expectTypeOf<FstArgType<(a: 1) => void>>().toEqualTypeOf<1>()
       expectTypeOf<FstArgType<(a: 1, c: 2) => void>>().toEqualTypeOf<1>()
-      expectTypeOf<
-        FstArgType<(a: 1, c: 2, ...args: boolean[]) => void>
-      >().toEqualTypeOf<1>()
+      expectTypeOf<FstArgType<(a: 1, c: 2, ...args: boolean[]) => void>>().toEqualTypeOf<1>()
     })
   })
 
@@ -32,9 +28,7 @@ describe('Fn', () => {
       expectTypeOf<SndArgType<(a: 1) => void>>().toEqualTypeOf<never>()
       expectTypeOf<SndArgType<(a: 1, c: 2) => void>>().toEqualTypeOf<2>()
       expectTypeOf<SndArgType<(a: 1, c: 2, d: 3) => void>>().toEqualTypeOf<2>()
-      expectTypeOf<
-        SndArgType<(a: 1, c: 2, ...args: boolean[]) => void>
-      >().toEqualTypeOf<2>()
+      expectTypeOf<SndArgType<(a: 1, c: 2, ...args: boolean[]) => void>>().toEqualTypeOf<2>()
     })
   })
 
@@ -44,15 +38,9 @@ describe('Fn', () => {
       expectTypeOf<ThdArgType<(a: 1) => void>>().toEqualTypeOf<never>()
       expectTypeOf<ThdArgType<(a: 1, c: 2) => void>>().toEqualTypeOf<never>()
       expectTypeOf<ThdArgType<(a: 1, c: 2, d: 3) => void>>().toEqualTypeOf<3>()
-      expectTypeOf<
-        ThdArgType<(a: 1, c: 2, d: 3, e: 4) => void>
-      >().toEqualTypeOf<3>()
-      expectTypeOf<
-        ThdArgType<(a: 1, c: 2, d: 3, ...args: boolean[]) => void>
-      >().toEqualTypeOf<3>()
-      expectTypeOf<
-        ThdArgType<(a: 1, c: 2, ...args: boolean[]) => void>
-      >().toEqualTypeOf<boolean>()
+      expectTypeOf<ThdArgType<(a: 1, c: 2, d: 3, e: 4) => void>>().toEqualTypeOf<3>()
+      expectTypeOf<ThdArgType<(a: 1, c: 2, d: 3, ...args: boolean[]) => void>>().toEqualTypeOf<3>()
+      expectTypeOf<ThdArgType<(a: 1, c: 2, ...args: boolean[]) => void>>().toEqualTypeOf<boolean>()
     })
   })
 })

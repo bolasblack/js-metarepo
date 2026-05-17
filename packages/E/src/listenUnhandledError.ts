@@ -7,23 +7,15 @@
  *
  * PS. 其实这个问题可以通过给 `<script>` 标签添加 `crossorigin` 属性来解决
  */
-export function listenUnhandledError<T>(
-  errorHandler: (err: T | ErrorEvent) => any,
-): () => void {
-  if (
-    typeof module !== 'undefined' &&
-    typeof global !== 'undefined' &&
-    module.exports
-  ) {
+export function listenUnhandledError<T>(errorHandler: (err: T | ErrorEvent) => any): () => void {
+  if (typeof module !== 'undefined' && typeof global !== 'undefined' && module.exports) {
     return listenUnhandledErrorInNode(errorHandler)
   } else {
     return listenUnhandledErrorInBrowser(errorHandler)
   }
 }
 
-function listenUnhandledErrorInNode<T>(
-  errorHandler: (err: T | ErrorEvent) => any,
-): () => void {
+function listenUnhandledErrorInNode<T>(errorHandler: (err: T | ErrorEvent) => any): () => void {
   const errorEventCallback = (error: any, origin: string): void => {
     if (origin === 'unhandledRejection') return
     errorHandler(error)
@@ -37,26 +29,19 @@ function listenUnhandledErrorInNode<T>(
 
   const unlistener = (): void => {
     process.removeListener('error', errorEventCallback)
-    process.removeListener(
-      'unhandledRejection',
-      unhandledrejectionEventCallback,
-    )
+    process.removeListener('unhandledRejection', unhandledrejectionEventCallback)
   }
 
   return unlistener
 }
 
-function listenUnhandledErrorInBrowser<T>(
-  errorHandler: (err: T | ErrorEvent) => any,
-): () => void {
+function listenUnhandledErrorInBrowser<T>(errorHandler: (err: T | ErrorEvent) => any): () => void {
   const errorEventCallback = (event: ErrorEvent): void => {
     errorHandler(event.error || event)
   }
   addEventListener('error', errorEventCallback)
 
-  const unhandledrejectionEventCallback = (
-    event: PromiseRejectionEvent,
-  ): void => {
+  const unhandledrejectionEventCallback = (event: PromiseRejectionEvent): void => {
     errorHandler(event.reason)
   }
   addEventListener('unhandledrejection', unhandledrejectionEventCallback)

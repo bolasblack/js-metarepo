@@ -9,14 +9,8 @@ import {
 import { Slice, SliceSpec, registerSlice } from './Slice'
 import { Root } from './Root'
 
-export function useSlice<S extends Slice<any, any>>(
-  slice: S,
-): useSlice.Return<S>
-export function useSlice<
-  N extends string,
-  S,
-  Reducers extends CaseReducerMap<S>,
->(
+export function useSlice<S extends Slice<any, any>>(slice: S): useSlice.Return<S>
+export function useSlice<N extends string, S, Reducers extends CaseReducerMap<S>>(
   parent: Root,
   name: N,
   spec: SliceSpec<S, Reducers>,
@@ -26,9 +20,7 @@ export function useSlice<
   ) => void,
 ): useSlice.Return<Slice<S, ActionMapFromCaseReducerMap<Reducers, N>>>
 export function useSlice(...args: any[]): useSlice.Return<any> {
-  const [slice, unregisterSlice] = useMemo<
-    [Slice<any, any>, (() => void) | undefined]
-  >(() => {
+  const [slice, unregisterSlice] = useMemo<[Slice<any, any>, (() => void) | undefined]>(() => {
     if (args.length < 3) {
       return [args[0], undefined]
     } else {
@@ -56,10 +48,7 @@ export namespace useSlice {
   }
 
   export interface UseEffect {
-    <A extends Action.Any = Action.Any>(
-      listener: (action: A) => any,
-      deps?: DependencyList,
-    ): void
+    <A extends Action.Any = Action.Any>(listener: (action: A) => any, deps?: DependencyList): void
     <A extends Action.Any = Action.Any>(
       actionFilter: (action: Action.Any) => boolean,
       listener: (action: A) => any,
@@ -79,13 +68,10 @@ export namespace useSlice {
   }
 }
 
-export function createUseSelector<S>(
-  slice: Slice<S, any>,
-): useSlice.UseSelector<S> {
+export function createUseSelector<S>(slice: Slice<S, any>): useSlice.UseSelector<S> {
   return (_selector?: (s: S) => any, deps: DependencyList = []): any => {
     const selector = useMemo(
-      () =>
-        _selector ? () => _selector(slice.getState()) : () => slice.getState(),
+      () => (_selector ? () => _selector(slice.getState()) : () => slice.getState()),
       deps,
     )
 
@@ -105,11 +91,7 @@ export function createUseEffect(
   slice: Slice<any, any>,
   useEffectPassedIn: typeof useEffect = useEffect,
 ): useSlice.UseEffect {
-  const useSliceEffect: useSlice.UseEffect = (
-    _dispatcher?: any,
-    _callback?: any,
-    _deps?: any,
-  ) => {
+  const useSliceEffect: useSlice.UseEffect = (_dispatcher?: any, _callback?: any, _deps?: any) => {
     let matcher: ((action: Action.Any) => action is Action.Any) | undefined
     let callback: (action: Action.Any) => any
     let deps: DependencyList

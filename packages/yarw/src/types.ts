@@ -14,10 +14,10 @@ export namespace Action {
 }
 export type ActionFromCaseReducer<R, ActionType extends string> =
   R extends CaseReducer<any, infer A> ? A & { type: ActionType } : never
-export type ActionAddPrefix<
-  A extends Action<string>,
-  ActionTypePrefix extends string,
-> = Action<`${ActionTypePrefix}/${TypeFromAction<A>}`, PayloadFromAction<A>>
+export type ActionAddPrefix<A extends Action<string>, ActionTypePrefix extends string> = Action<
+  `${ActionTypePrefix}/${TypeFromAction<A>}`,
+  PayloadFromAction<A>
+>
 
 export type ActionMap = {
   [type: string]: Action.Any<string>
@@ -27,10 +27,7 @@ export type ActionMapFromCaseReducerMap<Rs, ActionTypePrefix extends string> = {
     ? ActionFromCaseReducer<Rs[type], `${ActionTypePrefix}/${type}`>
     : never
 }
-export type ActionMapAddPrefix<
-  As extends ActionMap,
-  ActionTypePrefix extends string,
-> = {
+export type ActionMapAddPrefix<As extends ActionMap, ActionTypePrefix extends string> = {
   [K in keyof As]: ActionAddPrefix<As[K], ActionTypePrefix>
 }
 
@@ -181,10 +178,7 @@ export namespace ReducerBuilder {
 
   export interface When {
     <A extends Action.Any = Action.Any>(reducer: Reducer<A>): void
-    <A extends Action.Any = Action.Any>(
-      actionFilter: ActionMatcher,
-      reducer: Reducer<A>,
-    ): void
+    <A extends Action.Any = Action.Any>(actionFilter: ActionMatcher, reducer: Reducer<A>): void
     <A extends Action.Any = Action.Any>(
       actionDispatcher: ActionDispatcher.Any<any, A>,
       reducer: Reducer<A>,
@@ -205,19 +199,14 @@ export interface ActionListener<S = any> {
 }
 export namespace ActionListener {
   /* @hidden */
-  export type ListenMatcher<A extends Action = Action.Any> = (
-    action: Action.Any,
-  ) => action is A
+  export type ListenMatcher<A extends Action = Action.Any> = (action: Action.Any) => action is A
 
   /* @hidden */
   export type ListenHandler<A extends Action = Action.Any> = (action: A) => any
 
   /* @hidden */
   export const dispatchArgs = (
-    dispatcher:
-      | ActionDispatcher.Any
-      | ActionListener.ListenMatcher
-      | ActionListener.ListenHandler,
+    dispatcher: ActionDispatcher.Any | ActionListener.ListenMatcher | ActionListener.ListenHandler,
     callback: ActionListener.ListenHandler | undefined,
   ): {
     matcher: ActionListener.ListenMatcher | null

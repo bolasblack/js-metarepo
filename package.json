@@ -1,9 +1,9 @@
 {
   "name": "@c4605/js-metarepo",
-  "repository": "https://github.com/bolasblack/js-metarepo",
-  "author": "c4605 <bolasblack@gmail.com>",
-  "license": "MIT",
   "private": true,
+  "license": "MIT",
+  "author": "c4605 <bolasblack@gmail.com>",
+  "repository": "https://github.com/bolasblack/js-metarepo",
   "workspaces": [
     "packages/start/*",
     "packages/lab/*",
@@ -22,20 +22,13 @@
     "git-hook-pure": "^3.2.1",
     "lerna": "^9.0.3",
     "lint-staged": "^16.2.7",
+    "oxfmt": "0.45.0",
     "oxlint": "1.62.0",
     "oxlint-tsgolint": "0.22.1",
     "patch-package": "^8.0.1",
     "postinstall-postinstall": "^2.1.0",
-    "prettier": "^3.0.0",
     "typedoc": "^0.28.15",
     "typescript": "^6.0.0",
     "vitest": "^4.0.16"
-  },
-  "prettier": {
-    "$comment": "Merged from @c4605/toolconfs v5.3.1 (llms.md)",
-    "singleQuote": true,
-    "trailingComma": "all",
-    "semi": false,
-    "arrowParens": "avoid"
   }
 }

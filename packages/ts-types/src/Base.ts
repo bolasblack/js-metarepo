@@ -2,7 +2,7 @@ import { Compact } from './Coll'
 
 export type SimpleJSON<T = string> = Record<string, T>
 
-// prettier-ignore
+// oxfmt-ignore
 export type AnyFunction<AS extends any[] = any[]> = (...args: AS) => any
 
 /**
@@ -36,8 +36,5 @@ export type AnyObject<T = unknown> = Record<string, T>
  * export type Result1 = Equals<string, string> // "T"
  * export type Result2 = Equals<string, number> // "F"
  */
-export type Equals<A, B, Y = 'T', N = 'F'> = (<C>() => C extends Compact<A>
-  ? Y
-  : N) extends <C>() => C extends Compact<B> ? Y : N
-  ? Y
-  : N
+export type Equals<A, B, Y = 'T', N = 'F'> =
+  (<C>() => C extends Compact<A> ? Y : N) extends <C>() => C extends Compact<B> ? Y : N ? Y : N

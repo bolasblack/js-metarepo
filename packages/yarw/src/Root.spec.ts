@@ -106,10 +106,7 @@ describe('Root', () => {
 
     it('can filter action by ActionDispatcher', () => {
       const listener = jest.fn()
-      const dispatcher = ActionDispatcher.create<any, Action<'hello1'>>(
-        'hello1',
-        root,
-      )
+      const dispatcher = ActionDispatcher.create<any, Action<'hello1'>>('hello1', root)
       const action1 = { type: 'hello1' }
       const action2 = { type: 'hello2' }
       root.listen(dispatcher, listener)

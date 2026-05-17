@@ -11,7 +11,7 @@ Alertable 是一种特殊接口，当收到任何一个错误有实现这个接�
 
 ```js
 doSomething().catch(
-  onError(isErrorAlertable, (err) => {
+  onError(isErrorAlertable, err => {
     alertService.showAlert({ message: err.displayMessage })
 
     throw new OtherError({

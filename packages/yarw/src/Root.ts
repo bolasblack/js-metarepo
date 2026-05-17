@@ -14,9 +14,7 @@ import { composeNaiveReducers, composeEnhancers } from './utils'
 
 export const internalStateSym = Symbol('internalState')
 
-export type RegisterReducer = (
-  reducer: NaiveReducer<RootState, Action.Any>,
-) => () => void
+export type RegisterReducer = (reducer: NaiveReducer<RootState, Action.Any>) => () => void
 
 export interface RootState {
   readonly [internalStateSym]: any
@@ -31,18 +29,13 @@ export interface Root {
   [Symbol.observable](): Observable<RootState>
 }
 
-const defaultInitialState = Object.preventExtensions(
-  Object.freeze({ [internalStateSym]: {} }),
-)
+const defaultInitialState = Object.preventExtensions(Object.freeze({ [internalStateSym]: {} }))
 
 export function createRoot(enhancer?: StoreEnhancer): Root {
   const { enhancer: listenEnhancer, listen } = createListenManager()
   const defaultReducer: Reducer<RootState> = s => s || defaultInitialState
 
-  const store = createStore(
-    defaultReducer,
-    composeEnhancers(enhancer, listenEnhancer),
-  )
+  const store = createStore(defaultReducer, composeEnhancers(enhancer, listenEnhancer))
 
   const { registerReducer } = createReducerManager(store)
 
@@ -67,16 +60,10 @@ function createListenManager(): {
   }[] = []
 
   const listen: ActionListener = function (
-    dispatcher:
-      | ActionDispatcher.Any
-      | ActionListener.ListenMatcher
-      | ActionListener.ListenHandler,
+    dispatcher: ActionDispatcher.Any | ActionListener.ListenMatcher | ActionListener.ListenHandler,
     callback?: ActionListener.ListenHandler,
   ) {
-    const { matcher, handler } = ActionListener.dispatchArgs(
-      dispatcher,
-      callback,
-    )
+    const { matcher, handler } = ActionListener.dispatchArgs(dispatcher, callback)
     const pair = { matcher: matcher || ((_a): _a is any => true), handler }
     registered.push(pair)
     return () => {
