@@ -12,11 +12,9 @@ import {
 } from './types'
 import { composeNaiveReducers } from './utils'
 
-type StateFromCaseReducerMap<CRM> =
-  CRM extends CaseReducerMap<infer S> ? S : never
+type StateFromCaseReducerMap<CRM> = CRM extends CaseReducerMap<infer S> ? S : never
 
-type StateFromActionDispatcherMap<ADM> =
-  ADM extends ActionDispatcherMap<infer S, any> ? S : never
+type StateFromActionDispatcherMap<ADM> = ADM extends ActionDispatcherMap<infer S, any> ? S : never
 
 export interface Slice<S, As extends ActionMap> {
   actions: ActionDispatcherMap<S, As>
@@ -29,16 +27,12 @@ export interface Slice<S, As extends ActionMap> {
   unregistered: boolean
 }
 export namespace Slice {
-  export type FromSpec<
-    Name extends string,
-    Spec extends SliceSpec<any, any>,
-  > = Slice<
+  export type FromSpec<Name extends string, Spec extends SliceSpec<any, any>> = Slice<
     Spec['initialState'],
     ActionMapFromCaseReducerMap<Spec['reducers'], Name>
   >
 
-  export type StateType<S extends Slice<any, any>> =
-    S extends Slice<infer R, any> ? R : never
+  export type StateType<S extends Slice<any, any>> = S extends Slice<infer R, any> ? R : never
 
   export interface GetState<S> {
     (rootState?: RootState): S
@@ -63,11 +57,7 @@ export function sliceSpec<S, Reducers extends CaseReducerMap<S>>(
   return spec
 }
 
-export function registerSlice<
-  N extends string,
-  S,
-  Reducers extends CaseReducerMap<S>,
->(
+export function registerSlice<N extends string, S, Reducers extends CaseReducerMap<S>>(
   parent: Root,
   name: N,
   spec: SliceSpec<S, Reducers>,
@@ -78,7 +68,7 @@ export function registerSlice<
 ): Slice<S, ActionMapFromCaseReducerMap<Reducers, N>> {
   const unregisteredCtrl = new AbortController()
 
-  // eslint-disable-next-line prefer-const
+  // oxlint-disable-next-line prefer-const
   let unregisterReducer: undefined | (() => void)
 
   type AM = ActionMapFromCaseReducerMap<Reducers, N>
@@ -96,20 +86,10 @@ export function registerSlice<
     unregisteredCtrl.signal,
   )
 
-  const { reducer, builder } = createSliceReducer(
-    name,
-    spec,
-    actions,
-    unregisteredCtrl.signal,
-  )
+  const { reducer, builder } = createSliceReducer(name, spec, actions, unregisteredCtrl.signal)
 
   const wrappedGetState = (parentState?: RootState): S =>
-    getState(
-      name,
-      spec,
-      parentState ?? parent.getState(),
-      unregisteredCtrl.signal,
-    )
+    getState(name, spec, parentState ?? parent.getState(), unregisteredCtrl.signal)
 
   const wrappedSetState = (
     newState: S | ((state: S) => S),
@@ -139,9 +119,7 @@ export function registerSlice<
     reducer,
     subscribe: (listener: () => void) => {
       if (unregisteredCtrl.signal.aborted) {
-        console.error(
-          `Calling unregistered slice "${name}"'s action dispatcher`,
-        )
+        console.error(`Calling unregistered slice "${name}"'s action dispatcher`)
       }
 
       return parent.subscribe(listener)
@@ -172,9 +150,7 @@ const getState = <S>(
   unregisterSignal: AbortSignal,
 ): S => {
   if (unregisterSignal.aborted) {
-    console.error(
-      `Calling unregistered slice "${sliceName}"'s action dispatcher`,
-    )
+    console.error(`Calling unregistered slice "${sliceName}"'s action dispatcher`)
   }
 
   return rs[internalStateSym][sliceName] || spec.initialState
@@ -187,9 +163,7 @@ const setState = <S>(
   unregisterSignal: AbortSignal,
 ): RootState => {
   if (unregisterSignal.aborted) {
-    console.error(
-      `Calling unregistered slice "${sliceName}"'s action dispatcher`,
-    )
+    console.error(`Calling unregistered slice "${sliceName}"'s action dispatcher`)
   }
 
   return {
@@ -219,21 +193,13 @@ function createSliceReducer<S>(
     builder: { when },
     reducer: (rs, a) =>
       composeNaiveReducers(
-        createReducerFromSpec(
-          sliceName,
-          spec,
-          actionDispatchers,
-          unregisterSignal,
-        ),
+        createReducerFromSpec(sliceName, spec, actionDispatchers, unregisterSignal),
         ...extraReducers,
       )(rs, a),
   }
 
   function when(
-    matcher:
-      | ActionDispatcher.Any
-      | ReducerBuilder.ActionMatcher
-      | ReducerBuilder.Reducer,
+    matcher: ActionDispatcher.Any | ReducerBuilder.ActionMatcher | ReducerBuilder.Reducer,
     reducer?: ReducerBuilder.Reducer,
   ): void {
     let _matcher: ReducerBuilder.ActionMatcher
@@ -273,14 +239,10 @@ function createReducerFromSpec<S>(
 
   return (s, a) => {
     if (unregisterSignal.aborted) {
-      console.error(
-        `Calling unregistered slice "${sliceName}"'s action dispatcher`,
-      )
+      console.error(`Calling unregistered slice "${sliceName}"'s action dispatcher`)
     }
 
-    const caseReducers = matchers
-      .filter(m => m.match(a))
-      .map(m => spec.reducers[m.name]!)
+    const caseReducers = matchers.filter(m => m.match(a)).map(m => spec.reducers[m.name]!)
 
     if (!caseReducers.length) return s
 
@@ -298,35 +260,23 @@ function createSliceListener<As extends ActionDispatcherMap<any, any>>(
   unregisterSignal: AbortSignal,
 ): ActionListener<StateFromActionDispatcherMap<As>> {
   const actionMatchers = Object.values(actions).map(ad => ad.match)
-  const defaultMatcher = (a: Action.Any): a is Action.Any =>
-    actionMatchers.some(m => m(a))
+  const defaultMatcher = (a: Action.Any): a is Action.Any => actionMatchers.some(m => m(a))
 
   return function (
-    dispatcher:
-      | ActionDispatcher.Any
-      | ActionListener.ListenMatcher
-      | ActionListener.ListenHandler,
+    dispatcher: ActionDispatcher.Any | ActionListener.ListenMatcher | ActionListener.ListenHandler,
     callback?: ActionListener.ListenHandler,
   ) {
     if (unregisterSignal.aborted) {
-      console.error(
-        `Calling unregistered slice "${sliceName}"'s action dispatcher`,
-      )
+      console.error(`Calling unregistered slice "${sliceName}"'s action dispatcher`)
     }
 
-    const { matcher, handler } = ActionListener.dispatchArgs(
-      dispatcher,
-      callback,
-    )
+    const { matcher, handler } = ActionListener.dispatchArgs(dispatcher, callback)
 
     return parent.listen(matcher || defaultMatcher, handler)
   }
 }
 
-function createActionDispatchers<
-  N extends string,
-  Reducers extends CaseReducerMap<any>,
->(
+function createActionDispatchers<N extends string, Reducers extends CaseReducerMap<any>>(
   sliceName: N,
   reducers: Reducers,
   parent: Root,
@@ -343,16 +293,11 @@ function createActionDispatchers<
   const actionTypes = Object.keys(reducers) as StringOnly<keyof Reducers>[]
 
   return actionTypes.reduce((actions, actionType) => {
-    const dispatcher: any = ActionDispatcher.create(
-      `${sliceName}/${actionType}`,
-      parent,
-    )
+    const dispatcher: any = ActionDispatcher.create(`${sliceName}/${actionType}`, parent)
 
     actions[actionType] = ((...args: any) => {
       if (unregisterSignal.aborted) {
-        console.error(
-          `Calling unregistered slice "${sliceName}"'s action dispatcher`,
-        )
+        console.error(`Calling unregistered slice "${sliceName}"'s action dispatcher`)
       }
 
       return dispatcher(...args)

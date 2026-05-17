@@ -24,16 +24,16 @@ PS. `predicate` 参数原本支持传入构造函数（`onError(ConflictHttpErro
 fetch(url)
   .then(raiseHttpErrors)
   .catch(
-    onError(instanceOf(ConflictHttpError), (err) => {
+    onError(instanceOf(ConflictHttpError), err => {
       return 123
     }),
   )
   .catch(
-    onError(isAxiosError, (err) => {
+    onError(isAxiosError, err => {
       return 123
     }),
   )
-  .then((data) => {
+  .then(data => {
     data === 123 // => true
   })
 ```
@@ -46,11 +46,11 @@ const onConflict = onError(instanceOf(ConflictHttpError))
 fetch(url)
   .then(raiseHttpErrors)
   .catch(
-    onConflict((err) => {
+    onConflict(err => {
       return 123
     }),
   )
-  .then((data) => {
+  .then(data => {
     data === 123 // => true
   })
 ```

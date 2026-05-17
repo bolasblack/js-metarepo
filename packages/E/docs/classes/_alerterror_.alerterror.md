@@ -8,7 +8,7 @@
 
 ## Type parameters
 
-▪ **InnerError**: _[Error](_baseerror_.baseerror.md#static-error)_
+▪ **InnerError**: _[Error](\_baseerror_.baseerror.md#static-error)\_
 
 ## Hierarchy
 
@@ -42,9 +42,9 @@
 
 ### constructor
 
-\+ **new AlertError**(`displayMessage`: string, ...`rest`: ErrParamaters): _[AlertError](_alerterror_.alerterror.md)_
+\+ **new AlertError**(`displayMessage`: string, ...`rest`: ErrParamaters): _[AlertError](\_alerterror_.alerterror.md)\_
 
-_Overrides [BaseError](_baseerror_.baseerror.md).[constructor](_baseerror_.baseerror.md#constructor)_
+_Overrides [BaseError](\_baseerror_.baseerror.md).[constructor](_baseerror_.baseerror.md#constructor)\_
 
 _Defined in [packages/E/src/AlertError.ts:57](https://github.com/bolasblack/js-metarepo/blob/aad8249/packages/E/src/AlertError.ts#L57)_
 
@@ -55,11 +55,11 @@ _Defined in [packages/E/src/AlertError.ts:57](https://github.com/bolasblack/js-m
 | `displayMessage` | string        |
 | `...rest`        | ErrParamaters |
 
-**Returns:** _[AlertError](_alerterror_.alerterror.md)_
+**Returns:** _[AlertError](\_alerterror_.alerterror.md)\_
 
-\+ **new AlertError**(`displayMessage`: string, `innerError`: InnerError, ...`rest`: ErrParamaters): _[AlertError](_alerterror_.alerterror.md)_
+\+ **new AlertError**(`displayMessage`: string, `innerError`: InnerError, ...`rest`: ErrParamaters): _[AlertError](\_alerterror_.alerterror.md)\_
 
-_Overrides [BaseError](_baseerror_.baseerror.md).[constructor](_baseerror_.baseerror.md#constructor)_
+_Overrides [BaseError](\_baseerror_.baseerror.md).[constructor](_baseerror_.baseerror.md#constructor)\_
 
 _Defined in [packages/E/src/AlertError.ts:59](https://github.com/bolasblack/js-metarepo/blob/aad8249/packages/E/src/AlertError.ts#L59)_
 
@@ -71,7 +71,7 @@ _Defined in [packages/E/src/AlertError.ts:59](https://github.com/bolasblack/js-m
 | `innerError`     | InnerError    |
 | `...rest`        | ErrParamaters |
 
-**Returns:** _[AlertError](_alerterror_.alerterror.md)_
+**Returns:** _[AlertError](\_alerterror_.alerterror.md)\_
 
 ## Properties
 
@@ -79,7 +79,7 @@ _Defined in [packages/E/src/AlertError.ts:59](https://github.com/bolasblack/js-m
 
 • **displayMessage**: _string_
 
-_Implementation of [AlertableError](../interfaces/_alerterror_.alertableerror.md).[displayMessage](../interfaces/_alerterror_.alertableerror.md#displaymessage)_
+_Implementation of [AlertableError](../interfaces/\_alerterror_.alertableerror.md).[displayMessage](../interfaces/_alerterror_.alertableerror.md#displaymessage)\_
 
 _Defined in [packages/E/src/AlertError.ts:50](https://github.com/bolasblack/js-metarepo/blob/aad8249/packages/E/src/AlertError.ts#L50)_
 
@@ -89,7 +89,7 @@ _Defined in [packages/E/src/AlertError.ts:50](https://github.com/bolasblack/js-m
 
 • **innerError**? : _InnerError_
 
-_Inherited from [AlertError](_alerterror_.alerterror.md).[innerError](_alerterror_.alerterror.md#optional-innererror)_
+_Inherited from [AlertError](\_alerterror_.alerterror.md).[innerError](_alerterror_.alerterror.md#optional-innererror)\_
 
 _Defined in [packages/E/src/BaseError.ts:18](https://github.com/bolasblack/js-metarepo/blob/aad8249/packages/E/src/BaseError.ts#L18)_
 
@@ -99,7 +99,7 @@ _Defined in [packages/E/src/BaseError.ts:18](https://github.com/bolasblack/js-me
 
 • **message**: _string_
 
-_Inherited from [AlertError](_alerterror_.alerterror.md).[message](_alerterror_.alerterror.md#message)_
+_Inherited from [AlertError](\_alerterror_.alerterror.md).[message](_alerterror_.alerterror.md#message)\_
 
 Defined in node_modules/typescript/lib/lib.es5.d.ts:974
 
@@ -109,7 +109,7 @@ Defined in node_modules/typescript/lib/lib.es5.d.ts:974
 
 • **name**: _string_
 
-_Inherited from [AlertError](_alerterror_.alerterror.md).[name](_alerterror_.alerterror.md#name)_
+_Inherited from [AlertError](\_alerterror_.alerterror.md).[name](_alerterror_.alerterror.md#name)\_
 
 Defined in node_modules/typescript/lib/lib.es5.d.ts:973
 
@@ -119,7 +119,7 @@ Defined in node_modules/typescript/lib/lib.es5.d.ts:973
 
 • **stack**? : _undefined | string_
 
-_Inherited from [AlertError](_alerterror_.alerterror.md).[stack](_alerterror_.alerterror.md#optional-stack)_
+_Inherited from [AlertError](\_alerterror_.alerterror.md).[stack](_alerterror_.alerterror.md#optional-stack)\_
 
 Defined in node_modules/typescript/lib/lib.es5.d.ts:975
 
@@ -127,13 +127,13 @@ Defined in node_modules/typescript/lib/lib.es5.d.ts:975
 
 ### `Static` wrap
 
-▸ **wrap**‹**InnerError**›(`innerError`: InnerError, `displayMessage`: string): _[AlertError](_alerterror_.alerterror.md)‹InnerError›_
+▸ **wrap**‹**InnerError**›(`innerError`: InnerError, `displayMessage`: string): _[AlertError](\_alerterror_.alerterror.md)‹InnerError›\_
 
 _Defined in [packages/E/src/AlertError.ts:52](https://github.com/bolasblack/js-metarepo/blob/aad8249/packages/E/src/AlertError.ts#L52)_
 
 **Type parameters:**
 
-▪ **InnerError**: _[Error](_baseerror_.baseerror.md#static-error)_
+▪ **InnerError**: _[Error](\_baseerror_.baseerror.md#static-error)\_
 
 **Parameters:**
 
@@ -142,4 +142,4 @@ _Defined in [packages/E/src/AlertError.ts:52](https://github.com/bolasblack/js-m
 | `innerError`     | InnerError |
 | `displayMessage` | string     |
 
-**Returns:** _[AlertError](_alerterror_.alerterror.md)‹InnerError›_
+**Returns:** _[AlertError](\_alerterror_.alerterror.md)‹InnerError›\_

@@ -29,21 +29,16 @@ const innerError = new TypeError()
 
 const err1 = wrapError(innerError, AlertError, '123', innerError.message) // 如果这么写，err1 的类型是 BaseError<Error>
 
-const err2 = wrapError<AlertError<TypeError>>(
-  innerError,
-  AlertError,
-  '123',
-  innerError.message,
-) // 我们需要这么写，err2 的类型才是我们预期的 AlertError<TypeError>
+const err2 = wrapError<AlertError<TypeError>>(innerError, AlertError, '123', innerError.message) // 我们需要这么写，err2 的类型才是我们预期的 AlertError<TypeError>
 ```
 
 **Type parameters:**
 
-▪ **WrapperError**: _[BaseError](../classes/_baseerror_.baseerror.md)‹InnerError›_
+▪ **WrapperError**: _[BaseError](../classes/\_baseerror_.baseerror.md)‹InnerError›\_
 
 新的 Error 的类型
 
-▪ **InnerError**: _[Error](../classes/_baseerror_.baseerror.md#static-error)_
+▪ **InnerError**: _[Error](../classes/\_baseerror_.baseerror.md#static-error)\_
 
 ▪ **WrapperErrorConstructor**: _object_
 

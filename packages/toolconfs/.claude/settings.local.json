@@ -1,8 +1,5 @@
 {
   "permissions": {
-    "allow": [
-      "mcp__filesystem__fetch",
-      "Bash(pnpm list:*)"
-    ]
+    "allow": ["mcp__filesystem__fetch", "Bash(pnpm list:*)"]
   }
 }

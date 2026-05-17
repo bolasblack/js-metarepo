@@ -10,9 +10,7 @@ const compose = (...fns: any[]): any => {
   }
 }
 
-export function composeEnhancers(
-  ...enhancers: (StoreEnhancer | undefined)[]
-): StoreEnhancer {
+export function composeEnhancers(...enhancers: (StoreEnhancer | undefined)[]): StoreEnhancer {
   const _enhancers = enhancers.filter((e): e is StoreEnhancer => Boolean(e))
   return compose(..._enhancers)
 }

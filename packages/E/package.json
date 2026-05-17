@@ -1,17 +1,13 @@
 {
   "name": "@c4/e",
   "version": "0.1.4",
-  "main": "lib/",
-  "nshq:main": "src/",
-  "types": "src/",
   "license": "MIT",
-  "start": {
-    "reporter": "@start/reporter-verbose"
-  },
+  "main": "lib/",
+  "types": "src/",
   "scripts": {
     "build:docs": "typedoc --mode library --excludeNotExported --readme README.docs.md --includes . --exclude src/index.ts",
     "prepublishOnly": "pnpm build",
-    "lint": "eslint src",
+    "lint": "oxlint --type-aware src",
     "build": "start build",
     "watch": "start watch"
   },
@@ -20,5 +16,9 @@
     "@start/cli": "^2.0.1",
     "@start/reporter-verbose": "^2.0.0",
     "typedoc-plugin-markdown": "^4.0.0"
+  },
+  "nshq:main": "src/",
+  "start": {
+    "reporter": "@start/reporter-verbose"
   }
 }

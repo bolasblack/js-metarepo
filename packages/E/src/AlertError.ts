@@ -58,11 +58,7 @@ export class AlertError<InnerError extends Error = Error>
   }
 
   constructor(displayMessage: string, ...rest: ErrParamaters)
-  constructor(
-    displayMessage: string,
-    innerError: InnerError,
-    ...rest: ErrParamaters
-  )
+  constructor(displayMessage: string, innerError: InnerError, ...rest: ErrParamaters)
   constructor(displayMessage: string, ...rest: any[]) {
     let innerError: InnerError | undefined
     if (rest.length && rest[0] instanceof Error) {

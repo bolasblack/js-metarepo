@@ -173,9 +173,7 @@ describe('Slice', () => {
 
       expectType<(payload: symbol) => void>(slice.actions.set)
       expectType<void>(slice.actions.set(updatedState))
-      expectType<{ type: 'test/set'; payload: symbol }>(
-        slice.actions.set.create(updatedState),
-      )
+      expectType<{ type: 'test/set'; payload: symbol }>(slice.actions.set.create(updatedState))
     })
 
     it('can dispatch self action', () => {
@@ -228,9 +226,7 @@ describe('Slice', () => {
       slice.listen(
         (a): a is Action<'a', string> | Action<'b', number> => Boolean(a),
         action => {
-          expectType<
-            { type: 'a'; payload: string } | { type: 'b'; payload: number }
-          >(action)
+          expectType<{ type: 'a'; payload: string } | { type: 'b'; payload: number }>(action)
         },
       )
 
@@ -273,9 +269,9 @@ describe('Slice', () => {
 
       const anotherSym = Symbol('fake state')
       expect(slice.getState({ [internalStateSym]: {} })).toEqual(initialState)
-      expect(
-        slice.getState({ [internalStateSym]: { [sliceName]: anotherSym } }),
-      ).toEqual(anotherSym)
+      expect(slice.getState({ [internalStateSym]: { [sliceName]: anotherSym } })).toEqual(
+        anotherSym,
+      )
     })
   })
 
@@ -287,9 +283,7 @@ describe('Slice', () => {
     })
 
     it('receive a setter function as first argument', () => {
-      expect(
-        slice.setState(() => updatedState, { [internalStateSym]: {} }),
-      ).toEqual({
+      expect(slice.setState(() => updatedState, { [internalStateSym]: {} })).toEqual({
         [internalStateSym]: { [sliceName]: updatedState },
       })
     })
@@ -301,9 +295,7 @@ describe('Slice', () => {
       })
 
       expect(slice.setState(() => updatedState)).toEqual(expect.any(Function))
-      expect(
-        slice.setState(() => updatedState)({ [internalStateSym]: {} }),
-      ).toEqual({
+      expect(slice.setState(() => updatedState)({ [internalStateSym]: {} })).toEqual({
         [internalStateSym]: { [sliceName]: updatedState },
       })
     })
@@ -344,10 +336,7 @@ describe('Slice', () => {
 
     it('should console error when calling `reducer` after unregistered', () => {
       slice.unregister()
-      slice.reducer(
-        { [internalStateSym]: {} },
-        slice.actions.set.create(initialState),
-      )
+      slice.reducer({ [internalStateSym]: {} }, slice.actions.set.create(initialState))
       slice.actions.set(updatedState)
       expect(getSnapshotableMocks(console.error)).toMatchSnapshot()
     })

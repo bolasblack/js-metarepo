@@ -49,9 +49,7 @@ describe('Coll', () => {
     it('should return the tail of an array', () => {
       expectTypeOf<Tail<[]>>().toEqualTypeOf<[]>()
       expectTypeOf<Tail<[number]>>().toEqualTypeOf<[]>()
-      expectTypeOf<Tail<[number, string, boolean]>>().toEqualTypeOf<
-        [string, boolean]
-      >()
+      expectTypeOf<Tail<[number, string, boolean]>>().toEqualTypeOf<[string, boolean]>()
       expectTypeOf<Tail<number[]>>().toEqualTypeOf<number[]>()
     })
   })
@@ -131,7 +129,7 @@ describe('Coll', () => {
 
   describe('ExcludeKey', () => {
     it('should exclude keys from a type', () => {
-      // prettier-ignore
+      // oxfmt-ignore
       type OriginalExcludeKey<T, EK extends keyof T> = Compact<
         { [K in Exclude<OptionalPropNames<T>, EK>]?: T[K] } &
         { [K in Exclude<keyof T, EK | OptionalPropNames<T>>]: T[K] }
@@ -258,12 +256,8 @@ describe('Coll', () => {
     it('should pick nullable types', () => {
       expectTypeOf<PickNullable<number>>().toEqualTypeOf<never>()
       expectTypeOf<PickNullable<number | null>>().toEqualTypeOf<null>()
-      expectTypeOf<
-        PickNullable<number | undefined>
-      >().toEqualTypeOf<undefined>()
-      expectTypeOf<PickNullable<number | null | undefined>>().toEqualTypeOf<
-        null | undefined
-      >()
+      expectTypeOf<PickNullable<number | undefined>>().toEqualTypeOf<undefined>()
+      expectTypeOf<PickNullable<number | null | undefined>>().toEqualTypeOf<null | undefined>()
     })
   })
 

@@ -68,9 +68,7 @@ describe('useSlice', () => {
       let sliceName = 'test'
       let _spec = spec
 
-      const { result, rerender } = renderHook(() =>
-        useSlice(root, sliceName, _spec),
-      )
+      const { result, rerender } = renderHook(() => useSlice(root, sliceName, _spec))
       let prevRet = result.current
 
       rerender()

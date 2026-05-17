@@ -77,11 +77,7 @@ function getTsConfig(): ts.CompilerOptions | undefined {
     useCaseSensitiveFileNames: true,
   }
 
-  const configFileName = ts.findConfigFile(
-    process.cwd(),
-    ts.sys.fileExists,
-    'tsconfig.json',
-  )
+  const configFileName = ts.findConfigFile(process.cwd(), ts.sys.fileExists, 'tsconfig.json')
 
   if (!configFileName) return
 
@@ -92,9 +88,5 @@ function getTsConfig(): ts.CompilerOptions | undefined {
     return
   }
 
-  return ts.parseJsonConfigFileContent(
-    configFile.config,
-    parseConfigHost,
-    process.cwd(),
-  ).options
+  return ts.parseJsonConfigFileContent(configFile.config, parseConfigHost, process.cwd()).options
 }
