@@ -2,7 +2,7 @@
 
 > Version: 5.3.1
 >
-> A collection of configuration files for common development tools (ESLint, Prettier, etc.), designed for easy scaffolding by LLMs.
+> A collection of configuration files for common development tools (ESLint, Oxlint, Prettier, etc.), designed for easy scaffolding by LLMs.
 
 ## Usage
 
@@ -12,7 +12,7 @@
 
 > **⚠️ IMPORTANT: Use Subagents for Parallel Processing**
 >
-> You **MUST** spawn a separate subagent for each config **type** (e.g., ESLint, Prettier, TypeScript) and process them **in parallel**. This is critical for:
+> You **MUST** spawn a separate subagent for each config **type** (e.g., ESLint, Oxlint, Prettier, TypeScript) and process them **in parallel**. This is critical for:
 >
 > - Avoiding context bloat in the main agent
 > - Faster execution through parallelization
@@ -54,12 +54,20 @@ For a TypeScript + Deno project:
   Dependencies:
   - `eslint-plugin-react@^7.35.0`
   - `eslint-plugin-react-hooks@^7.0.0`
-  - `globals@^16.0.0`
+  - `globals@^17.0.0`
 
 - [Prettier](./eslintrc.prettier.mts): Disables ESLint rules that conflict with Prettier.
 
   Dependencies:
   - `eslint-config-prettier@^10.0.0`
+
+## Oxlint
+
+- [Oxlint Config](./oxlintrc.json): JavaScript and TypeScript lint rules for Oxlint.
+
+  Dependencies:
+  - `oxlint@1.62.0`
+  - `oxlint-tsgolint@0.22.1`
 
 ## Prettier
 
@@ -99,13 +107,13 @@ For a TypeScript + Deno project:
 
   Extends: None (base config)
 
-  Features: ESNext target, strict mode, decorator support
+  Features: ESNext target, bundler module resolution, strict mode, decorator support
 
 - [Node Config](./tsconfig-node.json): TypeScript configuration for Node.js projects.
 
   Extends: `./tsconfig.json`
 
-  Features: CommonJS modules, declaration files
+  Features: Node16 modules and module resolution, declaration files
 
 - [ESModule Config](./tsconfig-esModule.json): TypeScript configuration with ESModule interop.
 

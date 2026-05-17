@@ -9,7 +9,7 @@
     "start": "lib/cli.js"
   },
   "scripts": {
-    "lint": "eslint src",
+    "lint": "oxlint --type-aware src",
     "test": "exit 0",
     "prepublishOnly": "node src/require.js build",
     "start": "node src/require.js"

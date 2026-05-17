@@ -12,10 +12,8 @@ export namespace Action {
   export type Empty<T extends string = string> = Action<T>
   export type Any<T extends string = string> = Action<T, any>
 }
-export type ActionFromCaseReducer<
-  R,
-  ActionType extends string,
-> = R extends CaseReducer<any, infer A> ? A & { type: ActionType } : never
+export type ActionFromCaseReducer<R, ActionType extends string> =
+  R extends CaseReducer<any, infer A> ? A & { type: ActionType } : never
 export type ActionAddPrefix<
   A extends Action<string>,
   ActionTypePrefix extends string,
@@ -132,12 +130,12 @@ export namespace ActionDispatcher {
     toString(): string
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // oxlint-disable-next-line no-unused-vars
   export interface ForEmptyAction<S, A extends Action.Any> extends Base<A> {
     (): void
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // oxlint-disable-next-line no-unused-vars
   export interface ForPayloadAction<S, A extends Action.Any> extends Base<A> {
     (payload: PayloadFromAction<A>): void
   }
@@ -163,7 +161,7 @@ export interface NaiveReducer<S, A extends Action.Any> {
  */
 export type CaseReducer<S, A extends Action.Any> = NaiveReducer<S, A>
 export namespace CaseReducer {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // oxlint-disable-next-line no-unused-vars
   export const id = <S>(s: S, action: Action.Empty): S => s
 }
 export type CaseReducerMap<S> = {

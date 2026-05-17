@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "pnpm test && nodemon -w src/**/*.ts -w dtslint/**/*.ts --exec 'pnpm test'",
-    "lint": "eslint src",
+    "lint": "oxlint --type-aware src",
     "test": "../../node_modules/.bin/tsc --noEmit && NODE_ENV=test vitest src"
   },
   "devDependencies": {

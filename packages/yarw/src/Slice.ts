@@ -78,7 +78,7 @@ export function registerSlice<
 ): Slice<S, ActionMapFromCaseReducerMap<Reducers, N>> {
   const unregisteredCtrl = new AbortController()
 
-  // eslint-disable-next-line prefer-const
+  // oxlint-disable-next-line prefer-const
   let unregisterReducer: undefined | (() => void)
 
   type AM = ActionMapFromCaseReducerMap<Reducers, N>

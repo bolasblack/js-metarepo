@@ -7,7 +7,7 @@
   "author": "c4605 <bolasblack@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint ./**/*.js* ./**/*.ts*",
+    "lint": "oxlint --type-aware .",
     "test": "exit 0"
   },
   "devDependencies": {
@@ -21,6 +21,8 @@
     "git-hook-pure": "^3.2.1",
     "globals": "^17.0.0",
     "lint-staged": "^16.0.0",
+    "oxlint": "1.62.0",
+    "oxlint-tsgolint": "0.22.1",
     "prettier": "^3.0.0",
     "typescript": "^6.0.0",
     "typescript-eslint": "^8.51.0"

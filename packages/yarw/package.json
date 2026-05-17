@@ -9,7 +9,7 @@
     "reporter": "@start/reporter-verbose"
   },
   "scripts": {
-    "lint": "eslint src",
+    "lint": "oxlint --type-aware src",
     "test": "NODE_ENV=test vitest src",
     "prepublishOnly": "start build",
     "build": "start build"

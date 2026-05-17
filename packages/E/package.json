@@ -11,7 +11,7 @@
   "scripts": {
     "build:docs": "typedoc --mode library --excludeNotExported --readme README.docs.md --includes . --exclude src/index.ts",
     "prepublishOnly": "pnpm build",
-    "lint": "eslint src",
+    "lint": "oxlint --type-aware src",
     "build": "start build",
     "watch": "start watch"
   },
