@@ -16,9 +16,9 @@
     "release": "lerna version --sign-git-tag --conventional-commits"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^20.3.0",
+    "@commitlint/config-conventional": "^21.0.0",
     "@types/node": "^25.0.3",
-    "commitlint": "^20.2.0",
+    "commitlint": "^21.0.0",
     "git-hook-pure": "^3.2.1",
     "lerna": "^9.0.3",
     "lint-staged": "^16.2.7",
