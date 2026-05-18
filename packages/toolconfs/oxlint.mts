@@ -39,6 +39,9 @@ export const baseConfig = defineConfig({
 
 export const typescriptConfig = defineConfig({
   plugins: ['typescript'],
+  options: {
+    typeAware: true,
+  },
   overrides: [
     {
       files: ['**/*.ts', '**/*.tsx', '**/*.mts'],
@@ -85,11 +88,6 @@ export const reactConfig = defineConfig({
   env: {
     browser: true,
   },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/display-name': 'off',
@@ -106,4 +104,7 @@ export const oxfmtStyleConfig = defineConfig({
 
 export default defineConfig({
   extends: [baseConfig, typescriptConfig, reactConfig, oxfmtStyleConfig],
+  options: {
+    denyWarnings: true,
+  },
 })
