@@ -24,7 +24,7 @@
     "lint-staged": "^17.0.0",
     "oxfmt": "0.51.0",
     "oxlint": "1.66.0",
-    "oxlint-tsgolint": "0.22.1",
+    "oxlint-tsgolint": "0.23.0",
     "patch-package": "^8.0.1",
     "postinstall-postinstall": "^2.1.0",
     "typedoc": "^0.28.15",
