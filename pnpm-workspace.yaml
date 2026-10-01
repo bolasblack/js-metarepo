@@ -19,3 +19,5 @@ catalogs:
 minimumReleaseAgeExclude:
   # Renovate security update: vitest@4.1.0
   - vitest@4.1.0
+  # Renovate security update: @babel/core@7.29.6
+  - "@babel/core@7.29.6"
